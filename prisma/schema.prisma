@@ -1,0 +1,483 @@
+// ============================================================================
+//  EDITORIAL HORIZONTE — Prisma Schema (mirror SQLite del esquema Supabase)
+//  Cliente   : Juan Damonte
+//  Proveedor : Fast Page Pro — Fabio Herrera
+//  Nota      : Para producción en Vercel + Supabase, usar el esquema SQL
+//              entregado en /download/editorial_horizonte_schema.sql
+//              Este schema Prisma replica la estructura para desarrollo local.
+// ============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// 1. PROFILES  (extiende auth — simulado en SQLite)
+// ---------------------------------------------------------------------------
+model Profile {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  fullName  String?
+  avatarUrl String?
+  role      String   @default("customer") // admin | editor | warehouse_manager | customer
+  phone     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  stockMovements StockMovement[]
+  consignments   Consignment[]
+  transfers      Transfer[]
+  auditLogs      AuditLog[]
+  settings       Setting[]
+}
+
+// ---------------------------------------------------------------------------
+// 2. PUBLISHERS  (Editoriales — own vs third_party)
+// ---------------------------------------------------------------------------
+model Publisher {
+  id             String   @id @default(cuid())
+  name           String
+  slug           String   @unique
+  type           String   @default("third_party") // own | third_party
+  commissionRate Float    @default(0) // % 0-100
+  royaltyRate    Float    @default(0) // % 0-100
+  contactName    String?
+  contactEmail   String?
+  contactPhone   String?
+  taxId          String?
+  notes          String?
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  books        Book[]
+  consignments Consignment[]
+}
+
+// ---------------------------------------------------------------------------
+// 3. AUTHORS
+// ---------------------------------------------------------------------------
+model Author {
+  id          String   @id @default(cuid())
+  fullName    String
+  slug        String   @unique
+  biography   String?
+  photoUrl    String?
+  nationality String?
+  birthDate   DateTime?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  books BookAuthor[]
+}
+
+// ---------------------------------------------------------------------------
+// 4. CATEGORIES
+// ---------------------------------------------------------------------------
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  description String?
+  parentId    String?
+  sortOrder   Int        @default(0)
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  parent   Category?  @relation("CategoryParent", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryParent")
+  books    BookCategory[]
+}
+
+// ---------------------------------------------------------------------------
+// 5. BOOKS
+// ---------------------------------------------------------------------------
+model Book {
+  id              String   @id @default(cuid())
+  isbn            String?  @unique
+  title           String
+  slug            String   @unique
+  synopsis        String?
+  coverUrl        String?
+  backCoverUrl    String?
+  publisherId     String?
+  originType      String   @default("own") // own | third_party
+  publicationDate DateTime?
+  pages           Int?
+  language        String   @default("Español")
+  format          String   @default("physical") // physical | digital | audiobook
+  weightGrams     Int?
+  dimensions      String?
+  edition         String?
+
+  pricePen Float @default(0)
+  priceUsd Float @default(0)
+  cost     Float @default(0)
+
+  isActive   Boolean @default(true)
+  isFeatured Boolean @default(false)
+  isNew      Boolean @default(false)
+  sortOrder  Int     @default(0)
+
+  metaTitle       String?
+  metaDescription String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  publisher     Publisher?     @relation(fields: [publisherId], references: [id])
+  authors       BookAuthor[]
+  categories    BookCategory[]
+  inventory     Inventory[]
+  stockMovements StockMovement[]
+  orderItems    OrderItem[]
+  consignments  Consignment[]
+
+  @@index([originType])
+  @@index([isActive])
+  @@index([isFeatured])
+}
+
+// ---------------------------------------------------------------------------
+// 6. BOOK_AUTHORS  (M:N)
+// ---------------------------------------------------------------------------
+model BookAuthor {
+  bookId   String
+  authorId String
+  role     String @default("author")
+
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  author Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@id([bookId, authorId])
+}
+
+// ---------------------------------------------------------------------------
+// 7. BOOK_CATEGORIES  (M:N)
+// ---------------------------------------------------------------------------
+model BookCategory {
+  bookId     String
+  categoryId String
+
+  book     Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([bookId, categoryId])
+}
+
+// ---------------------------------------------------------------------------
+// 8. WAREHOUSES  (Almacenes / Librerías aliadas)
+// ---------------------------------------------------------------------------
+model Warehouse {
+  id           String   @id @default(cuid())
+  name         String
+  code         String   @unique
+  type         String   @default("physical_store") // physical_store | warehouse | distribution_center
+  addressLine1 String?
+  addressLine2 String?
+  city         String?
+  state        String?
+  country      String   @default("Perú")
+  postalCode   String?
+  phone        String?
+  email        String?
+  managerName  String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  inventory      Inventory[]
+  stockMovements StockMovement[]
+  orderItems     OrderItem[]
+  orders         Order[]
+  transfersFrom  Transfer[] @relation("TransferFrom")
+  transfersTo    Transfer[] @relation("TransferTo")
+  consignments   Consignment[]
+}
+
+// ---------------------------------------------------------------------------
+// 9. INVENTORY  (Stock por libro × almacén — núcleo del ERP)
+// ---------------------------------------------------------------------------
+model Inventory {
+  id             String   @id @default(cuid())
+  bookId         String
+  warehouseId    String
+  stockAvailable Int      @default(0)
+  stockConsigned Int      @default(0)
+  stockReserved  Int      @default(0)
+  minThreshold   Int      @default(0)
+  maxCapacity    Int?
+  locationCode   String?
+  lastCountDate  DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  book      Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  warehouse Warehouse @relation(fields: [warehouseId], references: [id])
+
+  @@unique([bookId, warehouseId])
+  @@index([warehouseId])
+}
+
+// ---------------------------------------------------------------------------
+// 10. STOCK_MOVEMENTS  (Auditoría inmutable)
+// ---------------------------------------------------------------------------
+model StockMovement {
+  id            String   @id @default(cuid())
+  bookId        String
+  warehouseId   String
+  movementType  String   // sale | return | consignment_in | consignment_out | adjustment | transfer_in | transfer_out | manual_in | manual_out
+  quantity      Int      // positivo: entrada, negativo: salida
+  balanceBefore Int
+  balanceAfter  Int
+  referenceType String?  // order | transfer | consignment | manual
+  referenceId   String?
+  notes         String?
+  performedById String?
+  createdAt     DateTime @default(now())
+
+  book        Book       @relation(fields: [bookId], references: [id])
+  warehouse   Warehouse  @relation(fields: [warehouseId], references: [id])
+  performedBy Profile?   @relation(fields: [performedById], references: [id])
+
+  @@index([bookId, warehouseId])
+  @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// 11. DISCOUNTS
+// ---------------------------------------------------------------------------
+model Discount {
+  id             String    @id @default(cuid())
+  code           String    @unique
+  description    String?
+  type           String    @default("percentage") // percentage | fixed | free_shipping
+  value          Float     @default(0)
+  minOrderAmount Float     @default(0)
+  maxUses        Int?
+  usedCount      Int       @default(0)
+  validFrom      DateTime?
+  validUntil     DateTime?
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  orders Order[]
+}
+
+// ---------------------------------------------------------------------------
+// 12. CUSTOMERS
+// ---------------------------------------------------------------------------
+model Customer {
+  id                       String   @id @default(cuid())
+  email                    String   @unique
+  fullName                 String?
+  phone                    String?
+  authUserId               String?
+  defaultShippingAddress   String?
+  defaultBillingAddress    String?
+  marketingOptIn           Boolean  @default(false)
+  totalOrders              Int      @default(0)
+  totalSpent               Float    @default(0)
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  orders Order[]
+}
+
+// ---------------------------------------------------------------------------
+// 13. ORDERS
+// ---------------------------------------------------------------------------
+model Order {
+  id                  String    @id @default(cuid())
+  orderNumber         String    @unique
+  customerId          String?
+  customerEmail       String
+  customerName        String?
+  customerPhone       String?
+  status              String    @default("pending") // pending | paid | processing | shipped | delivered | cancelled | refunded
+  currency            String    @default("PEN") // PEN | USD
+  subtotal            Float     @default(0)
+  discountAmount      Float     @default(0)
+  shippingAmount      Float     @default(0)
+  taxAmount           Float     @default(0)
+  totalAmount         Float     @default(0)
+  warehouseId         String?
+  paymentProvider     String?   // mercadopago | paypal | izipay | manual
+  paymentProviderId   String?
+  paymentStatus       String    @default("pending") // pending | completed | failed | refunded | partial_refund
+  paidAt              DateTime?
+  shippingAddress     String?
+  billingAddress      String?
+  discountId          String?
+  notes               String?
+  ipAddress           String?
+  userAgent           String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  shippedAt           DateTime?
+  deliveredAt         DateTime?
+  cancelledAt         DateTime?
+
+  customer  Customer?  @relation(fields: [customerId], references: [id])
+  warehouse Warehouse? @relation(fields: [warehouseId], references: [id])
+  discount  Discount?  @relation(fields: [discountId], references: [id])
+  items     OrderItem[]
+  payments  Payment[]
+
+  @@index([status])
+  @@index([customerId])
+  @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// 14. ORDER_ITEMS
+// ---------------------------------------------------------------------------
+model OrderItem {
+  id                    String   @id @default(cuid())
+  orderId               String
+  bookId                String
+  warehouseId           String
+  quantity              Int
+  unitPrice             Float
+  discountPerUnit       Float    @default(0)
+  lineTotal             Float
+  bookTitleSnapshot     String
+  publisherIdSnapshot   String?
+  originTypeSnapshot    String
+  commissionRateSnapshot Float   @default(0)
+  commissionAmount      Float    @default(0)
+  royaltyAmount         Float    @default(0)
+  stockDeducted         Boolean  @default(false)
+  deductedAt            DateTime?
+  createdAt             DateTime @default(now())
+
+  order     Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  book      Book      @relation(fields: [bookId], references: [id])
+  warehouse Warehouse @relation(fields: [warehouseId], references: [id])
+
+  @@index([orderId])
+}
+
+// ---------------------------------------------------------------------------
+// 15. TRANSFERS
+// ---------------------------------------------------------------------------
+model Transfer {
+  id              String    @id @default(cuid())
+  transferNumber  String    @unique
+  fromWarehouseId String
+  toWarehouseId   String
+  status          String    @default("pending") // pending | in_transit | received | cancelled
+  notes           String?
+  performedById   String?
+  createdAt       DateTime  @default(now())
+  shippedAt       DateTime?
+  receivedAt      DateTime?
+
+  fromWarehouse Warehouse @relation("TransferFrom", fields: [fromWarehouseId], references: [id])
+  toWarehouse   Warehouse @relation("TransferTo", fields: [toWarehouseId], references: [id])
+  performedBy   Profile?  @relation(fields: [performedById], references: [id])
+  items         TransferItem[]
+}
+
+model TransferItem {
+  id                String @id @default(cuid())
+  transferId        String
+  bookId            String
+  quantity          Int
+  receivedQuantity  Int    @default(0)
+  createdAt         DateTime @default(now())
+
+  transfer Transfer @relation(fields: [transferId], references: [id], onDelete: Cascade)
+}
+
+// ---------------------------------------------------------------------------
+// 16. CONSIGNMENTS
+// ---------------------------------------------------------------------------
+model Consignment {
+  id                 String    @id @default(cuid())
+  consignmentNumber  String    @unique
+  bookId             String
+  warehouseId        String
+  publisherId        String?
+  quantityConsigned  Int
+  quantitySold       Int       @default(0)
+  quantityReturned   Int       @default(0)
+  quantityPending    Int       @default(0)
+  status             String    @default("active") // active | partial_settled | settled | cancelled
+  agreementDate      DateTime  @default(now())
+  settlementDate     DateTime?
+  commissionRate     Float     @default(0)
+  royaltyRate        Float     @default(0)
+  totalSettlement    Float     @default(0)
+  notes              String?
+  performedById      String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  book        Book       @relation(fields: [bookId], references: [id])
+  warehouse   Warehouse  @relation(fields: [warehouseId], references: [id])
+  publisher   Publisher? @relation(fields: [publisherId], references: [id])
+  performedBy Profile?   @relation(fields: [performedById], references: [id])
+}
+
+// ---------------------------------------------------------------------------
+// 17. PAYMENTS
+// ---------------------------------------------------------------------------
+model Payment {
+  id                     String   @id @default(cuid())
+  orderId                String
+  provider               String   // mercadopago | paypal | izipay | manual
+  providerTransactionId  String?
+  amount                 Float
+  currency               String   @default("PEN")
+  status                 String   @default("pending")
+  rawResponse            String?
+  errorMessage           String?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+// ---------------------------------------------------------------------------
+// 18. SETTINGS
+// ---------------------------------------------------------------------------
+model Setting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String   @default("{}") // JSON string
+  description String?
+  updatedById String?
+  updatedAt   DateTime @updatedAt
+
+  updatedBy Profile? @relation(fields: [updatedById], references: [id])
+}
+
+// ---------------------------------------------------------------------------
+// 19. AUDIT_LOG
+// ---------------------------------------------------------------------------
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String
+  entityType String
+  entityId   String?
+  oldValue   String?  // JSON
+  newValue   String?  // JSON
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  actor Profile? @relation(fields: [actorId], references: [id])
+
+  @@index([createdAt])
+}

@@ -1,0 +1,257 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================================================
+   EDITORIAL HORIZONTE — Sistema de diseño literario premium
+   Inspirado en Librería SUR: serif elegante, paleta cálida, mucho aire.
+   ============================================================================ */
+:root {
+  --radius: 0.25rem;
+
+  /* Paleta editorial cálida */
+  --background: oklch(0.985 0.008 80);          /* crema paper */
+  --foreground: oklch(0.20 0.02 60);            /* tinta sepia */
+  --card: oklch(0.995 0.005 80);                /* papel más claro */
+  --card-foreground: oklch(0.20 0.02 60);
+  --popover: oklch(0.995 0.005 80);
+  --popover-foreground: oklch(0.20 0.02 60);
+
+  /* Primary: terracota literaria */
+  --primary: oklch(0.42 0.13 32);
+  --primary-foreground: oklch(0.985 0.005 80);
+
+  /* Accent: dorado tenue */
+  --accent: oklch(0.78 0.12 80);
+  --accent-foreground: oklch(0.20 0.02 60);
+
+  --secondary: oklch(0.95 0.012 70);
+  --secondary-foreground: oklch(0.30 0.02 60);
+
+  --muted: oklch(0.93 0.012 70);
+  --muted-foreground: oklch(0.50 0.015 60);
+
+  --destructive: oklch(0.50 0.20 25);
+
+  --border: oklch(0.88 0.015 70);
+  --input: oklch(0.92 0.012 70);
+  --ring: oklch(0.42 0.13 32);
+
+  --chart-1: oklch(0.42 0.13 32);     /* terracota */
+  --chart-2: oklch(0.55 0.10 200);    /* azul tenue */
+  --chart-3: oklch(0.50 0.08 140);    /* verde oliva */
+  --chart-4: oklch(0.65 0.15 80);     /* dorado */
+  --chart-5: oklch(0.40 0.05 280);    /* púrpura polvo */
+
+  --sidebar: oklch(0.97 0.008 70);
+  --sidebar-foreground: oklch(0.20 0.02 60);
+  --sidebar-primary: oklch(0.42 0.13 32);
+  --sidebar-primary-foreground: oklch(0.985 0.005 80);
+  --sidebar-accent: oklch(0.93 0.012 70);
+  --sidebar-accent-foreground: oklch(0.20 0.02 60);
+  --sidebar-border: oklch(0.88 0.015 70);
+  --sidebar-ring: oklch(0.42 0.13 32);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 60);
+  --foreground: oklch(0.93 0.012 70);
+  --card: oklch(0.21 0.018 60);
+  --card-foreground: oklch(0.93 0.012 70);
+  --popover: oklch(0.21 0.018 60);
+  --popover-foreground: oklch(0.93 0.012 70);
+  --primary: oklch(0.78 0.13 32);
+  --primary-foreground: oklch(0.16 0.015 60);
+  --secondary: oklch(0.28 0.015 60);
+  --secondary-foreground: oklch(0.93 0.012 70);
+  --muted: oklch(0.26 0.012 60);
+  --muted-foreground: oklch(0.68 0.015 70);
+  --accent: oklch(0.62 0.13 80);
+  --accent-foreground: oklch(0.16 0.015 60);
+  --destructive: oklch(0.65 0.18 25);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.13 32);
+  --chart-1: oklch(0.72 0.14 32);
+  --chart-2: oklch(0.65 0.10 200);
+  --chart-3: oklch(0.60 0.08 140);
+  --chart-4: oklch(0.75 0.13 80);
+  --chart-5: oklch(0.55 0.08 280);
+  --sidebar: oklch(0.21 0.018 60);
+  --sidebar-foreground: oklch(0.93 0.012 70);
+  --sidebar-primary: oklch(0.78 0.13 32);
+  --sidebar-primary-foreground: oklch(0.16 0.015 60);
+  --sidebar-accent: oklch(0.28 0.015 60);
+  --sidebar-accent-foreground: oklch(0.93 0.012 70);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.78 0.13 32);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Tipografía editorial: serif para titulares */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.025em;
+  }
+
+  /* Smooth scroll nativo */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+}
+
+/* ============================================================================
+   UTILIDADES EDITORIALES
+   ============================================================================ */
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+  .font-sans  { font-family: var(--font-sans); }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  /* Línea ornamental */
+  .editorial-rule {
+    position: relative;
+    display: inline-block;
+    height: 1px;
+    width: 2.5rem;
+    background: currentColor;
+    vertical-align: middle;
+    margin: 0 0.75rem;
+    opacity: 0.5;
+  }
+  .editorial-rule::before,
+  .editorial-rule::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    transform: translateY(-50%);
+  }
+  .editorial-rule::before { left: -8px; }
+  .editorial-rule::after  { right: -8px; }
+
+  /* Tracking editorial para mayúsculas pequeñas */
+  .tracking-editorial { letter-spacing: 0.18em; }
+
+  /* Capa de papel con textura */
+  .paper-texture {
+    background-image:
+      radial-gradient(circle at 20% 30%, oklch(0.95 0.015 60 / 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, oklch(0.93 0.015 60 / 0.3) 0%, transparent 50%);
+  }
+
+  /* Subrayado animado para enlaces */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Gradient editorial (hero) */
+  .gradient-hero {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.92 0.04 60 / 0.5), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 100%, oklch(0.88 0.05 32 / 0.4), transparent);
+  }
+
+  /* Aspecto de portada de libro */
+  .book-cover-shadow {
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.08),
+      0 4px 8px oklch(0 0 0 / 0.08),
+      0 10px 24px oklch(0 0 0 / 0.12),
+      0 20px 40px oklch(0 0 0 / 0.10);
+  }
+
+  /* Animación de pulso sutil */
+  @keyframes editorial-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  .animate-editorial-pulse {
+    animation: editorial-pulse 2.5s ease-in-out infinite;
+  }
+
+  /* Reveal en scroll (en combinación con framer-motion) */
+  .reveal-mask {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal-mask.revealed {
+    clip-path: inset(0 0 0% 0);
+  }
+
+  /* Scrollbar discreto */
+  .scrollbar-editorial::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-editorial::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-editorial::-webkit-scrollbar-thumb {
+    background: oklch(0.80 0.015 60);
+    border-radius: 3px;
+  }
+  .scrollbar-editorial::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.70 0.015 60);
+  }
+}
