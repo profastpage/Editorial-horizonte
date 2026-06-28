@@ -30,25 +30,46 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files — NUNCA commitear credenciales reales
+# .env se mantiene local; en Vercel se configuran como Environment Variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# pero SÍ commitear el ejemplo
+!.env.example
 
 # vercel
 .vercel
 
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local-*
 local-*
+
+# claude / sandbox
 .claude
 .z-ai-config
+.zscripts/
+
+# logs
 *.log
 dev.log
 dev.out.log
-test
+server.log
+
+# prompts (internos)
 prompt
 
-server.log
-# Skills directory
+# prisma local db (solo desarrollo; en producción va en Supabase)
+/db/*.db
+/db/*.db-journal
+
+# skills directory (interno)
 /skills/
+
+# upload (imagenes temporales del usuario)
+/upload/
