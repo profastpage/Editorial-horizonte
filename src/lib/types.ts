@@ -29,6 +29,7 @@ export interface BookWithRelations {
   language: string
   format: BookFormat
   dimensions: string | null
+  weightGrams: number | null
   edition: string | null
   pricePen: number
   priceUsd: number

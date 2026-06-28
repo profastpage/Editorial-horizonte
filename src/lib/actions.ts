@@ -250,7 +250,7 @@ export async function checkoutAction(
     if (e instanceof z.ZodError) {
       return {
         success: false,
-        error: 'Datos del formulario inválidos: ' + e.errors.map((er) => er.message).join(', '),
+        error: 'Datos del formulario inválidos: ' + e.issues.map((er) => er.message).join(', '),
         errorCode: 'VALIDATION',
       }
     }

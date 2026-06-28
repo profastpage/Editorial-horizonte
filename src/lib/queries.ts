@@ -36,6 +36,7 @@ export async function getBooks(): Promise<BookWithRelations[]> {
     language: b.language,
     format: b.format as 'physical' | 'digital' | 'audiobook',
     dimensions: b.dimensions,
+    weightGrams: b.weightGrams,
     edition: b.edition,
     pricePen: b.pricePen,
     priceUsd: b.priceUsd,
@@ -44,7 +45,13 @@ export async function getBooks(): Promise<BookWithRelations[]> {
     isFeatured: b.isFeatured,
     isNew: b.isNew,
     metaTitle: b.metaTitle, // color de portada simulada
-    publisher: b.publisher,
+    publisher: b.publisher ? {
+      id: b.publisher.id,
+      name: b.publisher.name,
+      slug: b.publisher.slug,
+      type: b.publisher.type as 'own' | 'third_party',
+      commissionRate: b.publisher.commissionRate,
+    } : null,
     authors: b.authors.map((a) => ({
       id: a.author.id,
       fullName: a.author.fullName,
