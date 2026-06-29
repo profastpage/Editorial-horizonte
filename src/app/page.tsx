@@ -12,17 +12,23 @@ import { Allies } from '@/components/sections/allies'
 import { Contact } from '@/components/sections/contact'
 import { CatalogSection } from '@/components/sections/catalog'
 import { CartDrawer } from '@/components/checkout/cart-drawer'
-import { AdminSheet } from '@/components/admin/admin-sheet'
 import { AdminSheetClient } from '@/components/admin/admin-sheet-client'
 import { getBooks, getCategories, getWarehouses, getAdminMetrics } from '@/lib/queries'
 
-// Renderización del servidor — los datos se cargan aquí (SSR)
+// SSR dinámico — NO prerenderear en build time.
+// Esto evita que el build en Vercel intente acceder a la DB antes de tener
+// DATABASE_URL configurada. La página se renderiza en cada request.
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function Home() {
+  // Carga con fallback: si la DB no está configurada, la app renderiza con
+  // datos vacíos en lugar de crashear.
   const [books, categories, warehouses, adminMetrics] = await Promise.all([
-    getBooks(),
-    getCategories(),
-    getWarehouses(),
-    getAdminMetrics(),
+    getBooks().catch(() => []),
+    getCategories().catch(() => []),
+    getWarehouses().catch(() => []),
+    getAdminMetrics().catch(() => null),
   ])
 
   const featuredBook = books.find((b) => b.isFeatured && b.isNew) ?? books.find((b) => b.isFeatured) ?? books[0]
