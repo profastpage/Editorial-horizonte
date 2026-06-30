@@ -2,24 +2,17 @@
 //  HERO — Editorial Horizonte
 //  Hero cinematográfico con tipografía serif gigante, libro destacado flotante
 //  y scroll-driven micro-animations (framer-motion).
+//  Botones CTA link a /catalogo y /nosotros (subpáginas).
 // ============================================================================
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 import { ArrowDown, BookOpen, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { BookCover } from '@/components/book-cover'
-import { useScrollSpy } from '@/hooks/use-scroll-spy'
 import type { BookWithRelations } from '@/lib/types'
-
-const SECTIONS = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'catalogo', label: 'Catálogo' },
-  { id: 'nosotros', label: 'Nosotros' },
-  { id: 'aliados', label: 'Aliados' },
-  { id: 'contacto', label: 'Contacto' },
-]
 
 interface HeroProps {
   featuredBook?: BookWithRelations
@@ -27,7 +20,6 @@ interface HeroProps {
 
 export function Hero({ featuredBook }: HeroProps) {
   const ref = useRef<HTMLElement>(null)
-  const { scrollTo } = useScrollSpy(SECTIONS)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -40,7 +32,6 @@ export function Hero({ featuredBook }: HeroProps) {
   return (
     <section
       ref={ref}
-      data-section="inicio"
       className="relative min-h-screen flex items-center overflow-hidden gradient-hero pt-20"
     >
       {/* Background ornamental */}
@@ -106,22 +97,17 @@ export function Hero({ featuredBook }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.55 }}
               className="mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
             >
-              <Button
-                size="lg"
-                onClick={() => scrollTo('catalogo')}
-                className="h-12 px-8 text-base font-medium"
-              >
-                <BookOpen className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                Explorar catálogo
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => scrollTo('nosotros')}
-                className="h-12 px-8 text-base font-medium"
-              >
-                Conocer la editorial
-              </Button>
+              <Link href="/catalogo">
+                <Button size="lg" className="h-12 px-8 text-base font-medium">
+                  <BookOpen className="w-4 h-4 mr-2" strokeWidth={1.5} />
+                  Explorar catálogo
+                </Button>
+              </Link>
+              <Link href="/nosotros">
+                <Button size="lg" variant="outline" className="h-12 px-8 text-base font-medium">
+                  Conocer la editorial
+                </Button>
+              </Link>
             </motion.div>
 
             {/* Stats rápidas */}
@@ -152,7 +138,7 @@ export function Hero({ featuredBook }: HeroProps) {
               transition={{ duration: 1, delay: 0.4, type: 'spring' }}
               className="lg:col-span-5 flex justify-center lg:justify-end"
             >
-              <div className="relative">
+              <Link href={`/libro/${featuredBook.slug}`} className="relative block">
                 {/* Halo decorativo */}
                 <div className="absolute inset-0 -m-12 bg-primary/5 blur-3xl rounded-full" />
 
@@ -186,7 +172,7 @@ export function Hero({ featuredBook }: HeroProps) {
                     S/ {featuredBook.pricePen.toFixed(2)}
                   </div>
                 </motion.div>
-              </div>
+              </Link>
             </motion.div>
           )}
         </div>

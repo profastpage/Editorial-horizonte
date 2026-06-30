@@ -1,28 +1,31 @@
 // ============================================================================
 //  BOOK CARD — Tarjeta de libro en catálogo
+//  Click navega a /libro/[slug] (subpágina)
 // ============================================================================
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Plus, Star } from 'lucide-react'
 import { BookCover } from '@/components/book-cover'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { useUI } from '@/lib/store'
-import { formatPrice, truncate } from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
 import type { BookWithRelations } from '@/lib/types'
 
 interface BookCardProps {
   book: BookWithRelations
   index?: number
-  onOpen: (book: BookWithRelations) => void
+  onOpen?: (book: BookWithRelations) => void
 }
 
-export function BookCard({ book, index = 0, onOpen }: BookCardProps) {
+export function BookCard({ book, index = 0 }: BookCardProps) {
   const { currency } = useUI()
   const price = currency === 'PEN' ? book.pricePen : book.priceUsd
   const totalStock = (book.inventory ?? []).reduce((s, i) => s + i.stockAvailable, 0)
   const authorName = book.authors?.[0]?.fullName
+  const href = `/libro/${book.slug}`
 
   return (
     <motion.article
@@ -32,10 +35,7 @@ export function BookCard({ book, index = 0, onOpen }: BookCardProps) {
       transition={{ duration: 0.5, delay: Math.min(index * 0.04, 0.4) }}
       className="group relative flex flex-col"
     >
-      <div
-        className="relative cursor-pointer"
-        onClick={() => onOpen(book)}
-      >
+      <Link href={href} className="relative cursor-pointer block">
         <div className="relative">
           <BookCover
             title={book.title}
@@ -70,12 +70,12 @@ export function BookCard({ book, index = 0, onOpen }: BookCardProps) {
             initial={false}
             className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100"
           >
-            <Button size="sm" variant="secondary" className="shadow-md">
+            <span className="text-xs uppercase tracking-editorial text-foreground bg-background/95 backdrop-blur-sm px-3 py-1.5 rounded-sm shadow-sm">
               Ver detalle
-            </Button>
+            </span>
           </motion.div>
         </div>
-      </div>
+      </Link>
 
       {/* Info */}
       <div className="mt-4 flex flex-col flex-1">
@@ -84,12 +84,11 @@ export function BookCard({ book, index = 0, onOpen }: BookCardProps) {
             {authorName}
           </div>
         )}
-        <h3
-          className="font-serif font-semibold text-base leading-snug line-clamp-2 cursor-pointer hover:text-primary transition-colors"
-          onClick={() => onOpen(book)}
-        >
-          {book.title}
-        </h3>
+        <Link href={href}>
+          <h3 className="font-serif font-semibold text-base leading-snug line-clamp-2 cursor-pointer hover:text-primary transition-colors">
+            {book.title}
+          </h3>
+        </Link>
 
         {book.publisher && (
           <div className="text-xs text-muted-foreground mt-1">
@@ -112,19 +111,17 @@ export function BookCard({ book, index = 0, onOpen }: BookCardProps) {
               )}
             </div>
           </div>
-          <Button
-            size="icon"
-            variant="outline"
-            className="h-9 w-9"
-            disabled={totalStock === 0}
-            onClick={(e) => {
-              e.stopPropagation()
-              onOpen(book)
-            }}
-            aria-label="Agregar al carrito"
-          >
-            <Plus className="w-4 h-4" strokeWidth={1.5} />
-          </Button>
+          <Link href={href}>
+            <Button
+              size="icon"
+              variant="outline"
+              className="h-9 w-9"
+              disabled={totalStock === 0}
+              aria-label="Ver detalle"
+            >
+              <Plus className="w-4 h-4" strokeWidth={1.5} />
+            </Button>
+          </Link>
         </div>
       </div>
     </motion.article>

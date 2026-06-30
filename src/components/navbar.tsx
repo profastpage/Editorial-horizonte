@@ -1,7 +1,7 @@
 // ============================================================================
 //  NAVBAR — Editorial Horizonte
 //  - Transparente sobre hero, sólida al hacer scroll
-//  - Scroll-spy con deep-linking (History API)
+//  - Navegación a subpáginas con Link + active state por pathname
 //  - Currency toggle (PEN/USD)
 //  - Botón carrito con contador
 //  - Botón admin discreto
@@ -9,26 +9,32 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ShoppingBag, Settings, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { useScrollSpy } from '@/hooks/use-scroll-spy'
 import { useCart, useUI } from '@/lib/store'
 import { cn } from '@/lib/utils'
 
-const SECTIONS = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'catalogo', label: 'Catálogo' },
-  { id: 'nosotros', label: 'Nosotros' },
-  { id: 'aliados', label: 'Aliados' },
-  { id: 'contacto', label: 'Contacto' },
+const NAV_LINKS = [
+  { href: '/', label: 'Inicio' },
+  { href: '/catalogo', label: 'Catálogo' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/aliados', label: 'Aliados' },
+  { href: '/contacto', label: 'Contacto' },
 ]
+
+function isActive(pathname: string, href: string) {
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(href + '/')
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { activeSection, scrollTo } = useScrollSpy(SECTIONS)
+  const pathname = usePathname()
   const { items, openCart } = useCart()
   const { currency, setCurrency, setAdminOpen } = useUI()
 
@@ -40,6 +46,7 @@ export function Navbar() {
   }, [])
 
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0)
+  const isHome = pathname === '/'
 
   return (
     <motion.header
@@ -48,7 +55,7 @@ export function Navbar() {
       transition={{ type: 'spring', stiffness: 200, damping: 30 }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
+        scrolled || !isHome
           ? 'bg-background/85 backdrop-blur-xl border-b border-border/60 shadow-sm'
           : 'bg-transparent'
       )}
@@ -56,11 +63,7 @@ export function Navbar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 md:h-20 items-center justify-between gap-4">
           {/* Logo */}
-          <button
-            onClick={() => scrollTo('inicio')}
-            className="flex items-center gap-2 group"
-            aria-label="Editorial Horizonte — Inicio"
-          >
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Editorial Horizonte — Inicio">
             <div className="w-9 h-9 rounded-sm bg-primary flex items-center justify-center shadow-sm">
               <BookOpen className="w-5 h-5 text-primary-foreground" strokeWidth={1.5} />
             </div>
@@ -72,31 +75,32 @@ export function Navbar() {
                 Libros que vuelven a casa
               </span>
             </div>
-          </button>
+          </Link>
 
           {/* Nav links desktop */}
           <div className="hidden md:flex items-center gap-1">
-            {SECTIONS.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollTo(section.id)}
-                className={cn(
-                  'relative px-4 py-2 text-sm font-medium transition-colors rounded-sm',
-                  activeSection === section.id
-                    ? 'text-primary'
-                    : 'text-foreground/70 hover:text-foreground'
-                )}
-              >
-                {section.label}
-                {activeSection === section.id && (
-                  <motion.div
-                    layoutId="nav-active"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const active = isActive(pathname, link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative px-4 py-2 text-sm font-medium transition-colors rounded-sm',
+                    active ? 'text-primary' : 'text-foreground/70 hover:text-foreground'
+                  )}
+                >
+                  {link.label}
+                  {active && (
+                    <motion.div
+                      layoutId="nav-active"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Acciones */}
@@ -164,23 +168,24 @@ export function Navbar() {
                   <SheetTitle className="font-serif text-xl">Editorial Horizonte</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-1 mt-6">
-                  {SECTIONS.map((section) => (
-                    <button
-                      key={section.id}
-                      onClick={() => {
-                        scrollTo(section.id)
-                        setMobileOpen(false)
-                      }}
-                      className={cn(
-                        'text-left px-4 py-3 rounded-sm font-medium transition-colors',
-                        activeSection === section.id
-                          ? 'bg-muted text-primary'
-                          : 'text-foreground/80 hover:bg-muted/50'
-                      )}
-                    >
-                      {section.label}
-                    </button>
-                  ))}
+                  {NAV_LINKS.map((link) => {
+                    const active = isActive(pathname, link.href)
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={cn(
+                          'text-left px-4 py-3 rounded-sm font-medium transition-colors',
+                          active
+                            ? 'bg-muted text-primary'
+                            : 'text-foreground/80 hover:bg-muted/50'
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  })}
                   <div className="border-t border-border mt-4 pt-4 flex items-center gap-2">
                     <span className="text-xs text-muted-foreground">Moneda:</span>
                     {(['PEN', 'USD'] as const).map((c) => (

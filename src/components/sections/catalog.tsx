@@ -1,5 +1,6 @@
 // ============================================================================
-//  CATALOG SECTION — Catálogo con filtros + grid + skeletons
+//  CATALOG SECTION — Catálogo completo con filtros + grid + skeletons
+//  Para la página /catalogo
 // ============================================================================
 'use client'
 
@@ -8,10 +9,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Filter, Search, SlidersHorizontal, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BookCard, BookCardSkeleton } from '@/components/catalog/book-card'
-import { BookDetailDialog } from '@/components/catalog/book-detail-dialog'
 import { useCatalog } from '@/lib/store'
 import { cn } from '@/lib/utils'
 import type { BookWithRelations } from '@/lib/types'
@@ -23,15 +22,12 @@ interface CatalogSectionProps {
 
 export function CatalogSection({ books, categories }: CatalogSectionProps) {
   const { search, setSearch, originType, setOriginType, categorySlug, setCategorySlug, sortBy, setSortBy } = useCatalog()
-  const [selectedBook, setSelectedBook] = useState<BookWithRelations | null>(null)
-  const [dialogOpen, setDialogOpen] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
-  const [loading] = useState(false) // simular carga
+  const [loading] = useState(false)
 
   const filteredBooks = useMemo(() => {
     let result = [...books]
 
-    // Search
     if (search.trim()) {
       const q = search.toLowerCase()
       result = result.filter(
@@ -43,17 +39,14 @@ export function CatalogSection({ books, categories }: CatalogSectionProps) {
       )
     }
 
-    // Origin type
     if (originType !== 'all') {
       result = result.filter((b) => b.originType === originType)
     }
 
-    // Category
     if (categorySlug !== 'all') {
       result = result.filter((b) => b.categories?.some((c) => c.slug === categorySlug))
     }
 
-    // Sort
     switch (sortBy) {
       case 'newest':
         result.sort((a, b) => (b.publicationDate ?? '').localeCompare(a.publicationDate ?? ''))
@@ -76,11 +69,6 @@ export function CatalogSection({ books, categories }: CatalogSectionProps) {
     return result
   }, [books, search, originType, categorySlug, sortBy])
 
-  function openBook(book: BookWithRelations) {
-    setSelectedBook(book)
-    setDialogOpen(true)
-  }
-
   function clearFilters() {
     setSearch('')
     setOriginType('all')
@@ -91,10 +79,7 @@ export function CatalogSection({ books, categories }: CatalogSectionProps) {
   const hasActiveFilters = search || originType !== 'all' || categorySlug !== 'all' || sortBy !== 'featured'
 
   return (
-    <section
-      data-section="catalogo"
-      className="relative py-24 md:py-32"
-    >
+    <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
@@ -285,18 +270,12 @@ export function CatalogSection({ books, categories }: CatalogSectionProps) {
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
             >
               {filteredBooks.map((book, idx) => (
-                <BookCard key={book.id} book={book} index={idx} onOpen={openBook} />
+                <BookCard key={book.id} book={book} index={idx} onOpen={() => {}} />
               ))}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-
-      <BookDetailDialog
-        book={selectedBook}
-        open={dialogOpen}
-        onOpenChange={setDialogOpen}
-      />
     </section>
   )
 }

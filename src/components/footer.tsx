@@ -8,20 +8,18 @@
 // ============================================================================
 'use client'
 
+import Link from 'next/link'
 import { BookOpen, Instagram, Mail, MapPin, Phone } from 'lucide-react'
-import { useScrollSpy } from '@/hooks/use-scroll-spy'
 
-const SECTIONS = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'catalogo', label: 'Catálogo' },
-  { id: 'nosotros', label: 'Nosotros' },
-  { id: 'aliados', label: 'Aliados' },
-  { id: 'contacto', label: 'Contacto' },
+const NAV_LINKS = [
+  { href: '/', label: 'Inicio' },
+  { href: '/catalogo', label: 'Catálogo' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/aliados', label: 'Aliados' },
+  { href: '/contacto', label: 'Contacto' },
 ]
 
 export function Footer() {
-  const { scrollTo } = useScrollSpy(SECTIONS)
-
   return (
     <footer className="mt-auto border-t border-border bg-card/40 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -66,14 +64,14 @@ export function Footer() {
               Navegación
             </h4>
             <ul className="space-y-2">
-              {SECTIONS.map((s) => (
-                <li key={s.id}>
-                  <button
-                    onClick={() => scrollTo(s.id)}
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors link-underline"
                   >
-                    {s.label}
-                  </button>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -91,7 +89,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary/70" strokeWidth={1.5} />
-                <span>+51 1 234 5678</span>
+                <span>+51 1 234 56Book</span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary/70" strokeWidth={1.5} />
