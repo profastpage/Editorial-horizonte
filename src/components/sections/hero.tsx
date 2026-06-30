@@ -1,22 +1,32 @@
 // ============================================================================
-//  HERO — Editorial Horizonte
-//  Hero cinematográfico con tipografía serif gigante, libro destacado flotante
-//  y scroll-driven micro-animations (framer-motion).
-//  Botones CTA link a /catalogo y /nosotros (subpáginas).
+//  HERO — Editorial Horizonte (DELUXE REDESIGN)
+//  - Imagen full-bleed inmersiva (desktop + mobile WebP)
+//  - Textura papel de algodón + luz cálida
+//  - Círculos desenfocados decorativos
+//  - Tipografía Playfair Display + Inter
+//  - Palabra "vuelven" en terracota #C05A42
+//  - Stats en tarjetas circulares con hover lift
+//  - Botones píldora (radio 50px)
+//  - Padding +40% para sensación de lujo
 // ============================================================================
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { ArrowDown, BookOpen, Sparkles } from 'lucide-react'
+import { BookOpen, Sparkles, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { BookCover } from '@/components/book-cover'
 import type { BookWithRelations } from '@/lib/types'
 
 interface HeroProps {
   featuredBook?: BookWithRelations
 }
+
+const STATS = [
+  { num: '12', label: 'Títulos publicados' },
+  { num: '4',  label: 'Librerías aliadas' },
+  { num: '10', label: 'Autores en catálogo' },
+]
 
 export function Hero({ featuredBook }: HeroProps) {
   const ref = useRef<HTMLElement>(null)
@@ -25,171 +35,196 @@ export function Hero({ featuredBook }: HeroProps) {
     offset: ['start start', 'end start'],
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 180])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92])
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94])
 
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden gradient-hero pt-20"
+      className="relative min-h-[100svh] flex items-center overflow-hidden pt-20 pb-12"
     >
-      {/* Background ornamental */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* === FONDO FULL-BLEED INMERSIVO === */}
+      <div className="absolute inset-0 z-0">
+        {/* Desktop: hero-desktop.webp (1920x1080 landscape) */}
+        {/* Mobile: hero-mobile.webp (900x1599 portrait) */}
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet="/hero/hero-mobile.webp"
+            type="image/webp"
+          />
+          <source
+            media="(min-width: 769px)"
+            srcSet="/hero/hero-desktop.webp"
+            type="image/webp"
+          />
+          <img
+            src="/hero/hero-desktop.webp"
+            alt="Editorial Horizonte — atelier literario cálido"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+        </picture>
+
+        {/* Overlay sutil para legibilidad del texto encima */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(105deg, rgba(248,245,240,0.96) 0%, rgba(248,245,240,0.78) 38%, rgba(248,245,240,0.25) 70%, rgba(248,245,240,0.05) 100%)',
+          }}
+        />
+        {/* Overlay mobile (gradient vertical para portrait) */}
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(248,245,240,0.92) 0%, rgba(248,245,240,0.7) 35%, rgba(248,245,240,0.45) 65%, rgba(248,245,240,0.85) 100%)',
+          }}
+        />
+
+        {/* Círculos desenfocados decorativos — calidez */}
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-[0.04] blur-3xl"
-          style={{ background: 'radial-gradient(circle, var(--primary), transparent 70%)' }}
-          animate={{ scale: [1, 1.1, 1], opacity: [0.04, 0.08, 0.04] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className="blur-circle absolute top-32 -left-20 w-[28rem] h-[28rem]"
+          style={{ background: 'radial-gradient(circle, rgba(192, 90, 66, 0.35), transparent 70%)' }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.55, 0.4] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 rounded-full opacity-[0.04] blur-3xl"
-          style={{ background: 'radial-gradient(circle, var(--accent), transparent 70%)' }}
-          animate={{ scale: [1.1, 1, 1.1], opacity: [0.04, 0.06, 0.04] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          className="blur-circle absolute bottom-20 -right-20 w-[32rem] h-[32rem]"
+          style={{ background: 'radial-gradient(circle, rgba(191, 160, 118, 0.45), transparent 70%)' }}
+          animate={{ scale: [1.1, 1, 1.1], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
+      {/* === CONTENIDO === */}
       <motion.div
         style={{ y, opacity, scale }}
-        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full"
+        className="relative z-10 mx-auto max-w-7xl w-full px-6 sm:px-10 lg:px-16 xl:px-20"
       >
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          {/* Texto */}
-          <div className="lg:col-span-7 text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-background/60 backdrop-blur-sm mb-8"
-            >
-              <Sparkles className="w-3 h-3 text-primary" strokeWidth={1.5} />
-              <span className="text-xs uppercase tracking-editorial text-muted-foreground">
-                Editorial independiente · Lima, Perú
-              </span>
-            </motion.div>
+        <div className="max-w-3xl">
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-[0.95] tracking-tight text-balance"
-            >
-              Libros que
-              <br />
-              <span className="italic text-primary">vuelven</span> a casa
-            </motion.h1>
+          {/* Badge superior */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/25 bg-card/70 backdrop-blur-md mb-10 shadow-sm"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
+            <span className="text-[11px] uppercase tracking-editorial text-muted-foreground font-medium">
+              Editorial independiente · Lima, Perú
+            </span>
+          </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed text-pretty"
+          {/* Título principal — Playfair Display */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-semibold leading-[1.02] tracking-tight text-balance"
+            style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
+          >
+            Libros que
+            <br />
+            <span
+              className="italic"
+              style={{ color: '#C05A42' }}
             >
-              Publicamos el fondo editorial propio de Horizonte y distribuimos obras de
-              terceras editoriales con consignación en librerías aliadas. Cada libro que
-              cruzas estas páginas es una apuesta por la literatura latinoamericana viva.
-            </motion.p>
+              vuelven
+            </span>{' '}
+            a casa
+          </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.55 }}
-              className="mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
-            >
-              <Link href="/catalogo">
-                <Button size="lg" className="h-12 px-8 text-base font-medium">
-                  <BookOpen className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                  Explorar catálogo
-                </Button>
-              </Link>
-              <Link href="/nosotros">
-                <Button size="lg" variant="outline" className="h-12 px-8 text-base font-medium">
-                  Conocer la editorial
-                </Button>
-              </Link>
-            </motion.div>
+          {/* Subtítulo */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-8 text-lg sm:text-xl text-foreground/75 max-w-xl leading-relaxed text-pretty"
+          >
+            Publicamos el fondo editorial propio de Horizonte y distribuimos obras de
+            terceras editoriales con consignación en librerías aliadas. Cada libro es
+            una apuesta por la literatura latinoamericana viva.
+          </motion.p>
 
-            {/* Stats rápidas */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="mt-14 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0"
-            >
-              {[
-                { num: '12', label: 'Títulos publicados' },
-                { num: '4', label: 'Librerías aliadas' },
-                { num: '10', label: 'Autores en catálogo' },
-              ].map((s) => (
-                <div key={s.label} className="text-center lg:text-left">
-                  <div className="font-serif text-3xl font-semibold text-primary">{s.num}</div>
-                  <div className="text-xs text-muted-foreground mt-1 leading-tight">{s.label}</div>
+          {/* Botones píldora */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+            className="mt-12 flex flex-col sm:flex-row gap-4"
+          >
+            <Link href="/catalogo">
+              <Button
+                size="lg"
+                className="btn-pill h-14 px-9 text-base font-medium shadow-md"
+              >
+                <BookOpen className="w-4 h-4 mr-2" strokeWidth={1.5} />
+                Explorar catálogo
+              </Button>
+            </Link>
+            <Link href="/nosotros">
+              <Button
+                size="lg"
+                variant="outline"
+                className="btn-pill h-14 px-9 text-base font-medium border-primary/30 bg-card/60 backdrop-blur-md hover:bg-card/90"
+              >
+                Conocer la editorial
+                <ArrowRight className="w-4 h-4 ml-2" strokeWidth={1.5} />
+              </Button>
+            </Link>
+          </motion.div>
+
+          {/* Stats — tarjetas circulares con hover lift */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-16 grid grid-cols-3 gap-5 max-w-xl"
+          >
+            {STATS.map((s, idx) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 + idx * 0.1 }}
+                className="card-deluxe group flex flex-col items-center text-center p-6 bg-card/65 backdrop-blur-md border border-primary/15"
+                style={{ borderRadius: '24px' }}
+                whileHover={{ y: -6 }}
+              >
+                <div
+                  className="flex items-center justify-center w-16 h-16 rounded-full mb-3 font-serif text-2xl font-bold"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(192, 90, 66, 0.15), rgba(191, 160, 118, 0.15))',
+                    color: '#C05A42',
+                    fontFamily: 'var(--font-fraunces), Georgia, serif',
+                  }}
+                >
+                  {s.num}
                 </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Libro destacado */}
-          {featuredBook && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateZ: -3 }}
-              animate={{ opacity: 1, scale: 1, rotateZ: 0 }}
-              transition={{ duration: 1, delay: 0.4, type: 'spring' }}
-              className="lg:col-span-5 flex justify-center lg:justify-end"
-            >
-              <Link href={`/libro/${featuredBook.slug}`} className="relative block">
-                {/* Halo decorativo */}
-                <div className="absolute inset-0 -m-12 bg-primary/5 blur-3xl rounded-full" />
-
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative"
-                >
-                  <BookCover
-                    title={featuredBook.title}
-                    authorName={featuredBook.authors?.[0]?.fullName}
-                    coverColor={featuredBook.metaTitle || '#7c2d12'}
-                    size="xl"
-                  />
-                </motion.div>
-
-                {/* Etiqueta flotante */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.9, duration: 0.6 }}
-                  className="absolute -bottom-6 -left-6 sm:-left-12 bg-background border border-border shadow-lg rounded-sm px-4 py-3 max-w-[200px]"
-                >
-                  <div className="text-[10px] uppercase tracking-editorial text-muted-foreground mb-1">
-                    Novedad destacada
-                  </div>
-                  <div className="font-serif font-semibold text-sm leading-tight line-clamp-2">
-                    {featuredBook.title}
-                  </div>
-                  <div className="text-xs text-primary mt-1 font-medium">
-                    S/ {featuredBook.pricePen.toFixed(2)}
-                  </div>
-                </motion.div>
-              </Link>
-            </motion.div>
-          )}
+                <div className="text-[11px] uppercase tracking-editorial text-muted-foreground leading-tight">
+                  {s.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </motion.div>
 
-      {/* Indicador scroll */}
+      {/* Indicador scroll inferior */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground z-10"
       >
         <span className="text-[10px] uppercase tracking-editorial">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ArrowDown className="w-4 h-4" strokeWidth={1.5} />
-        </motion.div>
+          className="w-px h-6 bg-gradient-to-b from-primary/60 to-transparent"
+        />
       </motion.div>
     </section>
   )

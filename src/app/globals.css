@@ -45,54 +45,55 @@
 }
 
 /* ============================================================================
-   EDITORIAL HORIZONTE — Sistema de diseño literario premium
-   Inspirado en Librería SUR: serif elegante, paleta cálida, mucho aire.
+   EDITORIAL HORIZONTE — Sistema de diseño DELUXE
+   Soft, inmersivo, deluxe. Inspirado en atelier literario cálido.
+   Paleta: papel algodón + terracota + dorado + tinta sepia
    ============================================================================ */
 :root {
-  --radius: 0.25rem;
+  --radius: 1.5rem; /* 24px — bordes redondeados deluxe */
 
-  /* Paleta editorial cálida */
-  --background: oklch(0.985 0.008 80);          /* crema paper */
-  --foreground: oklch(0.20 0.02 60);            /* tinta sepia */
-  --card: oklch(0.995 0.005 80);                /* papel más claro */
-  --card-foreground: oklch(0.20 0.02 60);
+  /* Paleta cálida deluxe */
+  --background: oklch(0.985 0.008 80);          /* #f8f5f0 papel algodón */
+  --foreground: oklch(0.25 0.015 60);           /* #2C2C2C tinta sepia */
+  --card: oklch(0.995 0.005 80);
+  --card-foreground: oklch(0.25 0.015 60);
   --popover: oklch(0.995 0.005 80);
-  --popover-foreground: oklch(0.20 0.02 60);
+  --popover-foreground: oklch(0.25 0.015 60);
 
-  /* Primary: terracota literaria */
-  --primary: oklch(0.42 0.13 32);
+  /* Primary: terracota #C05A42 */
+  --primary: oklch(0.55 0.16 35);
   --primary-foreground: oklch(0.985 0.005 80);
 
-  /* Accent: dorado tenue */
-  --accent: oklch(0.78 0.12 80);
-  --accent-foreground: oklch(0.20 0.02 60);
+  /* Accent: dorado #BFA076 */
+  --accent: oklch(0.78 0.07 75);
+  --accent-foreground: oklch(0.25 0.015 60);
 
   --secondary: oklch(0.95 0.012 70);
-  --secondary-foreground: oklch(0.30 0.02 60);
+  --secondary-foreground: oklch(0.35 0.015 60);
 
   --muted: oklch(0.93 0.012 70);
-  --muted-foreground: oklch(0.50 0.015 60);
+  --muted-foreground: oklch(0.50 0.015 60);     /* #5A5A5A */
 
   --destructive: oklch(0.50 0.20 25);
 
   --border: oklch(0.88 0.015 70);
   --input: oklch(0.92 0.012 70);
-  --ring: oklch(0.42 0.13 32);
+  --ring: oklch(0.55 0.16 35);
 
-  --chart-1: oklch(0.42 0.13 32);     /* terracota */
+  --chart-1: oklch(0.55 0.16 35);     /* terracota */
   --chart-2: oklch(0.55 0.10 200);    /* azul tenue */
   --chart-3: oklch(0.50 0.08 140);    /* verde oliva */
-  --chart-4: oklch(0.65 0.15 80);     /* dorado */
+  --chart-4: oklch(0.78 0.07 75);     /* dorado */
   --chart-5: oklch(0.40 0.05 280);    /* púrpura polvo */
 
   --sidebar: oklch(0.97 0.008 70);
-  --sidebar-foreground: oklch(0.20 0.02 60);
-  --sidebar-primary: oklch(0.42 0.13 32);
+  --sidebar-foreground: oklch(0.25 0.015 60);
+  --sidebar-primary: oklch(0.55 0.16 35);
   --sidebar-primary-foreground: oklch(0.985 0.005 80);
   --sidebar-accent: oklch(0.93 0.012 70);
-  --sidebar-accent-foreground: oklch(0.20 0.02 60);
+  --sidebar-accent-foreground: oklch(0.25 0.015 60);
   --sidebar-border: oklch(0.88 0.015 70);
-  --sidebar-ring: oklch(0.42 0.13 32);
+  --sidebar-ring: oklch(0.55 0.16 35);
 }
 
 .dark {
@@ -154,7 +155,7 @@
 }
 
 /* ============================================================================
-   UTILIDADES EDITORIALES
+   UTILIDADES EDITORIALES DELUXE
    ============================================================================ */
 @layer utilities {
   .font-serif { font-family: var(--font-serif); }
@@ -188,14 +189,37 @@
   .editorial-rule::before { left: -8px; }
   .editorial-rule::after  { right: -8px; }
 
-  /* Tracking editorial para mayúsculas pequeñas */
   .tracking-editorial { letter-spacing: 0.18em; }
 
-  /* Capa de papel con textura */
+  /* Textura de papel de algodón — base deluxe */
   .paper-texture {
+    background-color: oklch(0.985 0.008 80);
     background-image:
-      radial-gradient(circle at 20% 30%, oklch(0.95 0.015 60 / 0.4) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, oklch(0.93 0.015 60 / 0.3) 0%, transparent 50%);
+      radial-gradient(at 12% 8%, rgba(192, 90, 66, 0.06) 0px, transparent 50%),
+      radial-gradient(at 88% 92%, rgba(191, 160, 118, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(255, 250, 240, 0.5) 0px, transparent 60%);
+    background-attachment: fixed;
+  }
+
+  /* Luz cálida en esquina (overlay para hero) */
+  .warm-glow {
+    position: relative;
+  }
+  .warm-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 85% 15%, rgba(255, 220, 180, 0.35) 0%, transparent 55%);
+    border-radius: inherit;
+  }
+  .warm-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 10% 90%, rgba(192, 90, 66, 0.12) 0%, transparent 50%);
+    border-radius: inherit;
   }
 
   /* Subrayado animado para enlaces */
@@ -208,6 +232,33 @@
   }
   .link-underline:hover {
     background-size: 100% 1px;
+  }
+
+  /* Botones píldora (radio 50px) */
+  .btn-pill {
+    border-radius: 9999px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(192, 90, 66, 0.35);
+  }
+
+  /* Tarjeta deluxe con hover lift */
+  .card-deluxe {
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-deluxe:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 40px -12px rgba(44, 44, 44, 0.18);
+  }
+
+  /* Círculo decorativo desenfocado */
+  .blur-circle {
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
   }
 
   /* Gradient editorial (hero) */
