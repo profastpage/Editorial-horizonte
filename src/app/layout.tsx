@@ -4,6 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GlowingParticles } from "@/components/glowing-particles";
+import { ReadingProgress } from "@/components/reading-progress";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -71,6 +73,8 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <ReadingProgress />
+          <GlowingParticles />
           {children}
           <Toaster />
           <Sonner />

@@ -1,12 +1,12 @@
 // ============================================================================
 //  EDITORIAL HORIZONTE — Homepage
 //  URL: /
-//  Hero carrusel de portadas + Últimas publicaciones + CTA
+//  Hero con imagen de fondo deluxe + Últimas publicaciones
 // ============================================================================
 
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { HeroCarrusel } from '@/components/sections/hero-carrusel'
+import { Hero } from '@/components/sections/hero'
 import { LatestPublications } from '@/components/sections/latest-publications'
 import { CartDrawer } from '@/components/checkout/cart-drawer'
 import { AdminSheetClient } from '@/components/admin/admin-sheet-client'
@@ -21,12 +21,14 @@ export default async function Home() {
     getAdminMetrics().catch(() => null),
   ])
 
+  const featuredBook = books.find((b) => b.isFeatured && b.isNew) ?? books.find((b) => b.isFeatured) ?? books[0]
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
 
       <main className="flex-1">
-        <HeroCarrusel books={books} />
+        <Hero featuredBook={featuredBook} />
         <LatestPublications books={books} />
       </main>
 
