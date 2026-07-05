@@ -72,6 +72,7 @@ export function Navbar() {
             {/* === LOGO + NOMBRE + TAGLINE === */}
             <Link
               href="/"
+              prefetch={true}
               className="flex items-center gap-2.5 group flex-shrink-0"
               aria-label="Editorial Horizonte — Inicio"
             >
@@ -98,6 +99,7 @@ export function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    prefetch={true}
                     className={cn(
                       'relative px-4 py-2 text-sm font-medium transition-colors rounded-full',
                       active
@@ -215,6 +217,7 @@ export function Navbar() {
                   >
                     <Link
                       href={link.href}
+                      prefetch={true}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
                         'flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors',

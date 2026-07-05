@@ -1,6 +1,7 @@
 // ============================================================================
 //  EDITORIAL HORIZONTE — Librerías aliadas
 //  URL: /aliados
+//  Página estática (prerenderizada en build) para navegación instantánea
 // ============================================================================
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/navbar'
@@ -10,8 +11,8 @@ import { CartDrawer } from '@/components/checkout/cart-drawer'
 import { AdminSheetClient } from '@/components/admin/admin-sheet-client'
 import { getWarehouses, getAdminMetrics } from '@/lib/queries'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// Estática: se prerenderea en build time → navegación instantánea
+export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: 'Aliados — Editorial Horizonte',

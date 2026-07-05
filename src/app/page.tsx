@@ -12,8 +12,9 @@ import { CartDrawer } from '@/components/checkout/cart-drawer'
 import { AdminSheetClient } from '@/components/admin/admin-sheet-client'
 import { getBooks, getAdminMetrics } from '@/lib/queries'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// Renderización del servidor — los datos se cargan aquí (SSR)
+// ISR: revalida cada 60s para que el libro destacado se actualice
+export const revalidate = 60
 
 export default async function Home() {
   const [books, adminMetrics] = await Promise.all([

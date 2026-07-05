@@ -1,6 +1,6 @@
 // ============================================================================
 //  BOTTOM NAV — Menú inferior ultra pro para mobile/tablet
-//  - Botones a subpáginas reales: Catálogo, Nosotros, Aliados, Contacto
+//  - Botones a subpáginas reales con prefetch para navegación instantánea
 //  - Botón central WhatsApp con animación pulse
 //  - Solo visible en mobile/tablet (hidden en desktop)
 //  - Glass morphism + backdrop blur + safe area
@@ -10,6 +10,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   BookOpen, Users, Store, Mail, MessageCircle, Home,
@@ -47,128 +48,29 @@ export function BottomNav() {
         transition={{ type: 'spring', stiffness: 200, damping: 30, delay: 0.3 }}
         className="fixed bottom-0 left-0 right-0 z-40 lg:hidden"
         style={{
-          background: 'rgba(255, 255, 255, 0.85)',
+          background: 'rgba(255, 255, 255, 0.92)',
           backdropFilter: 'blur(20px) saturate(180%)',
           WebkitBackdropFilter: 'blur(20px) saturate(180%)',
           borderTop: '1px solid rgba(192, 90, 66, 0.12)',
           boxShadow: '0 -4px 24px -8px rgba(0, 0, 0, 0.12)',
-          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+          // Padding bottom para safe area (iPhone notch) + padding top extra
+          paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 8px)',
+          paddingTop: '8px',
         }}
         aria-label="Navegación inferior"
       >
-        <div className="relative flex items-center justify-around px-2 py-2">
-          {/* Items de navegación (4 items a la izquierda) */}
-          {NAV_ITEMS.slice(0, 4).map((item) => {
+        {/* Contenedor con padding-top extra para acomodar el botón WhatsApp sobresaliente */}
+        <div className="relative flex items-end justify-around px-2">
+          {/* Items de navegación: 2 a la izquierda */}
+          {NAV_ITEMS.slice(0, 2).map((item) => {
             const active = isActive(pathname, item.href)
             const Icon = item.icon
             return (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="relative flex flex-col items-center justify-center gap-1 px-2 py-1.5 min-w-[60px] transition-colors"
-                aria-label={item.label}
-                aria-current={active ? 'page' : undefined}
-              >
-                <motion.div
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                  className={cn(
-                    'relative w-9 h-9 rounded-2xl flex items-center justify-center transition-colors',
-                    active
-                      ? 'bg-primary/12'
-                      : 'bg-transparent'
-                  )}
-                >
-                  <Icon
-                    className={cn(
-                      'w-[18px] h-[18px] transition-colors',
-                      active ? 'text-primary' : 'text-foreground/55'
-                    )}
-                    strokeWidth={active ? 2.2 : 1.8}
-                  />
-                  {/* Dot indicador activo */}
-                  {active && (
-                    <motion.div
-                      layoutId="bottom-nav-active"
-                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </motion.div>
-                <span
-                  className={cn(
-                    'text-[9px] font-medium tracking-wide transition-colors',
-                    active ? 'text-primary' : 'text-foreground/50'
-                  )}
-                >
-                  {item.label}
-                </span>
-              </a>
-            )
-          })}
-
-          {/* === BOTÓN CENTRAL WHATSAPP (ultra pro) === */}
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Contáctanos por WhatsApp"
-            className="relative flex flex-col items-center justify-center gap-1 min-w-[70px]"
-          >
-            {/* Halo pulse animado */}
-            <motion.div
-              className="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full"
-              style={{ background: 'rgba(37, 211, 102, 0.25)' }}
-              animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <motion.div
-              className="absolute -top-6 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full"
-              style={{ background: 'rgba(37, 211, 102, 0.15)' }}
-              animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-            />
-
-            {/* Botón principal */}
-            <motion.div
-              whileTap={{ scale: 0.92 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-lg -mt-4"
-              style={{
-                background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-                boxShadow: '0 6px 20px -4px rgba(37, 211, 102, 0.5), 0 0 0 4px rgba(255, 255, 255, 0.9)',
-              }}
-            >
-              <MessageCircle
-                className="w-7 h-7 text-white"
-                strokeWidth={2}
-                fill="currentColor"
-                fillOpacity={0.2}
-              />
-              {/* Badge "online" */}
-              <div
-                className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2 border-white"
-                style={{ background: '#22c55e' }}
-              />
-            </motion.div>
-            <span
-              className="text-[9px] font-semibold tracking-wide"
-              style={{ color: '#128C7E' }}
-            >
-              WhatsApp
-            </span>
-          </a>
-
-          {/* Item Contacto (a la derecha del WhatsApp) */}
-          {NAV_ITEMS.slice(4).map((item) => {
-            const active = isActive(pathname, item.href)
-            const Icon = item.icon
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="relative flex flex-col items-center justify-center gap-1 px-2 py-1.5 min-w-[60px] transition-colors"
+                prefetch={true}
+                className="relative flex flex-col items-center justify-center gap-1 px-2 py-1.5 min-w-[58px] transition-colors"
                 aria-label={item.label}
                 aria-current={active ? 'page' : undefined}
               >
@@ -189,7 +91,7 @@ export function BottomNav() {
                   />
                   {active && (
                     <motion.div
-                      layoutId="bottom-nav-active-2"
+                      layoutId="bottom-nav-active-left"
                       className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
@@ -203,7 +105,111 @@ export function BottomNav() {
                 >
                   {item.label}
                 </span>
-              </a>
+              </Link>
+            )
+          })}
+
+          {/* === BOTÓN CENTRAL WHATSAPP === */}
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contáctanos por WhatsApp"
+            className="relative flex flex-col items-center justify-end gap-1 min-w-[64px]"
+            style={{ paddingBottom: '2px' }}
+          >
+            {/* Botón circular */}
+            <div className="relative">
+              {/* Halos pulse animados */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{ background: 'rgba(37, 211, 102, 0.3)' }}
+                animate={{ scale: [1, 1.5, 1], opacity: [0.6, 0, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{ background: 'rgba(37, 211, 102, 0.2)' }}
+                animate={{ scale: [1, 1.8, 1], opacity: [0.4, 0, 0.4] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+              />
+
+              <motion.div
+                whileTap={{ scale: 0.92 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                className="relative w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+                style={{
+                  background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+                  boxShadow: '0 6px 16px -4px rgba(37, 211, 102, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.95)',
+                }}
+              >
+                <MessageCircle
+                  className="w-6 h-6 text-white"
+                  strokeWidth={2}
+                  fill="currentColor"
+                  fillOpacity={0.2}
+                />
+                {/* Badge online */}
+                <div
+                  className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white"
+                  style={{ background: '#22c55e' }}
+                />
+              </motion.div>
+            </div>
+            <span
+              className="text-[9px] font-semibold tracking-wide"
+              style={{ color: '#128C7E' }}
+            >
+              WhatsApp
+            </span>
+          </a>
+
+          {/* Items de navegación: 3 a la derecha */}
+          {NAV_ITEMS.slice(2).map((item) => {
+            const active = isActive(pathname, item.href)
+            const Icon = item.icon
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                prefetch={true}
+                className="relative flex flex-col items-center justify-center gap-1 px-2 py-1.5 min-w-[58px] transition-colors"
+                aria-label={item.label}
+                aria-current={active ? 'page' : undefined}
+              >
+                <motion.div
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  className={cn(
+                    'relative w-9 h-9 rounded-2xl flex items-center justify-center transition-colors',
+                    active ? 'bg-primary/12' : 'bg-transparent'
+                  )}
+                >
+                  <Icon
+                    className={cn(
+                      'w-[18px] h-[18px] transition-colors',
+                      active ? 'text-primary' : 'text-foreground/55'
+                    )}
+                    strokeWidth={active ? 2.2 : 1.8}
+                  />
+                  {active && (
+                    <motion.div
+                      layoutId="bottom-nav-active-right"
+                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </motion.div>
+                <span
+                  className={cn(
+                    'text-[9px] font-medium tracking-wide transition-colors',
+                    active ? 'text-primary' : 'text-foreground/50'
+                  )}
+                >
+                  {item.label}
+                </span>
+              </Link>
             )
           })}
         </div>
@@ -220,9 +226,8 @@ export function BottomNav() {
         transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 1 }}
         whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 z-40 hidden lg:flex"
+        className="fixed bottom-6 right-6 z-40 hidden lg:flex group"
       >
-        {/* Halo pulse */}
         <motion.div
           className="absolute inset-0 rounded-full"
           style={{ background: 'rgba(37, 211, 102, 0.3)' }}
@@ -235,8 +240,6 @@ export function BottomNav() {
           animate={{ scale: [1, 1.8, 1], opacity: [0.4, 0, 0.4] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
         />
-
-        {/* Botón */}
         <div
           className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-xl cursor-pointer"
           style={{
@@ -250,18 +253,14 @@ export function BottomNav() {
             fill="currentColor"
             fillOpacity={0.2}
           />
-          {/* Badge online */}
           <div
             className="absolute top-0 right-0 w-4 h-4 rounded-full border-2 border-white"
             style={{ background: '#22c55e' }}
           />
         </div>
-
-        {/* Tooltip */}
-        <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white px-4 py-2 rounded-2xl shadow-lg border border-border opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
+        <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white px-4 py-2 rounded-2xl shadow-lg border border-border opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
           <div className="text-xs font-semibold text-foreground">¿Conversamos?</div>
           <div className="text-[10px] text-muted-foreground">Escríbenos por WhatsApp</div>
-          {/* Flecha */}
           <div className="absolute left-full top-1/2 -translate-y-1/2 border-l-8 border-l-white border-y-8 border-y-transparent" />
         </div>
       </motion.a>

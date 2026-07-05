@@ -18,8 +18,14 @@ import { AdminSheetClient } from '@/components/admin/admin-sheet-client'
 import { getBooks, getAdminMetrics } from '@/lib/queries'
 import { formatDate } from '@/lib/utils'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ISR: revalida cada 60s para que la ficha se actualice
+export const revalidate = 60
+
+// Prerenderizar las páginas de libros en build time para navegación instantánea
+export async function generateStaticParams() {
+  const books = await getBooks().catch(() => [])
+  return books.map((book) => ({ slug: book.slug }))
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>

@@ -10,8 +10,8 @@ import { CartDrawer } from '@/components/checkout/cart-drawer'
 import { AdminSheetClient } from '@/components/admin/admin-sheet-client'
 import { getBooks, getCategories, getAdminMetrics } from '@/lib/queries'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ISR: revalida cada 60s para que el catálogo se actualice con nuevos libros
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Catálogo — Editorial Horizonte',
