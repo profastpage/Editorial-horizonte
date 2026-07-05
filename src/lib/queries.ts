@@ -1,17 +1,23 @@
 // ============================================================================
 //  CONSULTAS DE DATOS — Editorial Horizonte (server-side)
-//  Con fallback graceful: si la DB no está configurada o falla,
-//  devuelve datos vacíos en lugar de crashear la página.
+//  Con fallback graceful: si la DB no está configurada o está vacía,
+//  devuelve 100 libros mock ultra pro para que la app siempre se vea poblada.
 // ============================================================================
 import { db } from '@/lib/db'
 import type { BookWithRelations, Warehouse } from '@/lib/types'
+import { getMockBooks, getMockCategories, getMockWarehouses } from '@/lib/mock-data'
 
-// Helper: ejecuta una query Prisma con fallback si la DB no está disponible
+// Helper: ejecuta una query Prisma con fallback a mock data
 async function safeQuery<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   try {
-    return await fn()
+    const result = await fn()
+    // Si la DB devuelve array vacío, usar mock data
+    if (Array.isArray(result) && result.length === 0) {
+      return fallback
+    }
+    return result
   } catch (error) {
-    console.warn('[queries] DB no disponible, usando fallback:', error instanceof Error ? error.message : 'unknown')
+    console.warn('[queries] DB no disponible, usando mock data:', error instanceof Error ? error.message : 'unknown')
     return fallback
   }
 }
@@ -85,7 +91,7 @@ export async function getBooks(): Promise<BookWithRelations[]> {
         stockReserved: i.stockReserved,
       })),
     }))
-  }, [])
+  }, getMockBooks() as unknown as BookWithRelations[])
 }
 
 // ---------------------------------------------------------------------------
@@ -97,7 +103,7 @@ export async function getCategories() {
       where: { isActive: true },
       orderBy: { sortOrder: 'asc' },
     }),
-    []
+    getMockCategories()
   )
 }
 
@@ -122,7 +128,7 @@ export async function getWarehouses(): Promise<Warehouse[]> {
       managerName: w.managerName,
       isActive: w.isActive,
     }))
-  }, [])
+  }, getMockWarehouses() as Warehouse[])
 }
 
 // ---------------------------------------------------------------------------

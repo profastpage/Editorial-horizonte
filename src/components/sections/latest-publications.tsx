@@ -74,8 +74,8 @@ export function LatestPublications({ books }: LatestPublicationsProps) {
           </motion.p>
         </div>
 
-        {/* Grid de libros */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        {/* Grid de libros — mobile first: 2 col mobile, 3 col desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {latest.map((book, idx) => {
             const authorName = book.authors?.[0]?.fullName
             const totalStock = (book.inventory ?? []).reduce((s, i) => s + i.stockAvailable, 0)

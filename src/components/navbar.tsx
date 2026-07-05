@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ShoppingBag, Settings, BookOpen } from 'lucide-react'
+import { Menu, ShoppingBag, Settings, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { useCart, useUI } from '@/lib/store'
@@ -191,23 +191,13 @@ export function Navbar() {
       {/* === MOBILE SIDEBAR (premium) === */}
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
         <SheetContent side="right" className="w-full sm:w-[400px] p-0 flex flex-col">
-          {/* Header del sidebar */}
+          {/* Header del sidebar — sin X duplicada (el SheetContent ya incluye su botón cerrar) */}
           <SheetHeader className="p-6 border-b border-border">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-primary-foreground" strokeWidth={1.5} />
-                </div>
-                <SheetTitle className="font-serif text-lg">Editorial Horizonte</SheetTitle>
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-primary-foreground" strokeWidth={1.5} />
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setMobileOpen(false)}
-                className="rounded-full h-8 w-8"
-              >
-                <X className="w-4 h-4" />
-              </Button>
+              <SheetTitle className="font-serif text-lg">Editorial Horizonte</SheetTitle>
             </div>
           </SheetHeader>
 
