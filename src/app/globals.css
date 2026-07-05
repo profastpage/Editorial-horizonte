@@ -139,6 +139,8 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Padding-bottom para que el menú inferior no tape contenido en mobile */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   /* Tipografía editorial: serif para titulares */

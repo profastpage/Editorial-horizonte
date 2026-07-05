@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GlowingParticles } from "@/components/glowing-particles";
 import { ReadingProgress } from "@/components/reading-progress";
+import { BottomNav } from "@/components/bottom-nav";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -76,6 +77,7 @@ export default function RootLayout({
           <ReadingProgress />
           <GlowingParticles />
           {children}
+          <BottomNav />
           <Toaster />
           <Sonner />
         </ThemeProvider>

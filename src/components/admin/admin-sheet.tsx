@@ -135,26 +135,63 @@ export function AdminSheet({ open, onOpenChange, metrics }: AdminSheetProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="w-full sm:max-w-none sm:w-[90vw] max-w-[1400px] p-0 flex flex-col">
         {!adminMode ? (
-          // LOGIN
-          <div className="flex-1 flex items-center justify-center p-8 bg-secondary/30">
+          // LOGIN PREMIUM
+          <div
+            className="flex-1 flex items-center justify-center p-6 sm:p-8 overflow-y-auto"
+            style={{
+              background:
+                'radial-gradient(ellipse 60% 50% at 50% 20%, rgba(192, 90, 66, 0.06), transparent), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(191, 160, 118, 0.08), transparent), #f8f5f0',
+            }}
+          >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="w-full max-w-md p-8 bg-card border border-border rounded-sm shadow-sm"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.175, 0.885, 0.32, 1.275] }}
+              className="w-full max-w-md p-8 sm:p-10 bg-white border border-primary/10 shadow-2xl"
+              style={{
+                borderRadius: '24px',
+                boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.15), 0 10px 25px -8px rgba(192, 90, 66, 0.08)',
+              }}
             >
+              {/* Icono candado circular premium */}
               <div className="flex flex-col items-center text-center mb-8">
-                <div className="w-14 h-14 rounded-sm bg-primary flex items-center justify-center mb-4">
-                  <Lock className="w-7 h-7 text-primary-foreground" strokeWidth={1.5} />
-                </div>
-                <h2 className="font-serif text-2xl font-semibold">Panel Administrador</h2>
-                <p className="text-sm text-muted-foreground mt-2">
+                <motion.div
+                  initial={{ scale: 0, rotate: -20 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 12, delay: 0.2 }}
+                  className="w-20 h-20 rounded-full flex items-center justify-center mb-5 relative"
+                  style={{
+                    background: 'linear-gradient(135deg, #C05A42 0%, #8B3A28 100%)',
+                    boxShadow: '0 12px 28px -6px rgba(192, 90, 66, 0.45), 0 0 0 6px rgba(192, 90, 66, 0.08)',
+                  }}
+                >
+                  <Lock className="w-9 h-9 text-white" strokeWidth={1.8} />
+                  {/* Halo pulse */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'rgba(192, 90, 66, 0.2)' }}
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                </motion.div>
+
+                <h2
+                  className="font-serif text-3xl font-semibold mb-2"
+                  style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', letterSpacing: '-0.02em' }}
+                >
+                  Panel Administrador
+                </h2>
+                <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
                   Acceso restringido al equipo de Editorial Horizonte.
+                  Inicia sesión para gestionar el catálogo y el inventario.
                 </p>
               </div>
 
-              <form onSubmit={handleLogin} className="space-y-4">
+              <form onSubmit={handleLogin} className="space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="admin-email">Email</Label>
+                  <Label htmlFor="admin-email" className="text-xs uppercase tracking-[0.1em] font-medium text-muted-foreground">
+                    Email
+                  </Label>
                   <Input
                     id="admin-email"
                     type="email"
@@ -162,10 +199,14 @@ export function AdminSheet({ open, onOpenChange, metrics }: AdminSheetProps) {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="admin@editorialhorizonte.com"
                     required
+                    autoComplete="email"
+                    className="h-12 rounded-2xl border-border/60 bg-background/50 focus:bg-background transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="admin-pass">Contraseña</Label>
+                  <Label htmlFor="admin-pass" className="text-xs uppercase tracking-[0.1em] font-medium text-muted-foreground">
+                    Contraseña
+                  </Label>
                   <Input
                     id="admin-pass"
                     type="password"
@@ -173,33 +214,78 @@ export function AdminSheet({ open, onOpenChange, metrics }: AdminSheetProps) {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     required
+                    autoComplete="current-password"
+                    className="h-12 rounded-2xl border-border/60 bg-background/50 focus:bg-background transition-colors"
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full" disabled={loggingIn}>
-                  {loggingIn ? 'Verificando...' : 'Ingresar'}
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={loggingIn}
+                  className="w-full h-12 rounded-2xl text-base font-medium mt-2 shadow-md hover:shadow-lg transition-all"
+                >
+                  {loggingIn ? (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                        className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full mr-2"
+                      />
+                      Verificando...
+                    </>
+                  ) : (
+                    <>
+                      <Lock className="w-4 h-4 mr-2" strokeWidth={1.8} />
+                      Ingresar
+                    </>
+                  )}
                 </Button>
               </form>
 
-              <div className="mt-6 p-3 rounded-sm bg-muted/50 text-xs text-muted-foreground">
-                <strong className="text-foreground">Demo:</strong> admin@editorialhorizonte.com / horizonte2024
+              {/* Demo creds */}
+              <div
+                className="mt-6 p-4 rounded-2xl text-xs text-muted-foreground border"
+                style={{ background: 'rgba(191, 160, 118, 0.06)', borderColor: 'rgba(191, 160, 118, 0.2)' }}
+              >
+                <div className="font-semibold text-foreground mb-1.5 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Credenciales demo
+                </div>
+                <div className="font-mono text-[11px] leading-relaxed">
+                  <div><span className="text-muted-foreground">Email:</span> admin@editorialhorizonte.com</div>
+                  <div><span className="text-muted-foreground">Pass:</span> horizonte2024</div>
+                </div>
               </div>
             </motion.div>
           </div>
         ) : (
           // DASHBOARD
           <>
-            <SheetHeader className="p-6 border-b border-border bg-card/50">
+            <SheetHeader
+              className="p-6 border-b border-border"
+              style={{ background: 'linear-gradient(135deg, rgba(192, 90, 66, 0.04), rgba(191, 160, 118, 0.04))' }}
+            >
               <div className="flex items-center justify-between">
                 <div>
-                  <SheetTitle className="font-serif text-2xl flex items-center gap-2">
-                    <SettingsIcon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  <SheetTitle
+                    className="font-serif text-2xl flex items-center gap-2"
+                    style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', letterSpacing: '-0.02em' }}
+                  >
+                    <motion.div
+                      initial={{ rotate: 0 }}
+                      animate={{ rotate: [0, 90, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
+                      className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center"
+                    >
+                      <SettingsIcon className="w-4 h-4 text-primary-foreground" strokeWidth={2} />
+                    </motion.div>
                     Panel ERP — Editorial Horizonte
                   </SheetTitle>
-                  <SheetDescription className="mt-1">
+                  <SheetDescription className="mt-1.5">
                     Sistema de control multi-almacén y consignaciones en tiempo real.
                   </SheetDescription>
                 </div>
-                <Button variant="outline" size="sm" onClick={handleLogout}>
+                <Button variant="outline" size="sm" onClick={handleLogout} className="rounded-full">
                   <LogOut className="w-4 h-4 mr-2" /> Salir
                 </Button>
               </div>
@@ -208,27 +294,47 @@ export function AdminSheet({ open, onOpenChange, metrics }: AdminSheetProps) {
             <ScrollArea className="flex-1">
               <div className="p-6">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                  <TabsList className="grid grid-cols-2 md:grid-cols-5 w-full mb-6 h-auto">
-                    <TabsTrigger value="overview" className="flex items-center gap-2 py-2">
+                  <TabsList className="grid grid-cols-2 md:grid-cols-5 w-full mb-6 h-auto rounded-2xl">
+                    <TabsTrigger value="overview" className="flex items-center gap-2 py-2.5 rounded-xl">
                       <BarChart3 className="w-4 h-4" /> Resumen
                     </TabsTrigger>
-                    <TabsTrigger value="inventory" className="flex items-center gap-2 py-2">
+                    <TabsTrigger value="inventory" className="flex items-center gap-2 py-2.5 rounded-xl">
                       <Boxes className="w-4 h-4" /> Inventario
                     </TabsTrigger>
-                    <TabsTrigger value="orders" className="flex items-center gap-2 py-2">
+                    <TabsTrigger value="orders" className="flex items-center gap-2 py-2.5 rounded-xl">
                       <ShoppingBag className="w-4 h-4" /> Órdenes
                     </TabsTrigger>
-                    <TabsTrigger value="movements" className="flex items-center gap-2 py-2">
+                    <TabsTrigger value="movements" className="flex items-center gap-2 py-2.5 rounded-xl">
                       <Activity className="w-4 h-4" /> Auditoría
                     </TabsTrigger>
-                    <TabsTrigger value="books" className="flex items-center gap-2 py-2">
+                    <TabsTrigger value="books" className="flex items-center gap-2 py-2.5 rounded-xl">
                       <Package className="w-4 h-4" /> Catálogo
                     </TabsTrigger>
                   </TabsList>
 
                   {/* OVERVIEW */}
                   <TabsContent value="overview" className="space-y-6">
-                    {metrics && (
+                    {!metrics ? (
+                      <div
+                        className="p-8 rounded-2xl border border-dashed border-primary/30 text-center"
+                        style={{ background: 'rgba(192, 90, 66, 0.03)' }}
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: 'spring', stiffness: 200, damping: 12 }}
+                          className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center"
+                        >
+                          <TrendingUp className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                        </motion.div>
+                        <h3 className="font-serif text-xl font-semibold mb-2">Modo demostración</h3>
+                        <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+                          Conecta una base de datos PostgreSQL (Supabase/Neon) en las variables
+                          de entorno de Vercel para ver métricas reales de ventas, inventario y auditoría.
+                          Mientras tanto, puedes gestionar el catálogo mock en las otras pestañas.
+                        </p>
+                      </div>
+                    ) : (
                       <>
                         {/* KPI cards */}
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
