@@ -46,16 +46,19 @@ export function BottomNav() {
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 200, damping: 30, delay: 0.3 }}
-        className="fixed bottom-0 left-0 right-0 z-40 lg:hidden"
+        className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
         style={{
-          background: 'rgba(255, 255, 255, 0.92)',
+          background: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(20px) saturate(180%)',
           WebkitBackdropFilter: 'blur(20px) saturate(180%)',
           borderTop: '1px solid rgba(192, 90, 66, 0.12)',
           boxShadow: '0 -4px 24px -8px rgba(0, 0, 0, 0.12)',
-          // Padding bottom para safe area (iPhone notch) + padding top extra
+          // Padding bottom para safe area (iPhone notch) + padding top
           paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 8px)',
           paddingTop: '8px',
+          // Asegurar que el menú no se corte al hacer scroll
+          transform: 'translateZ(0)',
+          willChange: 'transform',
         }}
         aria-label="Navegación inferior"
       >

@@ -32,7 +32,7 @@ export function Contact() {
   return (
     <section
       data-section="contacto"
-      className="relative py-24 md:py-32"
+      className="relative py-24 md:py-32 overflow-visible"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
@@ -110,10 +110,10 @@ export function Contact() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 -m-6 bg-primary/5 rounded-sm blur-2xl" />
+            <div className="absolute inset-0 bg-primary/5 rounded-3xl blur-2xl pointer-events-none" style={{ margin: '-12px' }} />
             <form
               onSubmit={handleSubmit}
-              className="relative p-8 md:p-10 rounded-sm border border-border bg-card shadow-sm space-y-5"
+              className="relative p-8 md:p-10 rounded-3xl border border-border bg-card shadow-sm space-y-5"
             >
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">

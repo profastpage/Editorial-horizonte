@@ -139,8 +139,17 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Padding-bottom para que el menú inferior no tape contenido en mobile */
+  }
+
+  /* Padding-bottom global en mobile para que el menú inferior no tape contenido */
+  /* Se aplica al main de todas las páginas */
+  main {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (max-width: 1023px) {
+    main {
+      padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   /* Tipografía editorial: serif para titulares */
