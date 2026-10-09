@@ -1,16 +1,9 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, BookOpen } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
-
-// Dynamic import for Three.js — client-only, no SSR
-const ShaderAnimation = dynamic(
-  () => import('@/components/ui/shader-animation').then((mod) => ({ default: mod.ShaderAnimation })),
-  { ssr: false, loading: () => <div className="absolute inset-0 bg-black" /> }
-);
 
 export function HeroSection() {
   const { setActiveSection } = useAppStore();
@@ -26,14 +19,19 @@ export function HeroSection() {
       id="inicio"
       className="relative flex min-h-screen items-center justify-center overflow-hidden -mt-16 pt-16"
     >
-      {/* Shader animation background — loaded dynamically, no SSR */}
-      <div className="absolute inset-0">
-        <ShaderAnimation />
-      </div>
+      {/* Editorial Horizonte Hero WebP Backgrounds */}
+      <picture className="absolute inset-0 w-full h-full">
+        <source media="(max-width: 768px)" srcSet="/hero-mobile.webp" />
+        <img
+          src="/hero-desktop.webp"
+          alt="Editorial Horizonte Fondo"
+          className="w-full h-full object-cover object-center"
+        />
+      </picture>
 
-      {/* Subtle dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.5)_100%)]" />
+      {/* Subtle overlays for text readability & contrast */}
+      <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.6)_100%)]" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
@@ -41,11 +39,11 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm shadow-sm"
         >
-          <BookOpen className="size-4 text-white/80" />
-          <span className="text-xs font-medium uppercase tracking-[0.25em] text-white/80">
-            Libreria y Editorial
+          <BookOpen className="size-4 text-white/90" />
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white/90">
+            Editorial Horizonte · Desde 1970
           </span>
         </motion.div>
 
@@ -53,20 +51,20 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-2 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          className="mt-2 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-md"
         >
           Historias que{' '}
-          <span className="italic text-white/85">trascienden</span>
+          <span className="italic text-white/90">trascienden</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg drop-shadow-sm font-normal"
         >
-          Descubre nuestra coleccion curada de literatura latinoamericana y
-          universal. Mas de 500 titulos seleccionados con pasion y rigor.
+          Colecciones fundamentales de José María Arguedas, César Vallejo,
+          literatura peruana, Amazonía y ciencias sociales. Ediciones cuidadas para perdurar.
         </motion.p>
 
         <motion.div

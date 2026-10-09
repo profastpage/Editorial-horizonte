@@ -23,15 +23,19 @@ function enrichBook(book: (typeof seedData.books)[0]) {
     .filter((ba) => ba.bookId === book.id)
     .sort((a, b) => a.order - b.order)
     .map((ba) => {
-      const author = seedData.authors.find((a) => a.id === ba.authorId)!;
+      const author = seedData.authors.find((a) => a.id === ba.authorId);
+      if (!author) return null;
       return { authorId: author.id, order: ba.order, author: { id: author.id, name: author.name, nationality: author.nationality } };
-    });
+    })
+    .filter(Boolean);
   const categories = seedData.bookCategories
     .filter((bc) => bc.bookId === book.id)
     .map((bc) => {
-      const cat = seedData.categories.find((c) => c.id === bc.categoryId)!;
+      const cat = seedData.categories.find((c) => c.id === bc.categoryId);
+      if (!cat) return null;
       return { categoryId: cat.id, category: { id: cat.id, name: cat.name, slug: cat.slug } };
-    });
+    })
+    .filter(Boolean);
   const publisher = book.publisherId
     ? seedData.publishers.find((p) => p.id === book.publisherId)
     : null;

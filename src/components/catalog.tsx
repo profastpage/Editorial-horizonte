@@ -256,7 +256,6 @@ export function CatalogSection() {
                 <BookCard
                   key={book.id}
                   book={book}
-                  onClick={() => setSelectedBookId(book.id)}
                 />
               ))}
             </AnimatePresence>
@@ -285,6 +284,19 @@ export function CatalogSection() {
           open={!!selectedBookId}
           onOpenChange={(open) => {
             if (!open) setSelectedBookId(null);
+          }}
+          onSelectRelatedTitle={(title) => {
+            const clean = title.toLowerCase().replace(/['"«»]/g, '').trim();
+            const found = books.find((b) => {
+              const bTitle = b.title.toLowerCase().replace(/['"«»]/g, '').trim();
+              return bTitle.includes(clean) || clean.includes(bTitle);
+            });
+            if (found) {
+              setSelectedBookId(found.id);
+            } else {
+              setSelectedBookId(null);
+              setSearchQuery(title);
+            }
           }}
         />
       </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
@@ -21,11 +21,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Editorial Horizonte | Librería y Editorial",
+  metadataBase: new URL("https://editorial-horizonte.vercel.app"),
+  title: "Editorial Horizonte | Catálogo Oficial de Libros Peruanos",
   description:
-    "Historias que trascienden. Descubre nuestra colección curada de literatura latinoamericana y universal.",
+    "Fondo editorial fundado en 1970 en Lima, Perú. Descubre las obras de José María Arguedas, literatura peruana, historia y ciencias sociales.",
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/hero-desktop.webp",
   },
 };
 
@@ -39,15 +40,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           {children}
           <Toaster />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

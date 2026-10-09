@@ -77,7 +77,7 @@ export function CartPanel() {
                             {item.title}
                           </p>
                           <p className="mt-0.5 text-xs text-muted-foreground">
-                            ${item.price.toLocaleString('es-AR')} c/u
+                            S/ {item.price.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} c/u
                           </p>
                         </div>
                         <div className="flex items-center gap-2 mt-2">
@@ -116,7 +116,7 @@ export function CartPanel() {
                       </div>
                       <div className="text-right">
                         <p className="text-sm font-semibold">
-                          ${(item.price * item.quantity).toLocaleString('es-AR')}
+                          S/ {(item.price * item.quantity).toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </p>
                       </div>
                     </div>
@@ -130,7 +130,7 @@ export function CartPanel() {
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Total</span>
                 <span className="font-serif text-xl font-bold text-primary">
-                  ${total.toLocaleString('es-AR')}
+                  S/ {total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
               </div>
               <Button className="w-full gap-2" onClick={handleCheckout}>

@@ -14,8 +14,8 @@ export function Footer() {
               Editorial Horizonte
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Historias que trascienden. Desde 2011, curando la mejor literatura
-              latinoamericana y universal para lectores exigentes.
+              Desde 1970, difundiendo las obras fundamentales de José María Arguedas,
+              César Vallejo, literatura y ciencias sociales peruanas.
             </p>
           </div>
 
@@ -27,15 +27,15 @@ export function Footer() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <p className="flex items-center gap-2">
                 <MapPin className="size-3.5 shrink-0" />
-                Av. Corrientes 1234, Buenos Aires
+                Jr. Camaná 868, Lima Centro, Perú
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="size-3.5 shrink-0" />
-                +54 11 4567-8901
+                +51 1 428-2838
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="size-3.5 shrink-0" />
-                info@editorialhorizonte.com
+                contacto@editorialhorizonte.com
               </p>
             </div>
           </div>

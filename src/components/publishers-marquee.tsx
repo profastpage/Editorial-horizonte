@@ -6,18 +6,18 @@ import { Marquee } from '@/components/ui/marquee';
 
 const publishersRow1 = [
   'Editorial Horizonte · Fondo Propio',
-  'Penguin Random House',
-  'Alfaguara',
-  'Sudamericana',
-  'Emece',
+  'Colección José María Arguedas',
+  'Colección César Vallejo',
+  'Biblioteca de Ciencias Sociales',
+  'Enciclopedia de la Literatura Peruana',
 ];
 
 const publishersRow2 = [
-  'Debolsillo',
-  'Planeta',
-  'Anagrama',
-  'Editorial Sudamericana',
-  'Siglo XXI Editores',
+  'Colección Amazonía y Pueblos Originarios',
+  'Serie Poesía Contemporánea',
+  'Plan Lector & Narrativa Clásica',
+  'Fondo Coediciones UNMSM · PUCP · Tarea',
+  'Colección Ralph Bolton & Antropología',
 ];
 
 function PublisherItem({ name }: { name: string }) {

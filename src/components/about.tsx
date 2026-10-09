@@ -31,16 +31,16 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
   return (
     <span ref={ref} className="font-serif text-3xl font-bold text-primary sm:text-4xl tabular-nums">
-      {val.toLocaleString('es-AR')}{suffix}
+      {val.toLocaleString('es-PE')}{suffix}
     </span>
   );
 }
 
 const stats = [
-  { icon: BookOpen, value: 500, suffix: '+', label: 'Títulos en catálogo' },
-  { icon: MapPin, value: 15, suffix: '+', label: 'Años de trayectoria' },
-  { icon: Users, value: 50, suffix: '+', label: 'Autores representados' },
-  { icon: Award, value: 4, suffix: '', label: 'Puntos de venta' },
+  { icon: BookOpen, value: 90, suffix: '+', label: 'Títulos en catálogo' },
+  { icon: MapPin, value: 50, suffix: '+', label: 'Años de trayectoria' },
+  { icon: Users, value: 60, suffix: '+', label: 'Autores e investigadores' },
+  { icon: Award, value: 2, suffix: '', label: 'Almacenes y salas' },
 ];
 
 export function AboutSection() {
@@ -59,14 +59,16 @@ export function AboutSection() {
             Nosotros
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Editorial Horizonte nació en 2011 de la pasión de Juan Damonte por la
-            literatura latinoamericana. Lo que comenzó como un pequeño catálogo de
-            reediciones cuidadas se ha convertido en una editorial y librería de
-            referencia, con presencia en Buenos Aires, Bogotá y Ciudad de México.
+            Editorial Horizonte nació en Lima como un proyecto comprometido con la
+            difusión del pensamiento crítico, la memoria histórica y la riqueza
+            literaria y cultural del Perú y América Latina. Desde su fundación, ha
+            sido la casa emblemática de las obras fundamentales de José María Arguedas,
+            César Vallejo y destacados intelectuales de las ciencias sociales.
           </p>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            Nuestra misión es hacer llegar al lector historias que trascienden:
-            obras que desafían, conmueven y amplían los horizontes de la imaginación.
+            Nuestra misión es hacer llegar al lector ediciones rigurosas y cuidadas
+            que preserven la identidad andina y amazónica, fortaleciendo el diálogo
+            intercultural y la reflexión crítica en nuevas generaciones.
           </p>
         </motion.div>
 

@@ -171,7 +171,7 @@ function DashboardTab() {
   const kpis = [
     {
       label: 'Ventas totales',
-      value: `$${stats.totalSales.toLocaleString('es-AR')}`,
+      value: `S/ ${stats.totalSales.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       icon: <DollarSign className="size-4" />,
     },
     {
@@ -489,7 +489,7 @@ function OrdersTab() {
                       {order.warehouse?.name || '-'}
                     </TableCell>
                     <TableCell className="text-right font-mono text-sm">
-                      ${order.totalAmount.toLocaleString('es-AR')}
+                      S/ {order.totalAmount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </TableCell>
                     <TableCell className="text-right">
                       <Button
@@ -563,7 +563,7 @@ function OrdersTab() {
                         {item.title} × {item.quantity}
                       </span>
                       <span className="font-mono">
-                        ${item.subtotal.toLocaleString('es-AR')}
+                        S/ {item.subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                       </span>
                     </div>
                   ))}
@@ -575,25 +575,25 @@ function OrdersTab() {
               <div className="space-y-1 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span>${selectedOrder.subtotal.toLocaleString('es-AR')}</span>
+                  <span>S/ {selectedOrder.subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 {selectedOrder.discountAmount > 0 && (
                   <div className="flex justify-between text-amber-600">
                     <span>Descuento</span>
-                    <span>-${selectedOrder.discountAmount.toLocaleString('es-AR')}</span>
+                    <span>-S/ {selectedOrder.discountAmount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                   </div>
                 )}
                 <div className="flex justify-between font-semibold border-t pt-1">
                   <span>Total</span>
                   <span className="text-primary">
-                    ${selectedOrder.totalAmount.toLocaleString('es-AR')}
+                    S/ {selectedOrder.totalAmount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
               </div>
 
               <p className="text-xs text-muted-foreground">
                 Creada:{' '}
-                {new Date(selectedOrder.createdAt).toLocaleString('es-AR')}
+                {new Date(selectedOrder.createdAt).toLocaleString('es-PE')}
               </p>
             </div>
           )}
@@ -704,7 +704,7 @@ function LibrosTab() {
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right font-mono text-sm">
-                      ${book.price.toLocaleString('es-AR')}
+                      S/ {book.price.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </TableCell>
                     <TableCell className="text-center">
                       <div className="flex items-center justify-center gap-1">

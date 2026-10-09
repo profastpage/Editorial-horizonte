@@ -13,6 +13,7 @@ import {
   Sun,
   Moon,
 } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 const navItems: { key: SectionType; label: string; icon?: React.ReactNode }[] = [
@@ -26,6 +27,9 @@ export function Navbar() {
   const { activeSection, setActiveSection, setCartOpen, cartCount } =
     useAppStore();
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === '/';
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const count = cartCount();
@@ -39,13 +43,17 @@ export function Navbar() {
   const navigate = (section: SectionType) => {
     setActiveSection(section);
     setMobileOpen(false);
+    if (!isHomePage) {
+      router.push(`/#${section}`);
+      return;
+    }
     const el = document.getElementById(section);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const isOverHero = !scrolled;
+  const isOverHero = isHomePage && !scrolled;
 
   return (
     <header

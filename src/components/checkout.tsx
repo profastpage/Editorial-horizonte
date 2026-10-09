@@ -137,7 +137,7 @@ export function CheckoutDialog() {
               </DialogTitle>
               <DialogDescription>
                 {cartItems.length} artículo{cartItems.length !== 1 ? 's' : ''} ·{' '}
-                Total: <strong>${total.toLocaleString('es-AR')}</strong>
+                Total: <strong>S/ {total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
               </DialogDescription>
             </DialogHeader>
 
@@ -146,7 +146,7 @@ export function CheckoutDialog() {
                 <Label htmlFor="name">Nombre completo *</Label>
                 <Input
                   id="name"
-                  placeholder="Tu nombre"
+                  placeholder="Tu nombre y apellido"
                   {...register('customerName')}
                 />
                 {errors.customerName && (
@@ -171,7 +171,7 @@ export function CheckoutDialog() {
                   <Label htmlFor="phone">Teléfono *</Label>
                   <Input
                     id="phone"
-                    placeholder="+54 11 ..."
+                    placeholder="+51 987 654 321"
                     {...register('customerPhone')}
                   />
                   {errors.customerPhone && (
@@ -184,7 +184,7 @@ export function CheckoutDialog() {
                 <Label htmlFor="address">Dirección *</Label>
                 <Input
                   id="address"
-                  placeholder="Calle y número"
+                  placeholder="Av. / Jr. / Calle y número"
                   {...register('customerAddress')}
                 />
                 {errors.customerAddress && (
@@ -193,10 +193,10 @@ export function CheckoutDialog() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="city">Ciudad *</Label>
+                <Label htmlFor="city">Ciudad / Distrito *</Label>
                 <Input
                   id="city"
-                  placeholder="Buenos Aires"
+                  placeholder="Lima"
                   {...register('customerCity')}
                 />
                 {errors.customerCity && (
@@ -226,7 +226,7 @@ export function CheckoutDialog() {
               <div className="rounded-lg bg-muted p-3">
                 <div className="flex justify-between text-sm">
                   <span>Subtotal</span>
-                  <span>${total.toLocaleString('es-AR')}</span>
+                  <span>S/ {total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <div className="flex justify-between text-sm mt-1">
                   <span>Envío</span>
@@ -234,7 +234,7 @@ export function CheckoutDialog() {
                 </div>
                 <div className="mt-2 flex justify-between font-semibold border-t pt-2">
                   <span>Total</span>
-                  <span className="text-primary">${total.toLocaleString('es-AR')}</span>
+                  <span className="text-primary">S/ {total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
               </div>
 
@@ -249,7 +249,7 @@ export function CheckoutDialog() {
                     Procesando...
                   </>
                 ) : (
-                  `Confirmar pedido por $${total.toLocaleString('es-AR')}`
+                  `Confirmar pedido por S/ ${total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                 )}
               </Button>
             </form>

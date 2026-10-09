@@ -92,7 +92,7 @@ export function NewsletterCta() {
             custom={1}
             className="font-serif text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl"
           >
-            Recibí novedades literarias en tu correo
+            Recibe novedades editoriales en tu correo
           </motion.h2>
 
           <motion.p
@@ -100,8 +100,8 @@ export function NewsletterCta() {
             custom={2}
             className="mx-auto mt-4 max-w-lg text-base text-primary-foreground/80"
           >
-            Suscribite a nuestro newsletter y recibí recomendaciones,
-            lanzamientos exclusivos y ofertas especiales.
+            Suscríbete a nuestro boletín y entérate de nuevas reimpresiones,
+            lanzamientos y eventos de Editorial Horizonte.
           </motion.p>
 
           <motion.div variants={fadeUp} custom={3} className="mt-8">

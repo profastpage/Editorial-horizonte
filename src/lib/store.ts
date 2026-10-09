@@ -10,7 +10,7 @@ interface AppState {
   cartItems: CartItem[];
   cartOpen: boolean;
   setCartOpen: (open: boolean) => void;
-  addToCart: (item: Omit<CartItem, 'quantity'>) => void;
+  addToCart: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void;
   removeFromCart: (bookId: string) => void;
   updateCartQuantity: (bookId: string, quantity: number) => void;
   clearCart: () => void;
@@ -54,17 +54,18 @@ export const useAppStore = create<AppState>((set, get) => ({
   cartItems: [],
   cartOpen: false,
   setCartOpen: (open) => set({ cartOpen: open }),
-  addToCart: (item) => {
+  addToCart: (item, quantity = 1) => {
+    const qty = Math.max(1, quantity);
     const items = get().cartItems;
     const existing = items.find((i) => i.bookId === item.bookId);
     if (existing) {
       set({
         cartItems: items.map((i) =>
-          i.bookId === item.bookId ? { ...i, quantity: i.quantity + 1 } : i
+          i.bookId === item.bookId ? { ...i, quantity: i.quantity + qty } : i
         ),
       });
     } else {
-      set({ cartItems: [...items, { ...item, quantity: 1 }] });
+      set({ cartItems: [...items, { ...item, quantity: qty }] });
     }
   },
   removeFromCart: (bookId) =>

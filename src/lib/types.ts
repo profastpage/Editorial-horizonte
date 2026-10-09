@@ -28,6 +28,7 @@ export interface BookWithDetails {
   pages: number | null;
   language: string;
   publicationYear: number | null;
+  coverUrl?: string | null;
   price: number;
   costPrice: number | null;
   weightKg: number | null;
@@ -39,6 +40,11 @@ export interface BookWithDetails {
   authors: BookAuthor[];
   categories: BookCategory[];
   totalStock: number;
+  formatDescription?: string | null;
+  thematic?: string | null;
+  audience?: string | null;
+  relatedTitles?: string | null;
+  series?: string | null;
 }
 
 // ─── Warehouse ───
