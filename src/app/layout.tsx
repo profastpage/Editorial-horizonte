@@ -22,12 +22,15 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://editorial-horizonte.vercel.app"),
-  title: "Horizonte libros – Página oficial",
+  metadataBase: new URL("https://editorial-horizonte-five.vercel.app"),
+  title: {
+    default: "Horizonte libros – Página oficial",
+    template: "%s | Horizonte libros – Página oficial",
+  },
   description:
-    "Librería independiente ubicada en Lima, Perú. Especializada en literatura, ciencias sociales y humanidades",
+    "Editorial Horizonte - Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados pensadores de las ciencias sociales y la literatura peruana.",
   keywords: [
-    "HORIZONTE Libros",
+    "Horizonte Libros",
     "Editorial Horizonte",
     "José María Arguedas",
     "César Vallejo",
@@ -36,9 +39,27 @@ export const metadata: Metadata = {
     "Librería Lima Perú",
   ],
   icons: {
-    icon: "/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
     shortcut: "/favicon.png",
-    apple: "/logo.png",
+    apple: "/apple-icon.png",
+  },
+  openGraph: {
+    title: "Horizonte libros – Página oficial",
+    description:
+      "Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados pensadores de las ciencias sociales y la literatura peruana.",
+    url: "https://editorial-horizonte-five.vercel.app",
+    siteName: "Horizonte libros – Página oficial",
+    locale: "es_PE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Horizonte libros – Página oficial",
+    description:
+      "Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados pensadores de las ciencias sociales y la literatura peruana.",
   },
 };
 

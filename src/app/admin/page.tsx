@@ -5,7 +5,7 @@ import { AdminPanel } from '@/components/admin-panel';
 import { CartPanel } from '@/components/cart';
 
 export const metadata: Metadata = {
-  title: 'Panel de Administración Editorial | Editorial Horizonte',
+  title: 'Panel de Administración Editorial',
   robots: {
     index: false,
     follow: false,

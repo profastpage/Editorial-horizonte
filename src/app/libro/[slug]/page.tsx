@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!book) {
     return {
-      title: 'Libro no encontrado | Editorial Horizonte',
+      title: 'Libro no encontrado',
       description: 'El libro solicitado no se encuentra en el catálogo de Editorial Horizonte.',
     };
   }
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const coverUrl = book.coverUrl ? `${book.coverUrl}` : '/hero-desktop.webp';
 
   return {
-    title: `${book.title} — ${authors} | Editorial Horizonte`,
+    title: `${book.title} — ${authors}`,
     description,
     keywords: [
       book.title,

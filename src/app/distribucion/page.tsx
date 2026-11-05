@@ -9,7 +9,7 @@ import { Truck, CheckCircle2, ArrowRight, Mail, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'Distribución y Servicios Editoriales | Editorial Horizonte',
+  title: 'Distribución y Servicios Editoriales',
   description:
     'Distribución de libros a nivel nacional, convenios con librerías, universidades y bibliotecas. Breve reseña y detalle de títulos.',
 };

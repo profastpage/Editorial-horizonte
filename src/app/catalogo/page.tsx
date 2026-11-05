@@ -7,7 +7,7 @@ import { CheckoutDialog } from '@/components/checkout';
 import { getAllBooks } from '@/lib/books';
 
 export const metadata: Metadata = {
-  title: 'Catálogo Oficial de Libros | Editorial Horizonte',
+  title: 'Catálogo de Libros',
   description:
     'Catálogo completo de obras de José María Arguedas, César Vallejo, literatura peruana, historia, poesía y ciencias sociales.',
 };
