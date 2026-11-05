@@ -74,7 +74,7 @@ export function HomeRows({ novedades }: HomeRowsProps) {
           </Link>
         </div>
 
-        {/* Novedades Grid — Portadas físicas limpias sin degradados */}
+        {/* Novedades Grid — Portadas físicas limpias */}
         <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-3 lg:grid-cols-6">
           {novedades.map((book) => (
             <BookCard key={book.id} book={book} />
@@ -82,7 +82,7 @@ export function HomeRows({ novedades }: HomeRowsProps) {
         </div>
       </section>
 
-      {/* ─── FILA 2: PRÓXIMAMENTE ─── */}
+      {/* ─── FILA 2: PRÓXIMAMENTE (SEAMLESS PREMIUM) ─── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
@@ -99,40 +99,32 @@ export function HomeRows({ novedades }: HomeRowsProps) {
           </div>
         </div>
 
-        {/* Próximamente Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {/* Próximamente — Diseño Editorial sin cajas pesadas ni fondos WordPress */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-border/40 border-t border-b border-border/40 py-8">
           {proximamente.map((item, idx) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: idx * 0.08 }}
-              className="group relative flex flex-col justify-between rounded-2xl border border-dashed border-border/80 bg-card/60 p-5 hover:border-primary/50 hover:bg-card transition-all"
+              className="flex flex-col justify-between lg:px-6 first:lg:pl-0 last:lg:pr-0 group"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-md">
-                    Próximo
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
+                    Año {item.year}
                   </span>
-                  <span className="text-[11px] font-medium text-muted-foreground">
-                    {item.year}
-                  </span>
-                </div>
-
-                {/* Minimal preview book placeholder */}
-                <div className="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-muted/60 via-muted/30 to-muted/50 border border-border/40 flex flex-col items-center justify-center p-4 text-center">
-                  <BookOpen className="size-8 text-primary/40 mb-2 stroke-1" />
-                  <span className="font-serif font-bold text-sm text-foreground line-clamp-2">
-                    {item.title}
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground/80">
+                    En preparación
                   </span>
                 </div>
 
-                <div>
+                <div className="space-y-1">
                   <p className="text-[10px] font-semibold text-primary uppercase tracking-wider">
                     {item.series}
                   </p>
-                  <h3 className="font-serif font-bold text-base text-foreground mt-0.5">
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-foreground group-hover:text-primary transition-colors leading-snug">
                     {item.title}
                   </h3>
                   <p className="text-xs text-muted-foreground font-medium">
@@ -141,9 +133,9 @@ export function HomeRows({ novedades }: HomeRowsProps) {
                 </div>
               </div>
 
-              <div className="pt-3 mt-4 border-t border-border/50 flex items-center justify-between text-xs text-muted-foreground">
-                <span className="text-[11px]">{item.format}</span>
-                <span className="font-semibold text-primary text-[11px]">En preparación</span>
+              <div className="pt-4 mt-4 border-t border-border/30 flex items-center justify-between text-[11px] text-muted-foreground">
+                <span className="line-clamp-1">{item.format}</span>
+                <BookOpen className="size-3.5 text-muted-foreground/50 shrink-0 ml-2" />
               </div>
             </motion.div>
           ))}

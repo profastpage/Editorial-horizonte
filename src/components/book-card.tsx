@@ -65,14 +65,14 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
           href={`/libro/${book.slug}`}
           onClick={onClick}
           className={cn(
-            'relative flex flex-col h-full rounded-2xl border border-border/70 bg-card overflow-hidden text-card-foreground',
+            'relative flex flex-col h-full rounded-xl border border-border/40 bg-card/40 overflow-hidden text-card-foreground',
             'transition-all duration-300 ease-out',
-            'hover:border-primary/40 hover:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.5)]',
+            'hover:border-primary/40 hover:bg-card hover:shadow-md dark:hover:shadow-[0_12px_28px_-10px_rgba(0,0,0,0.5)]',
             'hover:-translate-y-1'
           )}
         >
           {/* ─── 1. ÁREA DE PORTADA LIMPIA (100% VISIBLE, SIN DEGRADADO VERDE) ─── */}
-          <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.1] bg-gradient-to-b from-muted/50 via-muted/25 to-muted/40 p-4 sm:p-5 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.1] bg-muted/20 p-4 sm:p-5 flex items-center justify-center overflow-hidden">
             {/* Badges superiores oficiales */}
             <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
               <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider bg-background/90 backdrop-blur-sm border border-border/60 text-foreground/80 shadow-2xs">
