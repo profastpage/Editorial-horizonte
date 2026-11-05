@@ -5,14 +5,53 @@ import { Footer } from '@/components/footer';
 import { CartPanel } from '@/components/cart';
 import { CheckoutDialog } from '@/components/checkout';
 import { WhatsAppIcon } from '@/components/whatsapp-floating';
-import { Truck, CheckCircle2, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Truck, CheckCircle2, ArrowRight, Mail, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Distribución y Servicios Editoriales | Editorial Horizonte',
   description:
-    'Distribución de libros a nivel nacional, convenios con librerías, universidades y bibliotecas. Servicios de edición e impresión.',
+    'Distribución de libros a nivel nacional, convenios con librerías, universidades y bibliotecas. Breve reseña y detalle de títulos.',
 };
+
+const titulosDistribucion = [
+  {
+    title: 'Todas las sangres',
+    author: 'José María Arguedas',
+    series: 'Colección José María Arguedas (CJMA)',
+    coverUrl: null,
+    synopsis:
+      'Obra cumbre de la literatura andina que analiza el conflicto de clases, la modernización de los Andes y la cosmovisión indígena en el Perú contemporáneo.',
+    detail: '480 páginas · Formato 17x24 cm · Tapa rústica con solapas · Edición oficial.',
+  },
+  {
+    title: 'Los ríos profundos',
+    author: 'José María Arguedas',
+    series: 'Colección José María Arguedas (CJMA)',
+    coverUrl: null,
+    synopsis:
+      'Novela de iniciación lírica e indigenista centrada en el internado de Abancay. Puente fundamental entre el mundo quechua y la tradición hispánica.',
+    detail: '320 páginas · Formato 14x21 cm · Plan Lector nacional y universitario.',
+  },
+  {
+    title: 'Poesía completa y cartas',
+    author: 'César Vallejo',
+    series: 'Colección César Vallejo (CCV)',
+    coverUrl: null,
+    synopsis:
+      'Edición crítica exhaustiva que reúne Los heraldos negros, Trilce, Poemas humanos y cartas inéditas del universal poeta liberteño.',
+    detail: '380 páginas · Formato académico · Referencia obligatoria en facultades de letras.',
+  },
+  {
+    title: 'Enciclopedia Histórica de la Literatura Peruana',
+    author: 'Francisco Carrillo',
+    series: 'Colección Francisco Carrillo (CFC)',
+    coverUrl: null,
+    synopsis:
+      'Monumento bibliográfico que rescata desde la literatura quechua y colonial hasta los cronistas y la República temprana.',
+    detail: 'Tomos seriados · Papel biblia de conservación · Alta consulta en bibliotecas comunales.',
+  },
+];
 
 export default function DistribucionPage() {
   const whatsappUrl =
@@ -62,7 +101,7 @@ export default function DistribucionPage() {
 
           {/* ─── 2. PILARES SEAMLESS — SIN BLOQUES ESTILO WORDPRESS ─── */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-border/40 border-t border-b border-border/40 py-10 sm:py-14">
-            {pillars.map((p, idx) => (
+            {pillars.map((p) => (
               <div
                 key={p.num}
                 className="flex flex-col justify-between md:px-8 first:md:pl-0 last:md:pr-0 space-y-4 group"
@@ -134,14 +173,80 @@ export default function DistribucionPage() {
             </div>
           </div>
 
-          {/* ─── 4. CANALES DE ATENCIÓN DIRECTA ─── */}
+          {/* ─── 4. RESEÑA Y DETALLE DE TÍTULOS PRINCIPALES (REQUERIDO EN WORD) ─── */}
+          <div className="space-y-8 border-t border-border/40 pt-10 sm:pt-14">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-primary mb-1">
+                  Fondos Bibliográficos e Institucionales
+                </p>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-foreground">
+                  Reseña y Detalle de Títulos Principales
+                </h2>
+                <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
+                  Obras de alta rotación para bibliotecas comunales, universidades y librerías del país.
+                </p>
+              </div>
+
+              <Button asChild variant="outline" size="sm" className="rounded-xl font-bold gap-1.5 shrink-0 border-border/80">
+                <Link href="/catalogo">
+                  <span>Ver catálogo completo (90+ obras)</span>
+                  <ArrowRight className="size-3.5" />
+                </Link>
+              </Button>
+            </div>
+
+            {/* Grid editorial de títulos con reseña y detalle */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {titulosDistribucion.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex flex-col justify-between p-5 sm:p-6 rounded-xl border border-border/50 bg-card/40 space-y-3"
+                >
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
+                      {item.series}
+                    </span>
+                    <h3 className="font-serif font-bold text-base sm:text-lg text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs font-medium text-muted-foreground">
+                      {item.author}
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+                      {item.synopsis}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-border/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                    <span className="text-[11px] text-muted-foreground/80 font-medium">
+                      {item.detail}
+                    </span>
+                    <a
+                      href={`https://wa.me/51955637859?text=${encodeURIComponent(
+                        `Hola Editorial Horizonte, solicito cotización al por mayor del libro "${item.title}" para mi librería/institución.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-bold text-[#25D366] hover:underline shrink-0"
+                    >
+                      <WhatsAppIcon className="size-3.5" />
+                      <span>Cotizar lote</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ─── 5. CANALES DE ATENCIÓN DIRECTA ─── */}
           <div className="border-t border-border/40 pt-10 sm:pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-1 max-w-xl">
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
                 Inicia una consulta de distribución hoy
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground">
-                Atención rápida de lunes a viernes en nuestra sede de San Miguel y por canales digitales.
+                Atención rápida de lunes a viernes en nuestra sede de Jirón Sucre 470, San Miguel, y por canales digitales.
               </p>
             </div>
 
