@@ -41,7 +41,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: '/catalogo', label: 'Catálogo', icon: <Layers className="size-4" /> },
+    { href: '/catalogo', label: 'Catálogo', icon: <Layers className="size-4" />, highlight: true },
     { href: '/distribucion', label: 'Distribución', icon: <Truck className="size-4" /> },
     { href: '/#nosotros', label: 'Nosotros' },
     { href: '/#contacto', label: 'Contacto' },
@@ -58,24 +58,24 @@ export function Navbar() {
             : 'bg-background/95 backdrop-blur-md border-b border-border/80 shadow-xs text-foreground'
         )}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8">
           {/* Official Monogram Logo + Brand */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group transition-transform active:scale-98"
+            className="flex items-center gap-2 sm:gap-2.5 group transition-transform active:scale-98 shrink-0"
           >
             <img
               src="/logo.png"
               alt="Horizonte Libros"
               className={cn(
-                'size-8 object-contain transition-all duration-300 group-hover:scale-105',
+                'size-7 sm:size-8 object-contain transition-all duration-300 group-hover:scale-105',
                 isTransparent ? 'brightness-0 invert drop-shadow-sm' : 'dark:invert'
               )}
             />
             <div className="flex flex-col">
               <span
                 className={cn(
-                  'font-serif font-bold text-lg sm:text-xl tracking-tight leading-none transition-colors',
+                  'font-serif font-bold text-base sm:text-xl tracking-tight leading-none transition-colors',
                   isTransparent ? 'text-white drop-shadow-sm' : 'text-foreground'
                 )}
               >
@@ -83,7 +83,7 @@ export function Navbar() {
               </span>
               <span
                 className={cn(
-                  'text-[10px] uppercase tracking-widest font-semibold transition-colors',
+                  'text-[9px] sm:text-[10px] uppercase tracking-widest font-semibold transition-colors',
                   isTransparent ? 'text-white/80' : 'text-muted-foreground'
                 )}
               >
@@ -103,7 +103,8 @@ export function Navbar() {
                   size="sm"
                   asChild
                   className={cn(
-                    'gap-1.5 font-medium text-xs rounded-lg transition-colors',
+                    'gap-1.5 text-xs rounded-lg transition-colors',
+                    item.highlight ? 'font-bold' : 'font-medium',
                     isTransparent && !isActive && 'text-white/90 hover:text-white hover:bg-white/15'
                   )}
                 >
@@ -116,8 +117,26 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right actions: Search + Theme + Cart + Mobile Drawer */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Right actions */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Direct Mobile "Catálogo" Button */}
+            <Button
+              size="sm"
+              variant={isTransparent ? 'outline' : 'default'}
+              asChild
+              className={cn(
+                'md:hidden h-8 px-2 sm:px-2.5 rounded-lg text-xs font-bold gap-1 transition-colors shadow-2xs',
+                isTransparent
+                  ? 'border-white/30 bg-white/15 hover:bg-white/25 text-white backdrop-blur-xs'
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
+              )}
+            >
+              <Link href="/catalogo">
+                <Layers className="size-3.5" />
+                <span>Catálogo</span>
+              </Link>
+            </Button>
+
             {/* Desktop Search Button (Lupita) */}
             <button
               type="button"
@@ -151,21 +170,21 @@ export function Navbar() {
               onClick={() => setSearchOpen(true)}
               aria-label="Buscar libros"
               className={cn(
-                'sm:hidden size-9 rounded-lg transition-colors',
+                'sm:hidden size-8 sm:size-9 rounded-lg transition-colors',
                 isTransparent ? 'text-white hover:bg-white/15' : 'text-foreground'
               )}
             >
               <Search className="size-4" />
             </Button>
 
-            {/* Dark/Light toggle */}
+            {/* Dark/Light toggle (desktop) */}
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               aria-label="Cambiar tema"
               className={cn(
-                'size-9 rounded-lg transition-colors',
+                'hidden sm:inline-flex size-9 rounded-lg transition-colors',
                 isTransparent ? 'text-white hover:bg-white/15' : 'text-foreground'
               )}
             >
@@ -179,19 +198,19 @@ export function Navbar() {
               size="sm"
               onClick={() => setCartOpen(true)}
               className={cn(
-                'relative gap-1.5 font-semibold text-xs px-2.5 sm:px-3 h-9 rounded-lg shadow-2xs transition-colors',
+                'relative gap-1.5 font-semibold text-xs px-2 sm:px-3 h-8 sm:h-9 rounded-lg shadow-2xs transition-colors',
                 isTransparent
                   ? 'border-white/30 bg-white/15 hover:bg-white/25 text-white backdrop-blur-xs'
                   : 'border-border/80 text-foreground'
               )}
               aria-label="Abrir carrito"
             >
-              <ShoppingCart className={cn('size-4', isTransparent ? 'text-white' : 'text-primary')} />
+              <ShoppingCart className={cn('size-3.5 sm:size-4', isTransparent ? 'text-white' : 'text-primary')} />
               <span className="hidden sm:inline">Carrito</span>
               {count > 0 && (
                 <span
                   className={cn(
-                    'ml-1 inline-flex items-center justify-center size-5 rounded-full text-[10px] font-bold',
+                    'ml-0.5 sm:ml-1 inline-flex items-center justify-center size-4 sm:size-5 rounded-full text-[9px] sm:text-[10px] font-bold',
                     isTransparent ? 'bg-white text-emerald-950' : 'bg-primary text-primary-foreground'
                   )}
                 >
@@ -207,7 +226,7 @@ export function Navbar() {
                   variant="ghost"
                   size="icon"
                   className={cn(
-                    'md:hidden size-9 rounded-lg transition-colors',
+                    'md:hidden size-8 sm:size-9 rounded-lg transition-colors',
                     isTransparent ? 'text-white hover:bg-white/15' : 'text-foreground'
                   )}
                   aria-label="Abrir menú"
@@ -217,9 +236,23 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="left" className="w-72 p-6 flex flex-col justify-between">
                 <div className="space-y-6 pt-4">
-                  <div className="flex items-center gap-2.5 pb-4 border-b">
-                    <img src="/logo.png" alt="Logo" className="size-7 object-contain dark:invert" />
-                    <span className="font-serif font-bold text-lg">Horizonte Libros</span>
+                  <div className="flex items-center justify-between pb-4 border-b">
+                    <div className="flex items-center gap-2.5">
+                      <img src="/logo.png" alt="Logo" className="size-7 object-contain dark:invert" />
+                      <span className="font-serif font-bold text-lg">Horizonte Libros</span>
+                    </div>
+
+                    {/* Dark/light toggle in mobile sheet */}
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                      aria-label="Cambiar tema"
+                      className="size-8 rounded-lg"
+                    >
+                      <Sun className="size-4 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                      <Moon className="absolute size-4 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                    </Button>
                   </div>
 
                   {/* Acceso a búsqueda en móvil */}
