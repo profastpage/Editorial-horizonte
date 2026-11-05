@@ -9,21 +9,26 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative flex h-[42vh] sm:h-[48vh] min-h-[340px] max-h-[460px] items-center justify-center overflow-hidden pt-16"
+      className="relative flex min-h-[420px] h-[50vh] sm:h-[55vh] max-h-[580px] items-center justify-center overflow-hidden pt-16 sm:pt-20"
     >
-      {/* Background WebP Image */}
+      {/* Background WebP Image — Full Bleed from the top edge */}
       <picture className="absolute inset-0 w-full h-full">
         <source media="(max-width: 768px)" srcSet="/hero-mobile.webp" />
         <img
           src="/hero-desktop.webp"
           alt="Editorial Horizonte Fondo"
-          className="w-full h-full object-cover object-center brightness-[0.82] dark:brightness-[0.65]"
+          className="w-full h-full object-cover object-center brightness-[0.72] dark:brightness-[0.55]"
         />
       </picture>
 
-      {/* Gentle gradient overlay for contrast */}
-      <div className="absolute inset-0 bg-black/35 dark:bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-black/30" />
+      {/* Top subtle vignette for transparent navbar readability */}
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/75 via-black/30 to-transparent pointer-events-none" />
+
+      {/* Soft dark overlay */}
+      <div className="absolute inset-0 bg-black/20 dark:bg-black/40 pointer-events-none" />
+
+      {/* Bottom smooth bleed into page background (warm cream/canvas) */}
+      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
 
       {/* Central CTA button to subpage catalog */}
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center space-y-4">
@@ -48,7 +53,7 @@ export function HeroSection() {
           <Button
             size="lg"
             asChild
-            className="gap-2.5 bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-8 py-6 rounded-2xl shadow-xl text-sm sm:text-base transition-all hover:scale-102 active:scale-98"
+            className="gap-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-8 py-6 rounded-2xl shadow-xl text-sm sm:text-base transition-all hover:scale-102 active:scale-98 border border-white/10"
           >
             <Link href="/catalogo">
               <span>Explorar Catálogo</span>
@@ -57,9 +62,6 @@ export function HeroSection() {
           </Button>
         </motion.div>
       </div>
-
-      {/* Clean bottom line */}
-      <div className="absolute bottom-0 inset-x-0 h-px bg-border/60" />
     </section>
   );
 }
