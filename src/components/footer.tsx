@@ -10,8 +10,8 @@ export function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-3">
-            <Link href="/" className="flex items-center gap-2 font-serif text-lg font-bold text-foreground">
-              <img src="/logo.png" alt="Logo" className="size-6 dark:invert" />
+            <Link href="/" className="flex items-center gap-2.5 font-serif text-lg font-bold text-foreground">
+              <img src="/logo.png" alt="Logo" className="size-7 object-contain dark:invert" />
               <span>Horizonte Libros</span>
             </Link>
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">

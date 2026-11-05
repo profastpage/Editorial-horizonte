@@ -61,13 +61,11 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-2.5 group transition-transform active:scale-98"
           >
-            <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center p-1 border border-primary/20">
-              <img
-                src="/logo.png"
-                alt="Horizonte Libros"
-                className="size-6 object-contain dark:invert transition-transform group-hover:scale-105"
-              />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Horizonte Libros"
+              className="size-8 object-contain dark:invert transition-transform group-hover:scale-105"
+            />
             <div className="flex flex-col">
               <span className="font-serif font-bold text-lg sm:text-xl tracking-tight text-foreground leading-none">
                 Horizonte Libros
