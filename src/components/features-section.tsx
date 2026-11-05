@@ -2,35 +2,35 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Truck, BookOpen, Library, Heart, ArrowRight } from 'lucide-react';
+import { ShieldCheck, BookMarked, Users, HeartHandshake } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const features = [
   {
-    icon: Truck,
-    title: 'Envíos a toda Latinoamérica',
-    description: 'Despachamos a Buenos Aires, Bogotá, CDMX y más de 15 países de la región.',
-    color: 'from-emerald-500/10 to-teal-500/5',
-    iconColor: 'text-emerald-600 dark:text-emerald-400',
-  },
-  {
-    icon: BookOpen,
-    title: 'Fondo Propio Exclusivo',
-    description: 'Títulos cuidadosamente editados con rigor crítico y pasión literaria.',
+    icon: ShieldCheck,
+    title: 'Sello editorial consolidado',
+    description: 'Con más de 40 años en el sector editorial difundiendo el pensamiento crítico y la memoria histórica.',
     color: 'from-amber-500/10 to-orange-500/5',
     iconColor: 'text-amber-600 dark:text-amber-400',
   },
   {
-    icon: Library,
-    title: 'Catálogo Curado',
-    description: 'Obras seleccionadas por nuestro equipo de editores especializados.',
+    icon: BookMarked,
+    title: 'Catálogo único',
+    description: 'Títulos seleccionados que reflejan la diversidad de nuestro país y la complejidad de nuestra región.',
+    color: 'from-emerald-500/10 to-teal-500/5',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+  },
+  {
+    icon: Users,
+    title: 'Equipo editorial profesional',
+    description: 'Formado por artistas, diseñadores, correctores y editores nacionales y extranjeros.',
     color: 'from-sky-500/10 to-blue-500/5',
     iconColor: 'text-sky-600 dark:text-sky-400',
   },
   {
-    icon: Heart,
-    title: 'Atención Personalizada',
-    description: 'Asesoría literaria y recomendaciones para cada lector.',
+    icon: HeartHandshake,
+    title: 'Atención personalizada',
+    description: 'Te asesoramos con la calidez y la cercanía que nos caracteriza para tu biblioteca o investigación.',
     color: 'from-rose-500/10 to-pink-500/5',
     iconColor: 'text-rose-600 dark:text-rose-400',
   },
@@ -48,18 +48,15 @@ export function FeaturesSection() {
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="mb-2 text-sm font-medium tracking-widest text-primary uppercase">
-            Nuestros pilares
-          </p>
           <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             ¿Por qué elegirnos?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            Más que una librería: un espacio dedicado a la literatura y la cultura latinoamericana.
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground text-sm sm:text-base">
+            Más que una librería, un espacio para la creación y la difusión del libro peruano.
           </p>
         </motion.div>
 
-        {/* Feature cards — 2x2 on desktop, stacked on mobile */}
+        {/* Feature cards — 2x2 */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {features.map((feature, i) => {
             const Icon = feature.icon;
@@ -72,12 +69,11 @@ export function FeaturesSection() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className={cn(
                   'group relative overflow-hidden rounded-2xl border bg-card p-6 sm:p-8',
-                  'transition-all duration-500 ease-out',
-                  'hover:shadow-lg hover:-translate-y-0.5',
-                  'hover:border-primary/20'
+                  'transition-all duration-300 ease-out',
+                  'hover:shadow-md hover:-translate-y-0.5',
+                  'hover:border-primary/30'
                 )}
               >
-                {/* Subtle gradient background */}
                 <div className={cn(
                   'absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100',
                   feature.color
@@ -85,7 +81,7 @@ export function FeaturesSection() {
 
                 <div className="relative z-10">
                   <div className={cn(
-                    'mb-4 flex size-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110',
+                    'mb-4 flex size-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105',
                     'bg-muted',
                   )}>
                     <Icon className={cn('size-5', feature.iconColor)} />
@@ -98,11 +94,6 @@ export function FeaturesSection() {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {feature.description}
                   </p>
-
-                  <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-all duration-300 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0">
-                    <span>Más info</span>
-                    <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
                 </div>
               </motion.div>
             );

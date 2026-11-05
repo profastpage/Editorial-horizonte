@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,298 +8,416 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Search, X, SlidersHorizontal } from 'lucide-react';
+import {
+  Search,
+  X,
+  SlidersHorizontal,
+  BookOpen,
+  Layers,
+  ChevronDown,
+  Sparkles,
+} from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { BookCard } from '@/components/book-card';
-import { BookDetail } from '@/components/book-detail';
 import { SectionWrapper } from '@/components/section-wrapper';
-import type { BookWithDetails, CategoryData } from '@/lib/types';
+import type { BookWithDetails } from '@/lib/types';
 
-async function fetchBooks(filters: {
-  search?: string;
-  categoryId?: string;
-  originType?: string;
-  minPrice?: number;
-  maxPrice?: number;
-}): Promise<BookWithDetails[]> {
-  const params = new URLSearchParams();
-  params.set('resource', 'books');
-  if (filters.search) params.set('search', filters.search);
-  if (filters.categoryId) params.set('categoryId', filters.categoryId);
-  if (filters.originType) params.set('originType', filters.originType);
-  if (filters.minPrice !== undefined) params.set('minPrice', String(filters.minPrice));
-  if (filters.maxPrice !== undefined) params.set('maxPrice', String(filters.maxPrice));
-  const res = await fetch(`/api?${params.toString()}`);
+// Oficial hierarchy from "página web horizonte.docx"
+export const COLECCIONES_HORIZONTE = [
+  {
+    id: 'cjma',
+    name: 'Colección José María Arguedas (CJMA)',
+    short: 'José María Arguedas',
+    series: ['Serie Narrativa', 'Serie Poesía', 'Serie Ensayo', 'Serie Estudios Críticos', 'Plan Lector'],
+  },
+  {
+    id: 'ccv',
+    name: 'Colección César Vallejo (CCV)',
+    short: 'César Vallejo',
+    series: ['Serie Poesía', 'Serie Estudios Críticos'],
+  },
+  {
+    id: 'cfc',
+    name: 'Colección Francisco Carrillo (CFC)',
+    short: 'Francisco Carrillo',
+    series: ['Serie Enciclopedia Histórica de la Literatura Peruana'],
+  },
+  {
+    id: 'crb',
+    name: 'Colección Ralph Bolton (CRB)',
+    short: 'Ralph Bolton',
+    series: ['Serie Estudios Etnográficos', 'Serie Etnografía Clásica en el Altiplano Peruano 1940-1980'],
+  },
+  {
+    id: 'cn',
+    name: 'Colección Narrativa (CN)',
+    short: 'Narrativa',
+    series: ['Serie Clásicos', 'Serie Contemporáneos'],
+  },
+  {
+    id: 'cp',
+    name: 'Colección Poesía (CP)',
+    short: 'Poesía',
+    series: [],
+  },
+  {
+    id: 'ce',
+    name: 'Colección Ensayo (CE)',
+    short: 'Ensayo',
+    series: ['Serie Crítica Literaria', 'Serie Ciencias Sociales', 'Serie Arte y Cultura', 'Serie Amazonía'],
+  },
+  {
+    id: 'cij',
+    name: 'Colección Infanto-Juvenil (CIJ)',
+    short: 'Infanto-Juvenil',
+    series: [],
+  },
+  {
+    id: 'cm',
+    name: 'Colección Miscelánea (CM)',
+    short: 'Miscelánea',
+    series: [],
+  },
+  {
+    id: 'ci',
+    name: 'Colección Idiomas (CI)',
+    short: 'Idiomas',
+    series: [],
+  },
+];
+
+async function fetchBooks(): Promise<BookWithDetails[]> {
+  const res = await fetch('/api?resource=books');
   if (!res.ok) throw new Error('Error al cargar libros');
   return res.json();
 }
 
-async function fetchCategories(): Promise<CategoryData[]> {
-  const res = await fetch('/api?resource=categories');
-  if (!res.ok) throw new Error('Error al cargar categorías');
-  return res.json();
-}
-
-export function CatalogSection() {
-  const {
-    searchQuery,
-    setSearchQuery,
-    filters,
-    setFilters,
-    resetFilters,
-    selectedBookId,
-    setSelectedBookId,
-  } = useAppStore();
-
+export function CatalogSection({ isSubpage = false }: { isSubpage?: boolean }) {
+  const { searchQuery, setSearchQuery } = useAppStore();
   const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
+  const [selectedSello, setSelectedSello] = useState<'horizonte' | 'papel-de-viento'>('horizonte');
+  const [selectedColeccion, setSelectedColeccion] = useState<string | null>(null);
+  const [selectedSerie, setSelectedSerie] = useState<string | null>(null);
+  const [selectedOrigin, setSelectedOrigin] = useState<'PROPIO' | 'TERCERO' | null>(null);
+
   const searchTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Debounce search
   useEffect(() => {
     if (searchTimeout.current) clearTimeout(searchTimeout.current);
     searchTimeout.current = setTimeout(() => {
       setDebouncedSearch(searchQuery);
-    }, 300);
+    }, 250);
     return () => {
       if (searchTimeout.current) clearTimeout(searchTimeout.current);
     };
   }, [searchQuery]);
 
-  // Fetch categories
-  const { data: categories = [] } = useQuery<CategoryData[]>({
-    queryKey: ['categories'],
-    queryFn: fetchCategories,
+  const { data: allBooks = [], isLoading } = useQuery<BookWithDetails[]>({
+    queryKey: ['all-books'],
+    queryFn: fetchBooks,
   });
 
-  // Fetch books
-  const { data: books = [], isLoading } = useQuery<BookWithDetails[]>({
-    queryKey: ['books', debouncedSearch, filters],
-    queryFn: () =>
-      fetchBooks({
-        search: debouncedSearch || undefined,
-        categoryId: filters.categoryId,
-        originType: filters.originType,
-        minPrice: filters.minPrice,
-        maxPrice: filters.maxPrice,
-      }),
-  });
+  // Filter books based on hierarchy
+  const filteredBooks = useMemo(() => {
+    if (selectedSello === 'papel-de-viento') {
+      return [];
+    }
 
-  const activeFilterCount = useMemo(() => {
-    let count = 0;
-    if (filters.categoryId) count++;
-    if (filters.originType) count++;
-    return count;
-  }, [filters]);
+    return allBooks.filter((book) => {
+      // 1. Text search
+      if (debouncedSearch) {
+        const q = debouncedSearch.toLowerCase();
+        const matchTitle = book.title.toLowerCase().includes(q);
+        const matchAuthor = book.authors.some((a) => a.author.name.toLowerCase().includes(q));
+        const matchIsbn = book.isbn ? book.isbn.includes(q) : false;
+        if (!matchTitle && !matchAuthor && !matchIsbn) return false;
+      }
 
-  const clearAll = useCallback(() => {
-    resetFilters();
+      // 2. Sello propio vs distribuido
+      if (selectedOrigin && book.originType !== selectedOrigin) {
+        return false;
+      }
+
+      // 3. Colección filter
+      if (selectedColeccion) {
+        const colObj = COLECCIONES_HORIZONTE.find((c) => c.id === selectedColeccion);
+        if (colObj) {
+          const catMatch = book.categories.some((c) =>
+            c.category.name.toLowerCase().includes(colObj.short.toLowerCase())
+          );
+          const seriesMatch = book.series ? book.series.toLowerCase().includes(colObj.short.toLowerCase()) : false;
+          if (!catMatch && !seriesMatch) return false;
+        }
+      }
+
+      // 4. Serie filter
+      if (selectedSerie && book.series) {
+        const cleanSerie = selectedSerie.replace('Serie ', '').toLowerCase();
+        if (!book.series.toLowerCase().includes(cleanSerie)) return false;
+      }
+
+      return true;
+    });
+  }, [allBooks, debouncedSearch, selectedSello, selectedColeccion, selectedSerie, selectedOrigin]);
+
+  const activeColeccionObj = COLECCIONES_HORIZONTE.find((c) => c.id === selectedColeccion);
+
+  const resetAllFilters = useCallback(() => {
     setSearchQuery('');
-  }, [resetFilters, setSearchQuery]);
-
-  // Selected book for detail
-  const selectedBook = books.find((b) => b.id === selectedBookId) || null;
+    setSelectedColeccion(null);
+    setSelectedSerie(null);
+    setSelectedOrigin(null);
+    setSelectedSello('horizonte');
+  }, [setSearchQuery]);
 
   return (
-    <SectionWrapper id="catalogo" className="py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h2 className="font-serif text-3xl font-bold sm:text-4xl">
-            Catálogo
-          </h2>
-          <p className="mt-2 text-muted-foreground">
-            Explora nuestra colección curada de literatura
+    <SectionWrapper id="catalogo" className={isSubpage ? 'pt-8 pb-24' : 'py-16 sm:py-20'}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+        {/* Header — clean without generic copy */}
+        <div className="text-center space-y-2">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+            Catálogo Editorial
+          </h1>
+          <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-widest font-semibold">
+            Ediciones Oficiales · Literatura, Humanidades y Ciencias Sociales
           </p>
         </div>
 
-        {/* Search + Filter bar */}
-        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+        {/* ─── 1. SELECTOR DE SELLOS EDITORIALES ─── */}
+        <div className="flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => setSelectedSello('horizonte')}
+            className={`px-5 py-2.5 rounded-xl font-serif text-sm font-bold transition-all shadow-xs ${
+              selectedSello === 'horizonte'
+                ? 'bg-primary text-primary-foreground shadow-primary/20 scale-102'
+                : 'bg-card border border-border/70 text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Editorial Horizonte
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setSelectedSello('papel-de-viento')}
+            className={`px-5 py-2.5 rounded-xl font-serif text-sm font-semibold transition-all border border-dashed ${
+              selectedSello === 'papel-de-viento'
+                ? 'bg-muted border-primary text-foreground'
+                : 'border-border/60 text-muted-foreground/80 hover:text-foreground'
+            }`}
+          >
+            <span>Papel de Viento</span>
+            <span className="ml-1.5 text-[10px] uppercase font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
+              Próximo
+            </span>
+          </button>
+        </div>
+
+        {/* ─── 2. BARRA DE BÚSQUEDA Y ORIGEN ─── */}
+        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <Input
-              placeholder="Buscar por título o autor..."
+              type="text"
+              placeholder="Buscar por título, autor o ISBN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9"
+              className="pl-10 pr-10 h-12 rounded-xl bg-card border-border/80 text-sm shadow-2xs"
             />
             {searchQuery && (
               <button
+                type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                aria-label="Clear search"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                aria-label="Limpiar búsqueda"
               >
                 <X className="size-4" />
               </button>
             )}
           </div>
 
-          <Button
-            variant="outline"
-            className="gap-2"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <SlidersHorizontal className="size-4" />
-            Filtros
-            {activeFilterCount > 0 && (
-              <Badge className="ml-1 size-5 justify-center p-0 text-[10px]">
-                {activeFilterCount}
-              </Badge>
-            )}
-          </Button>
-        </div>
-
-        {/* Filter chips */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="mb-6 overflow-hidden"
+          {/* Toggle Sello propio vs Sello distribuido */}
+          <div className="flex items-center gap-1.5 p-1 rounded-xl border border-border/80 bg-muted/40 shrink-0">
+            <Button
+              size="sm"
+              variant={selectedOrigin === null ? 'default' : 'ghost'}
+              onClick={() => setSelectedOrigin(null)}
+              className="rounded-lg text-xs h-9 px-3"
             >
-              <div className="space-y-3 rounded-lg border p-4">
-                {/* Origin toggle */}
-                <div className="flex flex-wrap gap-2">
-                  <Button
-                    size="sm"
-                    variant={!filters.originType ? 'default' : 'outline'}
-                    onClick={() => setFilters({ originType: undefined })}
-                  >
-                    Todos
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={filters.originType === 'PROPIO' ? 'default' : 'outline'}
-                    onClick={() =>
-                      setFilters({
-                        originType: filters.originType === 'PROPIO' ? undefined : 'PROPIO',
-                      })
-                    }
-                  >
-                    Fondo Propio
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={filters.originType === 'TERCERO' ? 'default' : 'outline'}
-                    onClick={() =>
-                      setFilters({
-                        originType: filters.originType === 'TERCERO' ? undefined : 'TERCERO',
-                      })
-                    }
-                  >
-                    Terceros
-                  </Button>
-                </div>
-
-                {/* Category chips */}
-                <div className="flex flex-wrap gap-2">
-                  <Button
-                    size="sm"
-                    variant={!filters.categoryId ? 'default' : 'outline'}
-                    onClick={() => setFilters({ categoryId: undefined })}
-                  >
-                    Todas las categorías
-                  </Button>
-                  {categories.map((cat) => (
-                    <Button
-                      key={cat.id}
-                      size="sm"
-                      variant={filters.categoryId === cat.id ? 'default' : 'outline'}
-                      onClick={() =>
-                        setFilters({
-                          categoryId: filters.categoryId === cat.id ? undefined : cat.id,
-                        })
-                      }
-                    >
-                      {cat.name}
-                    </Button>
-                  ))}
-                </div>
-
-                {activeFilterCount > 0 && (
-                  <button
-                    onClick={clearAll}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Limpiar todos los filtros
-                  </button>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Results count */}
-        <p className="mb-4 text-sm text-muted-foreground">
-          {isLoading
-            ? 'Cargando...'
-            : `${books.length} libro${books.length !== 1 ? 's' : ''} encontrado${books.length !== 1 ? 's' : ''}`}
-        </p>
-
-        {/* Loading skeletons */}
-        {isLoading && (
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="aspect-[3/4] sm:aspect-[3/4.2] rounded-2xl overflow-hidden">
-                <Skeleton className="h-full w-full rounded-2xl" />
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Books grid — responsive, uniform cards */}
-        {!isLoading && books.length > 0 && (
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <AnimatePresence mode="popLayout">
-              {books.map((book) => (
-                <BookCard
-                  key={book.id}
-                  book={book}
-                />
-              ))}
-            </AnimatePresence>
-          </div>
-        )}
-
-        {/* Empty state */}
-        {!isLoading && books.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <Search className="size-12 text-muted-foreground/30 mb-4" />
-            <h3 className="font-serif text-lg font-semibold">
-              No se encontraron libros
-            </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Intenta ajustar los filtros o buscar otro término.
-            </p>
-            <Button variant="outline" className="mt-4" onClick={clearAll}>
-              Limpiar filtros
+              Todos
+            </Button>
+            <Button
+              size="sm"
+              variant={selectedOrigin === 'PROPIO' ? 'default' : 'ghost'}
+              onClick={() => setSelectedOrigin(selectedOrigin === 'PROPIO' ? null : 'PROPIO')}
+              className="rounded-lg text-xs h-9 px-3"
+            >
+              Sello propio
+            </Button>
+            <Button
+              size="sm"
+              variant={selectedOrigin === 'TERCERO' ? 'default' : 'ghost'}
+              onClick={() => setSelectedOrigin(selectedOrigin === 'TERCERO' ? null : 'TERCERO')}
+              className="rounded-lg text-xs h-9 px-3"
+            >
+              Sello distribuido
             </Button>
           </div>
+        </div>
+
+        {/* ─── 3. CLASIFICACIÓN MODULAR POR COLECCIONES (OFICIAL) ─── */}
+        {selectedSello === 'horizonte' && (
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <Layers className="size-3.5 text-primary" />
+                Colecciones Oficiales
+              </span>
+              {(selectedColeccion || selectedSerie || searchQuery || selectedOrigin) && (
+                <button
+                  type="button"
+                  onClick={resetAllFilters}
+                  className="text-xs text-primary hover:underline font-semibold"
+                >
+                  Limpiar filtros
+                </button>
+              )}
+            </div>
+
+            {/* Chips de Colecciones */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedColeccion(null);
+                  setSelectedSerie(null);
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  selectedColeccion === null
+                    ? 'bg-primary text-primary-foreground shadow-2xs'
+                    : 'bg-card border border-border/70 text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Todas las colecciones
+              </button>
+
+              {COLECCIONES_HORIZONTE.map((col) => {
+                const isSelected = selectedColeccion === col.id;
+                return (
+                  <button
+                    key={col.id}
+                    type="button"
+                    onClick={() => {
+                      setSelectedColeccion(isSelected ? null : col.id);
+                      setSelectedSerie(null);
+                    }}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                      isSelected
+                        ? 'bg-primary text-primary-foreground shadow-2xs'
+                        : 'bg-card border border-border/70 text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {col.short}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Sub-series si la colección seleccionada tiene series */}
+            {activeColeccionObj && activeColeccionObj.series.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                className="pt-2 flex flex-wrap items-center gap-2"
+              >
+                <span className="text-[11px] text-muted-foreground font-medium mr-1">
+                  Series de {activeColeccionObj.short}:
+                </span>
+                {activeColeccionObj.series.map((serie) => {
+                  const isSelected = selectedSerie === serie;
+                  return (
+                    <button
+                      key={serie}
+                      type="button"
+                      onClick={() => setSelectedSerie(isSelected ? null : serie)}
+                      className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors ${
+                        isSelected
+                          ? 'bg-primary/20 text-primary border border-primary/40 font-bold'
+                          : 'bg-muted/60 text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      {serie}
+                    </button>
+                  );
+                })}
+              </motion.div>
+            )}
+          </div>
         )}
 
-        {/* Book Detail Dialog */}
-        <BookDetail
-          book={selectedBook}
-          open={!!selectedBookId}
-          onOpenChange={(open) => {
-            if (!open) setSelectedBookId(null);
-          }}
-          onSelectRelatedTitle={(title) => {
-            const clean = title.toLowerCase().replace(/['"«»]/g, '').trim();
-            const found = books.find((b) => {
-              const bTitle = b.title.toLowerCase().replace(/['"«»]/g, '').trim();
-              return bTitle.includes(clean) || clean.includes(bTitle);
-            });
-            if (found) {
-              setSelectedBookId(found.id);
-            } else {
-              setSelectedBookId(null);
-              setSearchQuery(title);
-            }
-          }}
-        />
+        {/* ─── 4. GRILLA DE LIBROS ─── */}
+        {selectedSello === 'papel-de-viento' ? (
+          <div className="py-20 text-center rounded-2xl border border-dashed border-border/80 bg-card p-8 space-y-3">
+            <BookOpen className="size-12 text-primary/40 mx-auto stroke-1" />
+            <h3 className="font-serif text-xl font-bold text-foreground">Sello Papel de Viento</h3>
+            <p className="text-sm text-muted-foreground max-w-md mx-auto">
+              Nuevo sello editorial en preparación. Próximamente se integrarán las obras y títulos de esta colección.
+            </p>
+            <Button variant="outline" size="sm" onClick={() => setSelectedSello('horizonte')}>
+              Volver a Editorial Horizonte
+            </Button>
+          </div>
+        ) : (
+          <>
+            {/* Resultados count */}
+            <div className="flex items-center justify-between text-xs text-muted-foreground pt-2">
+              <span>
+                {isLoading
+                  ? 'Cargando obras...'
+                  : `${filteredBooks.length} libro${filteredBooks.length !== 1 ? 's' : ''} disponible${filteredBooks.length !== 1 ? 's' : ''}`}
+              </span>
+              {activeColeccionObj && (
+                <span className="font-medium text-foreground">
+                  Filtrando por: {activeColeccionObj.name} {selectedSerie ? `· ${selectedSerie}` : ''}
+                </span>
+              )}
+            </div>
+
+            {/* Skeletons */}
+            {isLoading && (
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} className="aspect-[3/4.2] rounded-2xl overflow-hidden">
+                    <Skeleton className="h-full w-full rounded-2xl" />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Books Grid — Responsive, uniform cards with clean covers */}
+            {!isLoading && filteredBooks.length > 0 && (
+              <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {filteredBooks.map((book) => (
+                  <BookCard key={book.id} book={book} />
+                ))}
+              </div>
+            )}
+
+            {/* Empty state */}
+            {!isLoading && filteredBooks.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20 text-center bg-card rounded-2xl border">
+                <Search className="size-12 text-muted-foreground/30 mb-3" />
+                <h3 className="font-serif text-lg font-bold">No se encontraron títulos</h3>
+                <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-sm">
+                  Intenta ajustar el término de búsqueda o selecciona otra colección.
+                </p>
+                <Button variant="outline" size="sm" className="mt-4" onClick={resetAllFilters}>
+                  Limpiar filtros
+                </Button>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </SectionWrapper>
   );

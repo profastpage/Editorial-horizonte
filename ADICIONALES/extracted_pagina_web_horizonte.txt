@@ -1,0 +1,109 @@
+ROJO = INDICACIONESNEGRITO = CARACTERÍSTICAS DEL CAMBIO
+DOMINIO
+Aspecto de la búsqueda en internet
+127026231600
+HORIZONTE Libros
+www.horizontelibros.com
+Librería independiente ubicada en Lima, Perú. Especializada en literatura, ciencias sociales y humanidades (SEO GOOGLE)
+Aspecto de la pestaña una vez abierta la página
+3937025336500
+Horizonte libros – Página oficial (Reemplazar al favicon de la pagina)
+PÁGINA WEB
+Encabezado
+026739600
+Horizonte Libros                                     Catálogo – Distribución – Mi cuenta – Carrito
+Todas las pestañas se abren en un espacio distinto, no están en el mismo espacio inicial
+Pestaña “Catálogo” (sacar el texto “Explora nuestra colección curada de literatura…”)
+Conservar las dos opciones:
+el comprador puede buscar a través de la barra de búsqueda
+el comprador pueda tener debajo el catálogo organizado por bloques (o lo que sea más moderno e intuitivo), siguiendo la siguiente clasificación. Considerar que tenemos 2 SELLOS EDITORIALES. Aún no tengo títulos para agregar a Papel de Viento, pero ¿se puede dejar oculto y luego activarlo cuando lo completemos?
+(menús desplegables, bloques ordenados, separación de módulos, sin fricción, facilidad a los clientes finales de revisar el contenido del catálogo, respetando la organización de a continuación , que la editorial tiene diferentes colecciones subgrupos amplios, de acuerdo con el siguiente orden, diferentes series)
+Editorial Horizonte
+Colección José María Arguedas (CJMA)
+Serie Narrativa
+Serie Poesía
+Serie Ensayo
+Serie Estudios Críticos
+Plan Lector
+Colección César Vallejo (CCV)
+Serie Poesía
+Serie Estudios Críticos
+Colección Francisco Carrillo (CFC)
+Serie Enciclopedia Histórica de la Literatura Peruana
+Colección Ralph Bolton (CRB)
+Serie Estudios Etnográficos
+Serie Etnografía Clásica en el Altiplano Peruano 1940-1980
+Colección Narrativa (CN)
+Serie Clásicos
+Serie Contemporáneos
+Colección Poesía (CP)
+Colección Ensayo (CE)
+Serie Crítica Literaria
+Serie Ciencias Sociales
+Serie Arte y Cultura
+Serie Amazonía
+Colección Infanto-Juvenil (CIJ)
+Colección Miscelánea (CM)
+Colección Idiomas (CI)
+Papel de viento
+SUB-PÁGINA PESTAÑA SECUNDARIA “Distribución” (Breve reseña y detalle de los títulos)
+“Mi cuenta” (Enviar presupuesto base de datos dinámicas de clientes y administrador completo) PENDIENTE.
+¿Es posible agregar el botón de registro o inicio para que los usuarios tengan su cuenta dentro de la página? La idea es, de esa manera, recolectar datos de los que visitan en el sitio; lo que dejan en el carrito, pero no compran; lo que compran y fidelizarlos con ofertas o descuentos por compra.
+“Carrito”
+“Ícono modo oscuro/claro”
+“Administración” no puede estar visible para toda la gente que ingrese a la página. Deberíamos tener en el menú “Mi cuenta” una opción que, con nuestras credenciales, nos dirija al panel de administración.  (PANEL /administración)
+Imagen de fondo
+Reducir a la mitad del alto este fondo, colocar de fondo la imagen que te pasaré.
+Quitar la barra “Editorial Horizonte - desde 1970” e “Historias que trascienden”.
+Quitar el resto del texto “Colecciones fundamentales…”, el botón que se mueve y la barra móvil de abajo.
+“Explorar catálogo” tiene que abrir la clasificación del catálogo en sellos y sus colecciones (ver opciones) y NO el catálogo desordenado y todo junto como está ahora.  QUE DIRIGE A LA SUBPAGINA CATÁLOGO
+Inmediatamente debajo de esta imagen de fondo tienen que estar las NOVEDADES y PRÓXIMAMENTE (una fila debajo de la otra, con las portadas solamente y que al hacer clic te lleve a la información completa como aparece ahora)
+Novedades (colocar los títulos que están marcados con ese rótulo en el Word que te mandé)
+Próximamente (colocar las portadas que te pasaré en otro link) Relatos completos, Amauta 100 años… pedir a Juan
+“Nosotros”
+Nuestro sello Editorial Horizonte nació como un proyecto comprometido con la difusión del pensamiento crítico, la memoria histórica y la riqueza literaria y cultural del Perú y América Latina.
+Desde su fundación en 1968, ha sido la casa editorial oficial de José María Arguedas y ha publicado la obra de César Vallejo y de destacados escritores e intelectuales de las ciencias sociales y las humanidades.
+Nuestra misión es hacer llegar al lector contemporáneo ediciones rigurosas y cuidadas que preserven la identidad costeña, andina y amazónica, propiciando el diálogo intercultural y la reflexión crítica con las nuevas generaciones.
+Actualmente también ofrecemos servicios de edición, impresión y distribución de libros a nivel nacional.
+El último ítem, “2 almacenes y salas”, cambiarlo por “5 + puntos de venta físicos”
+“¿Por qué elegirnos?” (Sacar “nuestros pilares”)
+Más que una librería, un espacio para la creación y la difusión del libro peruano
+Sacar lo que está ahora y reemplazar por:
+Sello editorial consolidado
+Con más de 40 años en el sector editorial
+Catálogo único
+Títulos seleccionados que reflejan la diversidad de nuestro país y la complejidad de nuestra región
+Equipo editorial profesional
+Formado por artistas, diseñadores, correctores y editores nacionales y extranjeros
+Atención personalizada
+Te asesoramos con la calidez y la cercanía que nos caracteriza
+“Contacto” (al estilo de “Nosotros”, no como pie de página)
+Dirección: Jirón Sucre 470, San Miguel, Lima Metropolitana
+Teléfono: + 51 955637859 redireccionar a whatsapp inmediatamente al dar clic
+Correo electrónico
+contacto@horizontelibros.com   redireccionar a correo previo enviar
+ventas@horizontelibros.com  redireccionar a correo previo enviar
+SÍGUENOS
+logo de IG editorialhorizonte
+logo del Face editorial.horizonte
+Solo cambiaría el texto descriptivo por: “Suscríbete a nuestro boletín y entérate de todas las novedades (lanzamientos, eventos y más)”
+Lo demás sacarlo y conservar el pie de página final, pero “2026 Horizonte Libros. Todos los derechos…”.
+ESTRUCTURA DE LOS LIBROS EXHIBIDOS
+No pueden aparecer en el primer espacio como están ahora
+Solo las Novedades y Próximamente: portada nada más
+Sacar el destacado a todos los libros, deberíamos reservarlo para las novedades o reimpresiones importantes
+El botón de “Fondo propio” cambiar por “Sello propio” y poner la opción de poner “Sello distribuido”
+Cambiar:
+Envíos a todo Lima
+Cambiar:
+Retiro en punto de venta
+Jirón Sucre 470, San Miguel, Lima Metropolitana
+Lunes a viernes de 10:00 a 14:00 hrs o visita coordinada al + 51 955637859
+Cambiar:
+Edición oficial garantizada
+Sello editorial certificado contra la piratería. Ejemplar nuevo y sellado.
+En “Compra ahora” revisar “Punto de retiro”: tiene que ser el domicilio en San Miguel o envío por delivery
+Asociar el número de teléfono + 51 955637859 al botón de consultas
+REVISAR TODOS LOS TÍTULOS PORQUE HAY MUCHAS REPETICIONES Y EQUIVOCACIONES DE PORTADAS
+338617349600
+¿Cómo se han pensado los pagos? Debería realizarse automáticamente con medios de pago en efectivo y crédito

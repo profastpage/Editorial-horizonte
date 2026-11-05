@@ -599,26 +599,26 @@
   ],
   "warehouses": [
     {
-      "id": "wh_central",
-      "name": "Almacén Central Lima Centro",
-      "slug": "almacen-central",
-      "address": "Jr. Camaná 868 / Av. Nicolás de Piérola",
-      "city": "Lima",
-      "phone": "+51 1 428-2838",
-      "contactName": "Ariana / Administración Horizonte",
+      "id": "wh_san_miguel",
+      "name": "Punto de Retiro San Miguel (Jr. Sucre 470)",
+      "slug": "punto-retiro-san-miguel",
+      "address": "Jirón Sucre 470, San Miguel",
+      "city": "Lima Metropolitana",
+      "phone": "+51 955637859",
+      "contactName": "Editorial Horizonte - Horario: Lun-Vie 10:00 - 14:00",
       "warehouseType": "PROPIO",
       "isActive": true,
       "createdAt": "2026-01-01T00:00:00.000Z",
       "updatedAt": "2026-01-01T00:00:00.000Z"
     },
     {
-      "id": "wh_libreria",
-      "name": "Librería y Salón de Exhibición",
-      "slug": "libreria-exhibicion",
-      "address": "Av. Nicolás de Piérola 868",
+      "id": "wh_delivery_lima",
+      "name": "Envío por Delivery a domicilio (Todo Lima)",
+      "slug": "delivery-lima",
+      "address": "Despacho central a domicilio",
       "city": "Lima",
-      "phone": "+51 1 428-2838",
-      "contactName": "Ventas Mostrador",
+      "phone": "+51 955637859",
+      "contactName": "Coordinación Logística",
       "warehouseType": "PROPIO",
       "isActive": true,
       "createdAt": "2026-01-01T00:00:00.000Z",
@@ -1461,7 +1461,7 @@
       "costPrice": 14.0,
       "weightKg": 0.3,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "128 páginas, tapa blanda, 17 x 24 cm",
@@ -1470,7 +1470,8 @@
       "relatedTitles": "Indios, mestizos y señores",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_b6478310c027eb4a",
@@ -1486,7 +1487,7 @@
       "costPrice": 12.0,
       "weightKg": 0.25,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "80 páginas, tapa blanda, 17 x 24 cm",
@@ -1495,7 +1496,8 @@
       "relatedTitles": "Indios, mestizos y señores – Arguedas y la reforma agraria",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_c9b4aa4c638568ce",
@@ -1506,12 +1508,12 @@
       "pages": 352,
       "language": "castellano",
       "publicationYear": 2025,
-      "coverUrl": "/covers/Caratula_-_La_retorica_final-01.webp",
+      "coverUrl": null,
       "price": 60.0,
       "costPrice": 24.0,
       "weightKg": 0.57,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "352 páginas, tapa blanda, 12,5 x 19 cm",
@@ -1520,7 +1522,8 @@
       "relatedTitles": "Indios, mestizos y señores – Vigencia y Universalidad de José María Arguedas",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_f3755208dae901f5",
@@ -1536,7 +1539,7 @@
       "costPrice": 14.0,
       "weightKg": 0.3,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "124 páginas, tapa blanda, 17 x 24 cm",
@@ -1545,7 +1548,8 @@
       "relatedTitles": "",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_530f00381680bf3d",
@@ -1556,12 +1560,12 @@
       "pages": 496,
       "language": "castellano",
       "publicationYear": 2025,
-      "coverUrl": "/covers/Caratula_horizonte_Mesa_de_trabajo_1.webp",
+      "coverUrl": null,
       "price": 60.0,
       "costPrice": 24.0,
       "weightKg": 0.75,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "496 páginas, tapa blanda, 17 x 24 cm",
@@ -1570,7 +1574,8 @@
       "relatedTitles": "Indios, mestizos y señores – Vigencia y Universalidad de José María Arguedas",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_54df7045236a11b3",
@@ -1586,7 +1591,7 @@
       "costPrice": 16.0,
       "weightKg": 0.36,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "176 páginas, tapa blanda, 17 x 24 cm",
@@ -1595,7 +1600,8 @@
       "relatedTitles": "Cultura andina y forma novelesca: zorros y danzantes en la última novela de Arguedas – Vigencia y Universalidad de José María Arguedas – Agua – Los ríos profundos – Todas las sangres – Yawar fiesta",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_71a9db0939b2601e",
@@ -1620,7 +1626,8 @@
       "relatedTitles": "",
       "series": "CJMA - Serie Narrativa",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_166bf6f8d35d4f51",
@@ -1645,7 +1652,8 @@
       "relatedTitles": "",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_23089efcf271b0bb",
@@ -1661,7 +1669,7 @@
       "costPrice": 14.0,
       "weightKg": 0.33,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "148 páginas, tapa blanda, 16 x 21 cm",
@@ -1670,7 +1678,8 @@
       "relatedTitles": "",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_e2ec3a8f4fcb7549",
@@ -1686,7 +1695,7 @@
       "costPrice": 24.0,
       "weightKg": 0.67,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "430 páginas, tapa blanda, 15,5 x 24 cm",
@@ -1695,7 +1704,8 @@
       "relatedTitles": "Agua, Warma kuyay, Los escoleros, Oda al jet, ¿Qué es el folklore? No soy un aculturado. Breve antología didáctica – Yahuar huillay (edición ilustrada) – Warma Kuyay, Agua, Hijo solo, La agonía de Rasu Ñiti, Amor mundo, El sueño del pongo, A nuestro padre creador Túpac Amaru, El torito de la piel brillante. Antología",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_2747ec3cb2282369",
@@ -1711,7 +1721,7 @@
       "costPrice": 14.0,
       "weightKg": 0.36,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "172 páginas, tapa blanda, 17 x 24 cm",
@@ -1720,7 +1730,8 @@
       "relatedTitles": "Yawar fiesta – Diamantes y pedregales",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9f6ccabeb56d8d86",
@@ -1736,7 +1747,7 @@
       "costPrice": 20.0,
       "weightKg": 0.29,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "116 páginas, tapa blanda, 14 x 20,8 cm",
@@ -1745,7 +1756,8 @@
       "relatedTitles": "Leamos juntos el Manuscrito de Huarochirí",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_61d73677541da233",
@@ -1761,7 +1773,7 @@
       "costPrice": 20.0,
       "weightKg": 0.49,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "280 páginas, tapa blanda, 13,5 x 21 cm",
@@ -1770,7 +1782,8 @@
       "relatedTitles": "Escritos sobre el Cuzco – Relatos completos",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_f206f5493362c054",
@@ -1795,7 +1808,8 @@
       "relatedTitles": "Obra antropológica y cultural (1947-1954) – José María Arguedas y la reforma agraria – Relatos completos",
       "series": "CJMA - Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_aacf218b1edd15bc",
@@ -1811,7 +1825,7 @@
       "costPrice": 12.0,
       "weightKg": 0.44,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "242 páginas, tapa blanda, 14,5 x 20 cm",
@@ -1820,7 +1834,8 @@
       "relatedTitles": "El zorro de arriba y el zorro de abajo – Vigencia y universalidad de José María Arguedas",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_46ab651fa25bc8f1",
@@ -1845,7 +1860,8 @@
       "relatedTitles": "Yawar fiestas – Todas las sangres – El zorro de arriba y el zorro de abajo – Relatos completos",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_85ca090046dca177",
@@ -1861,7 +1877,7 @@
       "costPrice": 16.0,
       "weightKg": 0.32,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "144 páginas, tapa blanda, 12 x 17,5 cm",
@@ -1870,7 +1886,8 @@
       "relatedTitles": "",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_048bd2372ed08423",
@@ -1895,11 +1912,12 @@
       "relatedTitles": "Dioses y hombres de Huarochirí",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_3d0dda7e83b2c481",
-      "title": "José María Arguedas y la reforma agraria NOVEDAD",
+      "title": "José María Arguedas y la reforma agraria",
       "slug": "jose-maria-arguedas-y-la-reforma-agraria-novedad",
       "isbn": "978-612-5223-26-5",
       "synopsis": "José María Arguedas y la reforma agraria recoge las impresiones y vivencias de Arguedas en torno a la realidad del campesinado, principalmente del sur andino, elementos que recorren además toda su narrativa. En esta selección se analiza la postura de nuestro escritor frente a la viabilidad del proceso de transformación socioeconómica radical que buscaba impulsar el gobierno militar del general Juan Velasco Alvarado, cuyo objetivo principal era eliminar el sistema de latifundios (grandes extensiones de tierra en manos de pocos dueños) y distribuir la tierra entre los campesinos que la trabajaban.",
@@ -1920,7 +1938,8 @@
       "relatedTitles": "Indios, mestizos y señores Yawar fiesta – Diamantes y pedregales – Todas las sangres",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": true
     },
     {
       "id": "bk_d96eaba9937d9c88",
@@ -1945,7 +1964,8 @@
       "relatedTitles": "José María Arguedas. Nosotros Los Maestros – Yahuar huillay (edición ilustrada)",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_e8039feae3ad664e",
@@ -1970,7 +1990,8 @@
       "relatedTitles": "José María Arguedas. Nosotros Los Maestros – Yahuar huillay (edición ilustrada) – Yawar fiesta – Los ríos profundos – El Sexto – Todas las sangres",
       "series": "CJMA - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_ecf055255ea9c9d6",
@@ -1995,7 +2016,8 @@
       "relatedTitles": "España aparta de mí ese cáliz – Estilo y poesía en César Vallejo – César Vallejo: Un poeta del acontecimiento",
       "series": "CCV – Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_96ebe0cd407b45b9",
@@ -2020,7 +2042,8 @@
       "relatedTitles": "Los heraldos negros – Estilo y poesía en César Vallejo – César Vallejo: Un poeta del acontecimiento",
       "series": "CCV – Serie Poesía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_934e1f6773fb32f0",
@@ -2036,7 +2059,7 @@
       "costPrice": 19.2,
       "weightKg": 0.45,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "248 páginas, tapa blanda, 15 x 21,5 cm",
@@ -2045,7 +2068,8 @@
       "relatedTitles": "Los heraldos negros – España aparta de mí ese cáliz – Estilo y poesía en César Vallejo",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_a1d32a3df67784fb",
@@ -2061,7 +2085,7 @@
       "costPrice": 14.0,
       "weightKg": 0.42,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "224 páginas, tapa blanda, 14,5 x 20,5 cm",
@@ -2070,7 +2094,8 @@
       "relatedTitles": "España aparta de mí ese cáliz – César Vallejo: un poeta del acontecimiento",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_fa644646e159f458",
@@ -2095,7 +2120,8 @@
       "relatedTitles": "Obra antropológica y cultural (1947-1954) – Escritos sobre el Cuzco – Katatay – Canto kechwa",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_375828f431b093ed",
@@ -2106,7 +2132,7 @@
       "pages": 256,
       "language": "castellano",
       "publicationYear": 1996,
-      "coverUrl": "/covers/cronistas_convento009.webp",
+      "coverUrl": "/covers/CRONISTAS_INDIOS_Y_MESTIZOS_III_EL_INCA_GARCILASO_DE_LA_VEGA_656.webp",
       "price": 45.0,
       "costPrice": 18.0,
       "weightKg": 0.46,
@@ -2120,7 +2146,8 @@
       "relatedTitles": "Escritos sobre el Cuzco – Coros mestizos del Inca Garcilazo. Resonancias andinas",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_85b32ed83b237d65",
@@ -2145,7 +2172,8 @@
       "relatedTitles": "",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_5aa1acdf4ce8c3d7",
@@ -2156,7 +2184,7 @@
       "pages": 236,
       "language": "castellano",
       "publicationYear": 2009,
-      "coverUrl": "/covers/Alpacas_y_cuyes_en_la_etnografía_andina_001.webp",
+      "coverUrl": "/covers/Cuyes__camiones_y_cuentos_en_los_andes013.webp",
       "price": 50.0,
       "costPrice": 20.0,
       "weightKg": 0.43,
@@ -2170,7 +2198,8 @@
       "relatedTitles": "La cultura expresiva puneña. Religión, Arte y Folklore",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_458b001f8c621136",
@@ -2195,7 +2224,8 @@
       "relatedTitles": "",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_ea4607b98260acad",
@@ -2220,7 +2250,8 @@
       "relatedTitles": "",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_1d54a80592c183b8",
@@ -2245,7 +2276,8 @@
       "relatedTitles": "",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_d70459965da363e0",
@@ -2270,7 +2302,8 @@
       "relatedTitles": "",
       "series": "CCV - Serie Estudios Críticos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_2486a7a77cca3a1a",
@@ -2295,7 +2328,8 @@
       "relatedTitles": "La cultura expresiva puneña. Religión, Arte y Folklore – Parentesco y matrimonio en los Andes",
       "series": "CRB- Serie Etnografía Clásica en el Altiplano Peruano 1940-1980",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_2d835953ff1bab09",
@@ -2320,7 +2354,8 @@
       "relatedTitles": "",
       "series": "CRB- Serie Etnografía Clásica en el Altiplano Peruano 1940-1980",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_fe80d115bdd5c0f3",
@@ -2345,7 +2380,8 @@
       "relatedTitles": "La cultura expresiva puneña. Religión, Arte y Folklore – Parentesco y matrimonio en los Andes – Alpacas y cuyes en la etnografía andina",
       "series": "CRB- Serie Etnografía Clásica en el Altiplano Peruano 1940-1980",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_6b7c974d8174089c",
@@ -2370,7 +2406,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Clásicos",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_37eab28128d89b4c",
@@ -2395,7 +2432,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_65969ab464101de6",
@@ -2420,7 +2458,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9a0429c025d66ae0",
@@ -2436,7 +2475,7 @@
       "costPrice": 20.0,
       "weightKg": 0.51,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "304 páginas, tapa blanda, 17 x 24 cm",
@@ -2445,11 +2484,12 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_ba8dd0822bba98f3",
-      "title": "Querido camarada Mao y otros cuentos NOVEDAD",
+      "title": "Querido camarada Mao y otros cuentos",
       "slug": "querido-camarada-mao-y-otros-cuentos-novedad",
       "isbn": "978-612-5223-19-7",
       "synopsis": "Querido camarada Mao reúne una selección de diez relatos breves del premiado escritor chimbotano Luis Fernando Cueto. De variada temática, a saltos por escenarios ambientados en distintos países y con una extraordinaria destreza para ingresar en la piel de sus personajes, la obra cuentística de Cueto nos confirma que estamos ante un autor en plena madurez y producción. El uso solvente de las técnicas literarias y el manejo cuidadoso, de orfebrería del lenguaje, que lo llevaron a ganar el premio Copé de Oro de Novela (2011) y el Premio de Novela Corta Julio Ramón Ribeyro (2026), se han aunado a las características ya indicadas para hacer de Cueto un escritor distinguible, con voz propia, que se destaca nítidamente entre los escritores peruanos contemporáneos.",
@@ -2470,7 +2510,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": true
     },
     {
       "id": "bk_55a94edf0129ef9e",
@@ -2495,7 +2536,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_debe72606fd524be",
@@ -2520,7 +2562,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_c0a0b9d7be52ab9e",
@@ -2545,7 +2588,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_590e02514f274c3d",
@@ -2570,7 +2614,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_0a06e4b056b22318",
@@ -2595,7 +2640,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_d1074858a5451a8a",
@@ -2620,7 +2666,8 @@
       "relatedTitles": "",
       "series": "CN – Serie Contemporánea",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_ec3e3e9b511865a7",
@@ -2645,7 +2692,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Crítica literaria",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_929a88a336c4a019",
@@ -2661,7 +2709,7 @@
       "costPrice": 14.0,
       "weightKg": 0.35,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "164 páginas, tapa blanda, 14,5 x 21 cm",
@@ -2670,7 +2718,8 @@
       "relatedTitles": "Vigencia y universalidad de José María Arguedas – Seis aproximaciones a José María Arguedas",
       "series": "CE- Serie Crítica literaria",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_c6ca78adfe6b72de",
@@ -2695,7 +2744,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Crítica literaria",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_a816145fa21e96e5",
@@ -2720,7 +2770,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Crítica literaria",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_6825d4d0bf4b48c7",
@@ -2745,7 +2796,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Crítica literaria",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_c5beec581ac74ebc",
@@ -2770,7 +2822,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Crítica literaria",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_893aeec182e83139",
@@ -2795,7 +2848,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9d92d50c1f711133",
@@ -2820,11 +2874,12 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_a03f8e39040b1c37",
-      "title": "La crisis del sistema imperial NOVEDAD",
+      "title": "La crisis del sistema imperial",
       "slug": "la-crisis-del-sistema-imperial-novedad",
       "isbn": "978-612-5223-18-0",
       "synopsis": "Este libro de Claudio Katz, destacado economista argentino y referente del pensamiento crítico latinoamericano contemporáneo, adquiere hoy especial relevancia para comprender un escenario global atravesado por guerras, tensiones geopolíticas y disputas por la hegemonía. Con claridad y rigor, el autor recupera la noción de imperialismo para desentrañar el rol central de Estados Unidos, el creciente protagonismo de China, la proyección internacional de Rusia y los conflictos en Medio Oriente, ofreciendo una lectura estructural que vincula estos procesos con las dinámicas históricas del capitalismo global y sus renovadas formas de dominación. Un ensayo incisivo que invita a repensar el orden mundial contemporáneo y aporta claves decisivas para comprender las formas actuales de poder y conflicto en la escena global.",
@@ -2836,7 +2891,7 @@
       "costPrice": 16.0,
       "weightKg": 0.56,
       "isActive": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "340 páginas, tapa blanda, 15,5 x 24 cm",
@@ -2845,7 +2900,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": true
     },
     {
       "id": "bk_4f9a931f96a45da1",
@@ -2870,7 +2926,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_c696e2eac7a30e8e",
@@ -2895,7 +2952,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_89a4259c603ad973",
@@ -2920,7 +2978,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_50e8fbc1f0e06259",
@@ -2945,7 +3004,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_056424eb2b404bb8",
@@ -2970,7 +3030,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_60b864bfe63ad0b0",
@@ -2995,11 +3056,12 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_5f76068e69a49b97",
-      "title": "El turismo. Aproximaciones desde la historia, la antropología y el cine NOVEDAD",
+      "title": "El turismo. Aproximaciones desde la historia, la antropología y el cine",
       "slug": "el-turismo-aproximaciones-desde-la-historia-la-antropologia-y-el-cine-novedad",
       "isbn": "978-612-5223-29-6",
       "synopsis": "Contribución multifocal al estudio y a la discusión del fenómeno del turismo desde una perspectiva antropológica, que recurre a experiencias diversas como el cine y los sitios de memorias, entre otros. Esta edición es también un homenaje a Marc Augé (1935-2023), el gran antropólogo cuya reflexión tuvo y tiene un gran impacto en la renovación de los estudios sobre el turismo, y recoge sus reflexiones, junto a las de Mauricio Barros de Castro, Charo Tito y Martín Lienhard, presentadas en el VII Congreso Nacional de Investigaciones en Antropología en el Perú, celebrado en Trujillo en 2015. A ellas se suman las importantes contribuciones de Norma Fuller y Frédéric Vidal.",
@@ -3011,7 +3073,7 @@
       "costPrice": 20.0,
       "weightKg": 0.35,
       "isActive": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "168 páginas, tapa blanda, 17 x 24 cm",
@@ -3020,7 +3082,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": true
     },
     {
       "id": "bk_4a9d9f3905784f36",
@@ -3045,7 +3108,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_132158acf5159bdc",
@@ -3070,7 +3134,8 @@
       "relatedTitles": "Nueva crónica y Buen gobierno. Antología – Cronistas, indios y mestizos III. El Inca Garcilaso de la Vega (tomo 8)",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_7b30b27f13d28e6f",
@@ -3095,7 +3160,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_1affa8b422da85e7",
@@ -3120,7 +3186,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_decc7bae507ada3f",
@@ -3145,7 +3212,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_a000f2d4ef83e2f8",
@@ -3170,7 +3238,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_c069302a682a21c1",
@@ -3195,7 +3264,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9d0efbe35d2e5f7a",
@@ -3211,7 +3281,7 @@
       "costPrice": 16.0,
       "weightKg": 0.34,
       "isActive": true,
-      "isFeatured": true,
+      "isFeatured": false,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "160 páginas, tapa blanda, 17 x 24 cm",
@@ -3220,11 +3290,12 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9fd53c8584ee5ffb",
-      "title": "Perú volver a empezar. La promesa incumplida de la República-Nación-Estado (tomo 1) NOVEDAD",
+      "title": "Perú volver a empezar. La promesa incumplida de la República-Nación-Estado (tomo 1)",
       "slug": "peru-volver-a-empezar-la-promesa-incumplida-de-la-republica-nacion-estado-tomo-1-novedad",
       "isbn": "978-612-5223-15-9",
       "synopsis": "Perú volver a empezar. La promesa incumplida de la República-Nación-Estado constituye una serie de tres volúmenes en lo que el antropólogo peruano Rodrigo Montoya Rojas ofrece una propuesta de análisis global e histórica de la realidad peruana, que se diferencia de los estudios cada vez más especializados que ven los árboles y olvidan los bosques, que privilegian el presente renunciando a tomar en cuenta los tres momentos del tiempo. Esta serie es el fruto de cincuenta años de investigaciones en los Andes, la costa y la Amazonía peruana, siguiendo el rastro de José Carlos Mariátegui y José María Arguedas, Huamán Poma de Ayala, el Inca Garcilaso de la Vega y Túpac Amaru II.",
@@ -3236,7 +3307,7 @@
       "costPrice": 24.0,
       "weightKg": 0.68,
       "isActive": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "440 páginas, tapa blanda, 17,5 x 24,5 cm",
@@ -3245,7 +3316,8 @@
       "relatedTitles": "",
       "series": "CE- Serie Ciencias Sociales",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": true
     },
     {
       "id": "bk_5748d45be4f257cd",
@@ -3270,7 +3342,8 @@
       "relatedTitles": "",
       "series": "CE – Arte y Cultura",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_7db6e002123b40b5",
@@ -3295,7 +3368,8 @@
       "relatedTitles": "",
       "series": "CE – Arte y Cultura",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_4f1e9abda25806ae",
@@ -3320,7 +3394,8 @@
       "relatedTitles": "",
       "series": "CE – Arte y Cultura",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_7e466f282bf0960c",
@@ -3345,7 +3420,8 @@
       "relatedTitles": "",
       "series": "CE – Arte y Cultura",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_6e346fa89b9ab5d6",
@@ -3370,7 +3446,8 @@
       "relatedTitles": "De Seres Divinos. Mitología y canto entre los Matsigenka de Megantoni",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9ecc1eb5f4178cba",
@@ -3395,7 +3472,8 @@
       "relatedTitles": "Imaginario Shawi a través de su música y danza – Avistamientos: La retórica poética desde el animal y la ayahuasca",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9439499c3f12c0cc",
@@ -3420,7 +3498,8 @@
       "relatedTitles": "Las dos mitades de Rafael Chanchari Pizuri. Testimonio crítico shawi",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_9af96b47cdeea495",
@@ -3445,7 +3524,8 @@
       "relatedTitles": "Tejiendo la identidad. Mitología y estética entre los Matsigenka del Bajo Urubamba",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_ea4545c8d9ec1415",
@@ -3470,7 +3550,8 @@
       "relatedTitles": "Los ashaninka: un pueblo tras el bosque",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_1abce578f2b825a9",
@@ -3495,7 +3576,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_6f4ebafa92bbfb0d",
@@ -3520,7 +3602,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_5ab353843dc618ea",
@@ -3545,7 +3628,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_23bf239be3bfd150",
@@ -3570,7 +3654,8 @@
       "relatedTitles": "La mujer ashaninka en un mundo de cambio. Cosmología, tecnologías tradicionales y chamanismo en el status femenino en una sociedad indígena amazónica",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_df7186d5fcf486b0",
@@ -3595,7 +3680,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_be34a7daebdabcaf",
@@ -3620,7 +3706,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_02d95481fa9c0b77",
@@ -3645,7 +3732,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_ee5e7d116c3b8747",
@@ -3670,7 +3758,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_feeac70a8f8f6fcf",
@@ -3695,11 +3784,12 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_984c64d5ea038b8b",
-      "title": "Influencers de verdad. Lecciones de los que se atrevieron a hablar NOVEDAD",
+      "title": "Influencers de verdad. Lecciones de los que se atrevieron a hablar",
       "slug": "influencers-de-verdad-lecciones-de-los-que-se-atrevieron-a-hablar-novedad",
       "isbn": "978-612-5223-21-0",
       "synopsis": "En Influencers de verdad... encontrarás la memoria y las voces de algunos líderes y lideresas que resisten el paso del tiempo. Figuras nacionales e internacionales de la literatura, la política, el arte y la religión, cuyas trayectorias están y estuvieron dedicadas a la construcción de un pensamiento social emancipador. Sus luchas siguen inspirándonos e interpelándonos sobre la vida que llevamos y la sociedad en la que vivimos. Esta edición propone una selección de frases imprescindibles, algunas célebres y otras menos conocidas, junto a una breve biografía de cada uno de las personalidades elegidas. Es el objetivo de la compiladora que sus ideas nos permitan mirar críticamente nuestro presente y nos orienten en el camino hacia una necesaria transformación social.",
@@ -3711,7 +3801,7 @@
       "costPrice": 12.0,
       "weightKg": 0.36,
       "isActive": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "originType": "PROPIO",
       "publisherId": "pub_horizonte",
       "formatDescription": "176 páginas, tapa blanda, 15 x 23 cm",
@@ -3720,7 +3810,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": true
     },
     {
       "id": "bk_b441dacb874b582b",
@@ -3745,7 +3836,8 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     },
     {
       "id": "bk_beb994297ed80d6a",
@@ -3770,14 +3862,15 @@
       "relatedTitles": "",
       "series": "CE – Serie Amazonía",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-01T00:00:00.000Z",
+      "isNew": false
     }
   ],
   "inventory": [
     {
       "id": "inv_bk_67b744a55982a902_c",
       "bookId": "bk_67b744a55982a902",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3788,7 +3881,7 @@
     {
       "id": "inv_bk_67b744a55982a902_l",
       "bookId": "bk_67b744a55982a902",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 10,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3799,7 +3892,7 @@
     {
       "id": "inv_bk_b6478310c027eb4a_c",
       "bookId": "bk_b6478310c027eb4a",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3810,7 +3903,7 @@
     {
       "id": "inv_bk_b6478310c027eb4a_l",
       "bookId": "bk_b6478310c027eb4a",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 13,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3821,7 +3914,7 @@
     {
       "id": "inv_bk_c9b4aa4c638568ce_c",
       "bookId": "bk_c9b4aa4c638568ce",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3832,7 +3925,7 @@
     {
       "id": "inv_bk_c9b4aa4c638568ce_l",
       "bookId": "bk_c9b4aa4c638568ce",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 16,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3843,7 +3936,7 @@
     {
       "id": "inv_bk_f3755208dae901f5_c",
       "bookId": "bk_f3755208dae901f5",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3854,7 +3947,7 @@
     {
       "id": "inv_bk_f3755208dae901f5_l",
       "bookId": "bk_f3755208dae901f5",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 19,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3865,7 +3958,7 @@
     {
       "id": "inv_bk_530f00381680bf3d_c",
       "bookId": "bk_530f00381680bf3d",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3876,7 +3969,7 @@
     {
       "id": "inv_bk_530f00381680bf3d_l",
       "bookId": "bk_530f00381680bf3d",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 22,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3887,7 +3980,7 @@
     {
       "id": "inv_bk_54df7045236a11b3_c",
       "bookId": "bk_54df7045236a11b3",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3898,7 +3991,7 @@
     {
       "id": "inv_bk_54df7045236a11b3_l",
       "bookId": "bk_54df7045236a11b3",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 25,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3909,7 +4002,7 @@
     {
       "id": "inv_bk_71a9db0939b2601e_c",
       "bookId": "bk_71a9db0939b2601e",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3920,7 +4013,7 @@
     {
       "id": "inv_bk_71a9db0939b2601e_l",
       "bookId": "bk_71a9db0939b2601e",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 28,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3931,7 +4024,7 @@
     {
       "id": "inv_bk_166bf6f8d35d4f51_c",
       "bookId": "bk_166bf6f8d35d4f51",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3942,7 +4035,7 @@
     {
       "id": "inv_bk_166bf6f8d35d4f51_l",
       "bookId": "bk_166bf6f8d35d4f51",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 31,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3953,7 +4046,7 @@
     {
       "id": "inv_bk_23089efcf271b0bb_c",
       "bookId": "bk_23089efcf271b0bb",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3964,7 +4057,7 @@
     {
       "id": "inv_bk_23089efcf271b0bb_l",
       "bookId": "bk_23089efcf271b0bb",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 34,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3975,7 +4068,7 @@
     {
       "id": "inv_bk_e2ec3a8f4fcb7549_c",
       "bookId": "bk_e2ec3a8f4fcb7549",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -3986,7 +4079,7 @@
     {
       "id": "inv_bk_e2ec3a8f4fcb7549_l",
       "bookId": "bk_e2ec3a8f4fcb7549",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 12,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -3997,7 +4090,7 @@
     {
       "id": "inv_bk_2747ec3cb2282369_c",
       "bookId": "bk_2747ec3cb2282369",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4008,7 +4101,7 @@
     {
       "id": "inv_bk_2747ec3cb2282369_l",
       "bookId": "bk_2747ec3cb2282369",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 15,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4019,7 +4112,7 @@
     {
       "id": "inv_bk_9f6ccabeb56d8d86_c",
       "bookId": "bk_9f6ccabeb56d8d86",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4030,7 +4123,7 @@
     {
       "id": "inv_bk_9f6ccabeb56d8d86_l",
       "bookId": "bk_9f6ccabeb56d8d86",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 18,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4041,7 +4134,7 @@
     {
       "id": "inv_bk_61d73677541da233_c",
       "bookId": "bk_61d73677541da233",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4052,7 +4145,7 @@
     {
       "id": "inv_bk_61d73677541da233_l",
       "bookId": "bk_61d73677541da233",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 21,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4063,7 +4156,7 @@
     {
       "id": "inv_bk_f206f5493362c054_c",
       "bookId": "bk_f206f5493362c054",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4074,7 +4167,7 @@
     {
       "id": "inv_bk_f206f5493362c054_l",
       "bookId": "bk_f206f5493362c054",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 24,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4085,7 +4178,7 @@
     {
       "id": "inv_bk_aacf218b1edd15bc_c",
       "bookId": "bk_aacf218b1edd15bc",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4096,7 +4189,7 @@
     {
       "id": "inv_bk_aacf218b1edd15bc_l",
       "bookId": "bk_aacf218b1edd15bc",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 27,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4107,7 +4200,7 @@
     {
       "id": "inv_bk_46ab651fa25bc8f1_c",
       "bookId": "bk_46ab651fa25bc8f1",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4118,7 +4211,7 @@
     {
       "id": "inv_bk_46ab651fa25bc8f1_l",
       "bookId": "bk_46ab651fa25bc8f1",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4129,7 +4222,7 @@
     {
       "id": "inv_bk_85ca090046dca177_c",
       "bookId": "bk_85ca090046dca177",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4140,7 +4233,7 @@
     {
       "id": "inv_bk_85ca090046dca177_l",
       "bookId": "bk_85ca090046dca177",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 33,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4151,7 +4244,7 @@
     {
       "id": "inv_bk_048bd2372ed08423_c",
       "bookId": "bk_048bd2372ed08423",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4162,7 +4255,7 @@
     {
       "id": "inv_bk_048bd2372ed08423_l",
       "bookId": "bk_048bd2372ed08423",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 11,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4173,7 +4266,7 @@
     {
       "id": "inv_bk_3d0dda7e83b2c481_c",
       "bookId": "bk_3d0dda7e83b2c481",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4184,7 +4277,7 @@
     {
       "id": "inv_bk_3d0dda7e83b2c481_l",
       "bookId": "bk_3d0dda7e83b2c481",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 14,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4195,7 +4288,7 @@
     {
       "id": "inv_bk_d96eaba9937d9c88_c",
       "bookId": "bk_d96eaba9937d9c88",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4206,7 +4299,7 @@
     {
       "id": "inv_bk_d96eaba9937d9c88_l",
       "bookId": "bk_d96eaba9937d9c88",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 17,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4217,7 +4310,7 @@
     {
       "id": "inv_bk_e8039feae3ad664e_c",
       "bookId": "bk_e8039feae3ad664e",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4228,7 +4321,7 @@
     {
       "id": "inv_bk_e8039feae3ad664e_l",
       "bookId": "bk_e8039feae3ad664e",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 20,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4239,7 +4332,7 @@
     {
       "id": "inv_bk_ecf055255ea9c9d6_c",
       "bookId": "bk_ecf055255ea9c9d6",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4250,7 +4343,7 @@
     {
       "id": "inv_bk_ecf055255ea9c9d6_l",
       "bookId": "bk_ecf055255ea9c9d6",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 23,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4261,7 +4354,7 @@
     {
       "id": "inv_bk_96ebe0cd407b45b9_c",
       "bookId": "bk_96ebe0cd407b45b9",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4272,7 +4365,7 @@
     {
       "id": "inv_bk_96ebe0cd407b45b9_l",
       "bookId": "bk_96ebe0cd407b45b9",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 26,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4283,7 +4376,7 @@
     {
       "id": "inv_bk_934e1f6773fb32f0_c",
       "bookId": "bk_934e1f6773fb32f0",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4294,7 +4387,7 @@
     {
       "id": "inv_bk_934e1f6773fb32f0_l",
       "bookId": "bk_934e1f6773fb32f0",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 29,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4305,7 +4398,7 @@
     {
       "id": "inv_bk_a1d32a3df67784fb_c",
       "bookId": "bk_a1d32a3df67784fb",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4316,7 +4409,7 @@
     {
       "id": "inv_bk_a1d32a3df67784fb_l",
       "bookId": "bk_a1d32a3df67784fb",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 32,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4327,7 +4420,7 @@
     {
       "id": "inv_bk_fa644646e159f458_c",
       "bookId": "bk_fa644646e159f458",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4338,7 +4431,7 @@
     {
       "id": "inv_bk_fa644646e159f458_l",
       "bookId": "bk_fa644646e159f458",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 10,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4349,7 +4442,7 @@
     {
       "id": "inv_bk_375828f431b093ed_c",
       "bookId": "bk_375828f431b093ed",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4360,7 +4453,7 @@
     {
       "id": "inv_bk_375828f431b093ed_l",
       "bookId": "bk_375828f431b093ed",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 13,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4371,7 +4464,7 @@
     {
       "id": "inv_bk_85b32ed83b237d65_c",
       "bookId": "bk_85b32ed83b237d65",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4382,7 +4475,7 @@
     {
       "id": "inv_bk_85b32ed83b237d65_l",
       "bookId": "bk_85b32ed83b237d65",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 16,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4393,7 +4486,7 @@
     {
       "id": "inv_bk_5aa1acdf4ce8c3d7_c",
       "bookId": "bk_5aa1acdf4ce8c3d7",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4404,7 +4497,7 @@
     {
       "id": "inv_bk_5aa1acdf4ce8c3d7_l",
       "bookId": "bk_5aa1acdf4ce8c3d7",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 19,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4415,7 +4508,7 @@
     {
       "id": "inv_bk_458b001f8c621136_c",
       "bookId": "bk_458b001f8c621136",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4426,7 +4519,7 @@
     {
       "id": "inv_bk_458b001f8c621136_l",
       "bookId": "bk_458b001f8c621136",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 22,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4437,7 +4530,7 @@
     {
       "id": "inv_bk_ea4607b98260acad_c",
       "bookId": "bk_ea4607b98260acad",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4448,7 +4541,7 @@
     {
       "id": "inv_bk_ea4607b98260acad_l",
       "bookId": "bk_ea4607b98260acad",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 25,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4459,7 +4552,7 @@
     {
       "id": "inv_bk_1d54a80592c183b8_c",
       "bookId": "bk_1d54a80592c183b8",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4470,7 +4563,7 @@
     {
       "id": "inv_bk_1d54a80592c183b8_l",
       "bookId": "bk_1d54a80592c183b8",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 28,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4481,7 +4574,7 @@
     {
       "id": "inv_bk_d70459965da363e0_c",
       "bookId": "bk_d70459965da363e0",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4492,7 +4585,7 @@
     {
       "id": "inv_bk_d70459965da363e0_l",
       "bookId": "bk_d70459965da363e0",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 31,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4503,7 +4596,7 @@
     {
       "id": "inv_bk_2486a7a77cca3a1a_c",
       "bookId": "bk_2486a7a77cca3a1a",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4514,7 +4607,7 @@
     {
       "id": "inv_bk_2486a7a77cca3a1a_l",
       "bookId": "bk_2486a7a77cca3a1a",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 34,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4525,7 +4618,7 @@
     {
       "id": "inv_bk_2d835953ff1bab09_c",
       "bookId": "bk_2d835953ff1bab09",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4536,7 +4629,7 @@
     {
       "id": "inv_bk_2d835953ff1bab09_l",
       "bookId": "bk_2d835953ff1bab09",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 12,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4547,7 +4640,7 @@
     {
       "id": "inv_bk_fe80d115bdd5c0f3_c",
       "bookId": "bk_fe80d115bdd5c0f3",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4558,7 +4651,7 @@
     {
       "id": "inv_bk_fe80d115bdd5c0f3_l",
       "bookId": "bk_fe80d115bdd5c0f3",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 15,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4569,7 +4662,7 @@
     {
       "id": "inv_bk_6b7c974d8174089c_c",
       "bookId": "bk_6b7c974d8174089c",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4580,7 +4673,7 @@
     {
       "id": "inv_bk_6b7c974d8174089c_l",
       "bookId": "bk_6b7c974d8174089c",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 18,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4591,7 +4684,7 @@
     {
       "id": "inv_bk_37eab28128d89b4c_c",
       "bookId": "bk_37eab28128d89b4c",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4602,7 +4695,7 @@
     {
       "id": "inv_bk_37eab28128d89b4c_l",
       "bookId": "bk_37eab28128d89b4c",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 21,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4613,7 +4706,7 @@
     {
       "id": "inv_bk_65969ab464101de6_c",
       "bookId": "bk_65969ab464101de6",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4624,7 +4717,7 @@
     {
       "id": "inv_bk_65969ab464101de6_l",
       "bookId": "bk_65969ab464101de6",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 24,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4635,7 +4728,7 @@
     {
       "id": "inv_bk_9a0429c025d66ae0_c",
       "bookId": "bk_9a0429c025d66ae0",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4646,7 +4739,7 @@
     {
       "id": "inv_bk_9a0429c025d66ae0_l",
       "bookId": "bk_9a0429c025d66ae0",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 27,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4657,7 +4750,7 @@
     {
       "id": "inv_bk_ba8dd0822bba98f3_c",
       "bookId": "bk_ba8dd0822bba98f3",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4668,7 +4761,7 @@
     {
       "id": "inv_bk_ba8dd0822bba98f3_l",
       "bookId": "bk_ba8dd0822bba98f3",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4679,7 +4772,7 @@
     {
       "id": "inv_bk_55a94edf0129ef9e_c",
       "bookId": "bk_55a94edf0129ef9e",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4690,7 +4783,7 @@
     {
       "id": "inv_bk_55a94edf0129ef9e_l",
       "bookId": "bk_55a94edf0129ef9e",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 33,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4701,7 +4794,7 @@
     {
       "id": "inv_bk_debe72606fd524be_c",
       "bookId": "bk_debe72606fd524be",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4712,7 +4805,7 @@
     {
       "id": "inv_bk_debe72606fd524be_l",
       "bookId": "bk_debe72606fd524be",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 11,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4723,7 +4816,7 @@
     {
       "id": "inv_bk_c0a0b9d7be52ab9e_c",
       "bookId": "bk_c0a0b9d7be52ab9e",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4734,7 +4827,7 @@
     {
       "id": "inv_bk_c0a0b9d7be52ab9e_l",
       "bookId": "bk_c0a0b9d7be52ab9e",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 14,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4745,7 +4838,7 @@
     {
       "id": "inv_bk_590e02514f274c3d_c",
       "bookId": "bk_590e02514f274c3d",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4756,7 +4849,7 @@
     {
       "id": "inv_bk_590e02514f274c3d_l",
       "bookId": "bk_590e02514f274c3d",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 17,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4767,7 +4860,7 @@
     {
       "id": "inv_bk_0a06e4b056b22318_c",
       "bookId": "bk_0a06e4b056b22318",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4778,7 +4871,7 @@
     {
       "id": "inv_bk_0a06e4b056b22318_l",
       "bookId": "bk_0a06e4b056b22318",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 20,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4789,7 +4882,7 @@
     {
       "id": "inv_bk_d1074858a5451a8a_c",
       "bookId": "bk_d1074858a5451a8a",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4800,7 +4893,7 @@
     {
       "id": "inv_bk_d1074858a5451a8a_l",
       "bookId": "bk_d1074858a5451a8a",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 23,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4811,7 +4904,7 @@
     {
       "id": "inv_bk_ec3e3e9b511865a7_c",
       "bookId": "bk_ec3e3e9b511865a7",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4822,7 +4915,7 @@
     {
       "id": "inv_bk_ec3e3e9b511865a7_l",
       "bookId": "bk_ec3e3e9b511865a7",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 26,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4833,7 +4926,7 @@
     {
       "id": "inv_bk_929a88a336c4a019_c",
       "bookId": "bk_929a88a336c4a019",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4844,7 +4937,7 @@
     {
       "id": "inv_bk_929a88a336c4a019_l",
       "bookId": "bk_929a88a336c4a019",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 29,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4855,7 +4948,7 @@
     {
       "id": "inv_bk_c6ca78adfe6b72de_c",
       "bookId": "bk_c6ca78adfe6b72de",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4866,7 +4959,7 @@
     {
       "id": "inv_bk_c6ca78adfe6b72de_l",
       "bookId": "bk_c6ca78adfe6b72de",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 32,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4877,7 +4970,7 @@
     {
       "id": "inv_bk_a816145fa21e96e5_c",
       "bookId": "bk_a816145fa21e96e5",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4888,7 +4981,7 @@
     {
       "id": "inv_bk_a816145fa21e96e5_l",
       "bookId": "bk_a816145fa21e96e5",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 10,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4899,7 +4992,7 @@
     {
       "id": "inv_bk_6825d4d0bf4b48c7_c",
       "bookId": "bk_6825d4d0bf4b48c7",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4910,7 +5003,7 @@
     {
       "id": "inv_bk_6825d4d0bf4b48c7_l",
       "bookId": "bk_6825d4d0bf4b48c7",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 13,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4921,7 +5014,7 @@
     {
       "id": "inv_bk_c5beec581ac74ebc_c",
       "bookId": "bk_c5beec581ac74ebc",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4932,7 +5025,7 @@
     {
       "id": "inv_bk_c5beec581ac74ebc_l",
       "bookId": "bk_c5beec581ac74ebc",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 16,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4943,7 +5036,7 @@
     {
       "id": "inv_bk_893aeec182e83139_c",
       "bookId": "bk_893aeec182e83139",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4954,7 +5047,7 @@
     {
       "id": "inv_bk_893aeec182e83139_l",
       "bookId": "bk_893aeec182e83139",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 19,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4965,7 +5058,7 @@
     {
       "id": "inv_bk_9d92d50c1f711133_c",
       "bookId": "bk_9d92d50c1f711133",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4976,7 +5069,7 @@
     {
       "id": "inv_bk_9d92d50c1f711133_l",
       "bookId": "bk_9d92d50c1f711133",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 22,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -4987,7 +5080,7 @@
     {
       "id": "inv_bk_a03f8e39040b1c37_c",
       "bookId": "bk_a03f8e39040b1c37",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -4998,7 +5091,7 @@
     {
       "id": "inv_bk_a03f8e39040b1c37_l",
       "bookId": "bk_a03f8e39040b1c37",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 25,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5009,7 +5102,7 @@
     {
       "id": "inv_bk_4f9a931f96a45da1_c",
       "bookId": "bk_4f9a931f96a45da1",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5020,7 +5113,7 @@
     {
       "id": "inv_bk_4f9a931f96a45da1_l",
       "bookId": "bk_4f9a931f96a45da1",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 28,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5031,7 +5124,7 @@
     {
       "id": "inv_bk_c696e2eac7a30e8e_c",
       "bookId": "bk_c696e2eac7a30e8e",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5042,7 +5135,7 @@
     {
       "id": "inv_bk_c696e2eac7a30e8e_l",
       "bookId": "bk_c696e2eac7a30e8e",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 31,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5053,7 +5146,7 @@
     {
       "id": "inv_bk_89a4259c603ad973_c",
       "bookId": "bk_89a4259c603ad973",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5064,7 +5157,7 @@
     {
       "id": "inv_bk_89a4259c603ad973_l",
       "bookId": "bk_89a4259c603ad973",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 34,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5075,7 +5168,7 @@
     {
       "id": "inv_bk_50e8fbc1f0e06259_c",
       "bookId": "bk_50e8fbc1f0e06259",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5086,7 +5179,7 @@
     {
       "id": "inv_bk_50e8fbc1f0e06259_l",
       "bookId": "bk_50e8fbc1f0e06259",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 12,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5097,7 +5190,7 @@
     {
       "id": "inv_bk_056424eb2b404bb8_c",
       "bookId": "bk_056424eb2b404bb8",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5108,7 +5201,7 @@
     {
       "id": "inv_bk_056424eb2b404bb8_l",
       "bookId": "bk_056424eb2b404bb8",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 15,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5119,7 +5212,7 @@
     {
       "id": "inv_bk_60b864bfe63ad0b0_c",
       "bookId": "bk_60b864bfe63ad0b0",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5130,7 +5223,7 @@
     {
       "id": "inv_bk_60b864bfe63ad0b0_l",
       "bookId": "bk_60b864bfe63ad0b0",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 18,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5141,7 +5234,7 @@
     {
       "id": "inv_bk_5f76068e69a49b97_c",
       "bookId": "bk_5f76068e69a49b97",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5152,7 +5245,7 @@
     {
       "id": "inv_bk_5f76068e69a49b97_l",
       "bookId": "bk_5f76068e69a49b97",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 21,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5163,7 +5256,7 @@
     {
       "id": "inv_bk_4a9d9f3905784f36_c",
       "bookId": "bk_4a9d9f3905784f36",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5174,7 +5267,7 @@
     {
       "id": "inv_bk_4a9d9f3905784f36_l",
       "bookId": "bk_4a9d9f3905784f36",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 24,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5185,7 +5278,7 @@
     {
       "id": "inv_bk_132158acf5159bdc_c",
       "bookId": "bk_132158acf5159bdc",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5196,7 +5289,7 @@
     {
       "id": "inv_bk_132158acf5159bdc_l",
       "bookId": "bk_132158acf5159bdc",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 27,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5207,7 +5300,7 @@
     {
       "id": "inv_bk_7b30b27f13d28e6f_c",
       "bookId": "bk_7b30b27f13d28e6f",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5218,7 +5311,7 @@
     {
       "id": "inv_bk_7b30b27f13d28e6f_l",
       "bookId": "bk_7b30b27f13d28e6f",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5229,7 +5322,7 @@
     {
       "id": "inv_bk_1affa8b422da85e7_c",
       "bookId": "bk_1affa8b422da85e7",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5240,7 +5333,7 @@
     {
       "id": "inv_bk_1affa8b422da85e7_l",
       "bookId": "bk_1affa8b422da85e7",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 33,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5251,7 +5344,7 @@
     {
       "id": "inv_bk_decc7bae507ada3f_c",
       "bookId": "bk_decc7bae507ada3f",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5262,7 +5355,7 @@
     {
       "id": "inv_bk_decc7bae507ada3f_l",
       "bookId": "bk_decc7bae507ada3f",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 11,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5273,7 +5366,7 @@
     {
       "id": "inv_bk_a000f2d4ef83e2f8_c",
       "bookId": "bk_a000f2d4ef83e2f8",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5284,7 +5377,7 @@
     {
       "id": "inv_bk_a000f2d4ef83e2f8_l",
       "bookId": "bk_a000f2d4ef83e2f8",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 14,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5295,7 +5388,7 @@
     {
       "id": "inv_bk_c069302a682a21c1_c",
       "bookId": "bk_c069302a682a21c1",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5306,7 +5399,7 @@
     {
       "id": "inv_bk_c069302a682a21c1_l",
       "bookId": "bk_c069302a682a21c1",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 17,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5317,7 +5410,7 @@
     {
       "id": "inv_bk_9d0efbe35d2e5f7a_c",
       "bookId": "bk_9d0efbe35d2e5f7a",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5328,7 +5421,7 @@
     {
       "id": "inv_bk_9d0efbe35d2e5f7a_l",
       "bookId": "bk_9d0efbe35d2e5f7a",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 20,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5339,7 +5432,7 @@
     {
       "id": "inv_bk_9fd53c8584ee5ffb_c",
       "bookId": "bk_9fd53c8584ee5ffb",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5350,7 +5443,7 @@
     {
       "id": "inv_bk_9fd53c8584ee5ffb_l",
       "bookId": "bk_9fd53c8584ee5ffb",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 23,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5361,7 +5454,7 @@
     {
       "id": "inv_bk_5748d45be4f257cd_c",
       "bookId": "bk_5748d45be4f257cd",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5372,7 +5465,7 @@
     {
       "id": "inv_bk_5748d45be4f257cd_l",
       "bookId": "bk_5748d45be4f257cd",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 26,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5383,7 +5476,7 @@
     {
       "id": "inv_bk_7db6e002123b40b5_c",
       "bookId": "bk_7db6e002123b40b5",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5394,7 +5487,7 @@
     {
       "id": "inv_bk_7db6e002123b40b5_l",
       "bookId": "bk_7db6e002123b40b5",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 29,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5405,7 +5498,7 @@
     {
       "id": "inv_bk_4f1e9abda25806ae_c",
       "bookId": "bk_4f1e9abda25806ae",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5416,7 +5509,7 @@
     {
       "id": "inv_bk_4f1e9abda25806ae_l",
       "bookId": "bk_4f1e9abda25806ae",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 32,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5427,7 +5520,7 @@
     {
       "id": "inv_bk_7e466f282bf0960c_c",
       "bookId": "bk_7e466f282bf0960c",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5438,7 +5531,7 @@
     {
       "id": "inv_bk_7e466f282bf0960c_l",
       "bookId": "bk_7e466f282bf0960c",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 10,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5449,7 +5542,7 @@
     {
       "id": "inv_bk_6e346fa89b9ab5d6_c",
       "bookId": "bk_6e346fa89b9ab5d6",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5460,7 +5553,7 @@
     {
       "id": "inv_bk_6e346fa89b9ab5d6_l",
       "bookId": "bk_6e346fa89b9ab5d6",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 13,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5471,7 +5564,7 @@
     {
       "id": "inv_bk_9ecc1eb5f4178cba_c",
       "bookId": "bk_9ecc1eb5f4178cba",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5482,7 +5575,7 @@
     {
       "id": "inv_bk_9ecc1eb5f4178cba_l",
       "bookId": "bk_9ecc1eb5f4178cba",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 16,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5493,7 +5586,7 @@
     {
       "id": "inv_bk_9439499c3f12c0cc_c",
       "bookId": "bk_9439499c3f12c0cc",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5504,7 +5597,7 @@
     {
       "id": "inv_bk_9439499c3f12c0cc_l",
       "bookId": "bk_9439499c3f12c0cc",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 19,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5515,7 +5608,7 @@
     {
       "id": "inv_bk_9af96b47cdeea495_c",
       "bookId": "bk_9af96b47cdeea495",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5526,7 +5619,7 @@
     {
       "id": "inv_bk_9af96b47cdeea495_l",
       "bookId": "bk_9af96b47cdeea495",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 22,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5537,7 +5630,7 @@
     {
       "id": "inv_bk_ea4545c8d9ec1415_c",
       "bookId": "bk_ea4545c8d9ec1415",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5548,7 +5641,7 @@
     {
       "id": "inv_bk_ea4545c8d9ec1415_l",
       "bookId": "bk_ea4545c8d9ec1415",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 25,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5559,7 +5652,7 @@
     {
       "id": "inv_bk_1abce578f2b825a9_c",
       "bookId": "bk_1abce578f2b825a9",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5570,7 +5663,7 @@
     {
       "id": "inv_bk_1abce578f2b825a9_l",
       "bookId": "bk_1abce578f2b825a9",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 28,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5581,7 +5674,7 @@
     {
       "id": "inv_bk_6f4ebafa92bbfb0d_c",
       "bookId": "bk_6f4ebafa92bbfb0d",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5592,7 +5685,7 @@
     {
       "id": "inv_bk_6f4ebafa92bbfb0d_l",
       "bookId": "bk_6f4ebafa92bbfb0d",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 31,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5603,7 +5696,7 @@
     {
       "id": "inv_bk_5ab353843dc618ea_c",
       "bookId": "bk_5ab353843dc618ea",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 51,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5614,7 +5707,7 @@
     {
       "id": "inv_bk_5ab353843dc618ea_l",
       "bookId": "bk_5ab353843dc618ea",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 34,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5625,7 +5718,7 @@
     {
       "id": "inv_bk_23bf239be3bfd150_c",
       "bookId": "bk_23bf239be3bfd150",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 58,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5636,7 +5729,7 @@
     {
       "id": "inv_bk_23bf239be3bfd150_l",
       "bookId": "bk_23bf239be3bfd150",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 12,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5647,7 +5740,7 @@
     {
       "id": "inv_bk_df7186d5fcf486b0_c",
       "bookId": "bk_df7186d5fcf486b0",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 65,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5658,7 +5751,7 @@
     {
       "id": "inv_bk_df7186d5fcf486b0_l",
       "bookId": "bk_df7186d5fcf486b0",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 15,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5669,7 +5762,7 @@
     {
       "id": "inv_bk_be34a7daebdabcaf_c",
       "bookId": "bk_be34a7daebdabcaf",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 72,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5680,7 +5773,7 @@
     {
       "id": "inv_bk_be34a7daebdabcaf_l",
       "bookId": "bk_be34a7daebdabcaf",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 18,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5691,7 +5784,7 @@
     {
       "id": "inv_bk_02d95481fa9c0b77_c",
       "bookId": "bk_02d95481fa9c0b77",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 79,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5702,7 +5795,7 @@
     {
       "id": "inv_bk_02d95481fa9c0b77_l",
       "bookId": "bk_02d95481fa9c0b77",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 21,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5713,7 +5806,7 @@
     {
       "id": "inv_bk_ee5e7d116c3b8747_c",
       "bookId": "bk_ee5e7d116c3b8747",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 86,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5724,7 +5817,7 @@
     {
       "id": "inv_bk_ee5e7d116c3b8747_l",
       "bookId": "bk_ee5e7d116c3b8747",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 24,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5735,7 +5828,7 @@
     {
       "id": "inv_bk_feeac70a8f8f6fcf_c",
       "bookId": "bk_feeac70a8f8f6fcf",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 93,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5746,7 +5839,7 @@
     {
       "id": "inv_bk_feeac70a8f8f6fcf_l",
       "bookId": "bk_feeac70a8f8f6fcf",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 27,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5757,7 +5850,7 @@
     {
       "id": "inv_bk_984c64d5ea038b8b_c",
       "bookId": "bk_984c64d5ea038b8b",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5768,7 +5861,7 @@
     {
       "id": "inv_bk_984c64d5ea038b8b_l",
       "bookId": "bk_984c64d5ea038b8b",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 30,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5779,7 +5872,7 @@
     {
       "id": "inv_bk_b441dacb874b582b_c",
       "bookId": "bk_b441dacb874b582b",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 37,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5790,7 +5883,7 @@
     {
       "id": "inv_bk_b441dacb874b582b_l",
       "bookId": "bk_b441dacb874b582b",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 33,
       "stockConsignado": 0,
       "stockMinimo": 3,
@@ -5801,7 +5894,7 @@
     {
       "id": "inv_bk_beb994297ed80d6a_c",
       "bookId": "bk_beb994297ed80d6a",
-      "warehouseId": "wh_central",
+      "warehouseId": "wh_san_miguel",
       "stockDisponible": 44,
       "stockConsignado": 0,
       "stockMinimo": 5,
@@ -5812,7 +5905,7 @@
     {
       "id": "inv_bk_beb994297ed80d6a_l",
       "bookId": "bk_beb994297ed80d6a",
-      "warehouseId": "wh_libreria",
+      "warehouseId": "wh_delivery_lima",
       "stockDisponible": 11,
       "stockConsignado": 0,
       "stockMinimo": 3,

@@ -34,6 +34,7 @@ export interface BookWithDetails {
   weightKg: number | null;
   isActive: boolean;
   isFeatured: boolean;
+  isNew?: boolean;
   originType: string;
   publisherId: string | null;
   publisher: { id: string; name: string; country: string | null } | null;

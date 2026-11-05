@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { BookOpen, Users, Award, MapPin } from 'lucide-react';
+import { BookOpen, Users, Store, History } from 'lucide-react';
 
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -20,7 +20,6 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
     const animate = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * end);
       setVal(current);
@@ -38,9 +37,9 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
 const stats = [
   { icon: BookOpen, value: 90, suffix: '+', label: 'Títulos en catálogo' },
-  { icon: MapPin, value: 50, suffix: '+', label: 'Años de trayectoria' },
+  { icon: History, value: 50, suffix: '+', label: 'Años de trayectoria' },
   { icon: Users, value: 60, suffix: '+', label: 'Autores e investigadores' },
-  { icon: Award, value: 2, suffix: '', label: 'Almacenes y salas' },
+  { icon: Store, value: 5, suffix: ' +', label: 'Puntos de venta físicos' },
 ];
 
 export function AboutSection() {
@@ -53,26 +52,29 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center mb-16"
+          className="mx-auto max-w-3xl text-center mb-16 space-y-4"
         >
-          <h2 className="font-serif text-3xl font-bold sm:text-4xl">
+          <h2 className="font-serif text-3xl font-bold sm:text-4xl text-foreground">
             Nosotros
           </h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Editorial Horizonte nació en Lima como un proyecto comprometido con la
-            difusión del pensamiento crítico, la memoria histórica y la riqueza
-            literaria y cultural del Perú y América Latina. Desde su fundación, ha
-            sido la casa emblemática de las obras fundamentales de José María Arguedas,
-            César Vallejo y destacados intelectuales de las ciencias sociales.
+          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+            Nuestro sello Editorial Horizonte nació como un proyecto comprometido con la difusión
+            del pensamiento crítico, la memoria histórica y la riqueza literaria y cultural del Perú y América Latina.
           </p>
-          <p className="mt-3 text-muted-foreground leading-relaxed">
-            Nuestra misión es hacer llegar al lector ediciones rigurosas y cuidadas
-            que preserven la identidad andina y amazónica, fortaleciendo el diálogo
-            intercultural y la reflexión crítica en nuevas generaciones.
+          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+            Desde su fundación en 1968, ha sido la casa editorial oficial de José María Arguedas y ha publicado la obra
+            de César Vallejo y de destacados escritores e intelectuales de las ciencias sociales y las humanidades.
+          </p>
+          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+            Nuestra misión es hacer llegar al lector contemporáneo ediciones rigurosas y cuidadas que preserven
+            la identidad costeña, andina y amazónica, propiciando el diálogo intercultural y la reflexión crítica con las nuevas generaciones.
+          </p>
+          <p className="text-xs sm:text-sm font-medium text-primary pt-2">
+            Actualmente también ofrecemos servicios de edición, impresión y distribución de libros a nivel nacional.
           </p>
         </motion.div>
 
-        {/* Stats — horizontal scroll on mobile, grid on desktop */}
+        {/* Stats */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
@@ -83,11 +85,11 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="flex flex-col items-center gap-2 rounded-2xl border bg-card p-5 sm:p-6 text-center"
+                className="flex flex-col items-center gap-2 rounded-2xl border border-border/80 bg-card p-5 sm:p-6 text-center shadow-xs"
               >
-                <Icon className="size-5 text-muted-foreground/60" />
+                <Icon className="size-5 text-primary/70" />
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                <p className="text-xs sm:text-sm text-muted-foreground font-medium leading-tight">
+                <p className="text-xs sm:text-sm text-muted-foreground font-semibold leading-tight">
                   {stat.label}
                 </p>
               </motion.div>

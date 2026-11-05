@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { ShoppingCart, Star, Check, BookOpen } from 'lucide-react';
+import { ShoppingCart, Star, Check, BookOpen, Sparkles } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { useToast } from '@/hooks/use-toast';
 import type { BookWithDetails } from '@/lib/types';
@@ -23,9 +23,9 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
     const { toast } = useToast();
     const [isAdded, setIsAdded] = useState(false);
 
-    const imageUrl = book.coverUrl || '/covers/cara_tula_yawar_fiesta-01.webp';
+    const imageUrl = book.coverUrl || null;
     const authors = book.authors.map((a) => a.author.name).join(', ') || 'Editorial Horizonte';
-    const originLabel = book.originType === 'PROPIO' ? 'Fondo Propio' : 'Terceros';
+    const originLabel = book.originType === 'PROPIO' ? 'Sello propio' : 'Sello distribuido';
     const outOfStock = book.totalStock === 0;
     const lowStock = book.totalStock > 0 && book.totalStock <= 10;
     const collectionLabel = book.series || book.categories[0]?.category?.name || 'Editorial Horizonte';
@@ -63,12 +63,7 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
       >
         <Link
           href={`/libro/${book.slug}`}
-          onClick={onClick ? (e) => {
-            // If custom onClick provided (e.g. modal fallback), allow calling it
-            if (onClick) {
-              // We navigate via link by default, but if onClick handles it:
-            }
-          } : undefined}
+          onClick={onClick}
           className={cn(
             'relative flex flex-col h-full rounded-2xl border border-border/70 bg-card overflow-hidden text-card-foreground',
             'transition-all duration-300 ease-out',
@@ -78,40 +73,61 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
         >
           {/* ─── 1. ÁREA DE PORTADA LIMPIA (100% VISIBLE, SIN DEGRADADO VERDE) ─── */}
           <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.1] bg-gradient-to-b from-muted/50 via-muted/25 to-muted/40 p-4 sm:p-5 flex items-center justify-center overflow-hidden">
-            {/* Badges superiores discretos */}
+            {/* Badges superiores oficiales */}
             <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
-              <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider bg-background/85 backdrop-blur-sm border border-border/60 text-foreground/80 shadow-2xs">
+              <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider bg-background/90 backdrop-blur-sm border border-border/60 text-foreground/80 shadow-2xs">
                 {originLabel}
               </span>
-              {book.isFeatured && (
+              {book.isNew ? (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-600 text-white px-2 py-0.5 text-[9px] font-bold backdrop-blur-sm shadow-2xs uppercase tracking-wider">
+                  <Sparkles className="size-2.5" />
+                  Novedad
+                </span>
+              ) : book.isFeatured ? (
                 <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-400 px-2 py-0.5 text-[9px] font-bold text-amber-950 backdrop-blur-sm shadow-2xs">
                   <Star className="size-2.5 fill-current" />
                   Destacado
                 </span>
-              )}
+              ) : null}
             </div>
 
             {/* Portada física 3D intacta — nunca recortada */}
-            <div className="relative max-h-full max-w-[85%] sm:max-w-[80%] flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.04]">
-              <div className="relative overflow-hidden rounded-r-sm rounded-l-2xs shadow-[0_8px_20px_-4px_rgba(0,0,0,0.22)] dark:shadow-[0_10px_24px_-4px_rgba(0,0,0,0.65)] border border-black/10 bg-background">
-                {imageUrl ? (
+            <div className="relative max-h-full max-w-[88%] sm:max-w-[82%] flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.04]">
+              {imageUrl ? (
+                <div className="relative overflow-hidden rounded-r-sm rounded-l-2xs shadow-[0_8px_20px_-4px_rgba(0,0,0,0.22)] dark:shadow-[0_10px_24px_-4px_rgba(0,0,0,0.65)] border border-black/10 bg-background">
                   <img
                     src={imageUrl}
                     alt={`Portada de ${book.title}`}
                     className="w-full h-auto max-h-[220px] sm:max-h-[260px] object-contain block select-none"
                     loading="lazy"
                   />
-                ) : (
-                  <div className="w-32 h-44 flex flex-col items-center justify-center p-3 text-center bg-muted text-muted-foreground">
-                    <BookOpen className="size-8 opacity-40 mb-2" />
-                    <span className="text-[10px] font-serif font-bold line-clamp-2">{book.title}</span>
+                  {/* Sutil lomo y textura de libro físico */}
+                  <div className="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent pointer-events-none rounded-l-2xs" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none opacity-30" />
+                </div>
+              ) : (
+                /* Mockup editorial físico neutro (Image 13 del cliente) */
+                <div className="w-36 sm:w-40 h-52 sm:h-56 flex flex-col justify-between p-3.5 text-center bg-[#f7f4ee] dark:bg-stone-900 border border-stone-300 dark:border-stone-800 rounded-r-md rounded-l-2xs shadow-[0_8px_22px_-5px_rgba(0,0,0,0.25)] relative overflow-hidden select-none">
+                  <div className="flex justify-center pt-1 opacity-40">
+                    <BookOpen className="size-6 text-foreground stroke-1" />
                   </div>
-                )}
-
-                {/* Sutil lomo y textura de libro físico */}
-                <div className="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent pointer-events-none rounded-l-2xs" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none opacity-40" />
-              </div>
+                  <div className="my-auto px-1 space-y-1">
+                    <span className="font-serif text-xs font-bold text-foreground leading-snug line-clamp-3">
+                      {book.title}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground block line-clamp-1 font-sans">
+                      {authors}
+                    </span>
+                  </div>
+                  <div className="pt-2 border-t border-black/5 dark:border-white/5">
+                    <span className="text-[9px] text-muted-foreground font-medium tracking-wide">
+                      {book.formatDescription || `${book.pages || 160} págs.`}
+                    </span>
+                  </div>
+                  {/* Lomo y curvatura de libro */}
+                  <div className="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent pointer-events-none rounded-l-2xs" />
+                </div>
+              )}
             </div>
           </div>
 

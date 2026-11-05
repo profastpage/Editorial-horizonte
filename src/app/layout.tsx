@@ -22,11 +22,22 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://editorial-horizonte.vercel.app"),
-  title: "Editorial Horizonte | Catálogo Oficial de Libros Peruanos",
+  title: "Horizonte libros – Página oficial",
   description:
-    "Fondo editorial fundado en 1970 en Lima, Perú. Descubre las obras de José María Arguedas, literatura peruana, historia y ciencias sociales.",
+    "Librería independiente ubicada en Lima, Perú. Especializada en literatura, ciencias sociales y humanidades",
+  keywords: [
+    "HORIZONTE Libros",
+    "Editorial Horizonte",
+    "José María Arguedas",
+    "César Vallejo",
+    "Literatura peruana",
+    "Ciencias sociales",
+    "Librería Lima Perú",
+  ],
   icons: {
-    icon: "/hero-desktop.webp",
+    icon: "/logo.png",
+    shortcut: "/favicon.png",
+    apple: "/logo.png",
   },
 };
 
