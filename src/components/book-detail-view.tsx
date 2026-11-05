@@ -253,7 +253,7 @@ export function BookDetailView({ book, relatedBooks }: BookDetailViewProps) {
 
               <Link
 
-                href="/#catalogo"
+                href="/catalogo"
 
                 className="inline-flex items-center gap-1.5 font-medium hover:text-foreground transition-colors group"
 
@@ -1127,7 +1127,7 @@ export function BookDetailView({ book, relatedBooks }: BookDetailViewProps) {
 
                 <Link
 
-                  href="/#catalogo"
+                  href="/catalogo"
 
                   className="text-sm font-medium text-primary hover:underline hidden sm:inline"
 
