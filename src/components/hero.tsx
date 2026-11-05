@@ -17,7 +17,7 @@ export function HeroSection() {
         <img
           src="/hero-desktop.webp"
           alt="Editorial Horizonte Fondo"
-          className="w-full h-full object-cover object-center brightness-[0.72] dark:brightness-[0.55]"
+          className="w-full h-full object-cover object-center brightness-[0.78] dark:brightness-[0.60]"
         />
       </picture>
 
@@ -27,8 +27,8 @@ export function HeroSection() {
       {/* Soft dark overlay */}
       <div className="absolute inset-0 bg-black/20 dark:bg-black/40 pointer-events-none" />
 
-      {/* Bottom smooth bleed into page background (warm cream/canvas) */}
-      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
+      {/* Sutil transición en el borde inferior (muy bajo y limpio, sin tapar los libros) */}
+      <div className="absolute inset-x-0 bottom-0 h-10 sm:h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
       {/* Central CTA button to subpage catalog */}
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center space-y-4">
