@@ -20,6 +20,8 @@ interface AppState {
   // Catalog filters
   searchQuery: string;
   setSearchQuery: (q: string) => void;
+  searchOpen: boolean;
+  setSearchOpen: (open: boolean) => void;
   filters: BookFilters;
   setFilters: (f: Partial<BookFilters>) => void;
   resetFilters: () => void;
@@ -89,6 +91,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   // Catalog filters
   searchQuery: '',
   setSearchQuery: (q) => set({ searchQuery: q }),
+  searchOpen: false,
+  setSearchOpen: (open) => set({ searchOpen: open }),
   filters: { ...defaultFilters },
   setFilters: (f) => set({ filters: { ...get().filters, ...f } }),
   resetFilters: () => set({ filters: { ...defaultFilters }, searchQuery: '' }),
