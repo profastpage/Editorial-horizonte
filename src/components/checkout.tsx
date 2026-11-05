@@ -22,7 +22,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Loader2, CheckCircle, CreditCard, Banknote, QrCode, MessageCircle } from 'lucide-react';
+import { Loader2, CheckCircle, CreditCard, Banknote, QrCode } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/whatsapp-floating';
 import { useAppStore } from '@/lib/store';
 import { toast } from 'sonner';
 import type { Warehouse } from '@/lib/types';
@@ -136,7 +137,7 @@ export function CheckoutDialog() {
               Coordinaremos la entrega a tu domicilio o la preparación para retiro en Jirón Sucre 470, San Miguel.
             </div>
             <div className="flex flex-col sm:flex-row gap-2 w-full pt-2">
-              <Button asChild className="flex-1 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white gap-2">
+              <Button asChild className="flex-1 rounded-xl font-bold bg-[#25D366] hover:bg-[#20bd5a] text-white gap-2 shadow-xs">
                 <a
                   href={`https://wa.me/51955637859?text=${encodeURIComponent(
                     `Hola Editorial Horizonte, acabo de registrar mi pedido #${orderNumber} en la página web. ¿Me confirman la recepción?`
@@ -144,7 +145,7 @@ export function CheckoutDialog() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle className="size-4" />
+                  <WhatsAppIcon className="size-4" />
                   <span>Confirmar por WhatsApp</span>
                 </a>
               </Button>

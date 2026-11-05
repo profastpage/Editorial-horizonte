@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, ArrowUpRight, Clock, MessageSquare } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUpRight, Clock } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/whatsapp-floating';
 
 export function ContactSection() {
   const whatsappUrl =
@@ -89,7 +90,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 transition-colors group"
               >
-                <MessageSquare className="size-3.5" />
+                <WhatsAppIcon className="size-3.5" />
                 <span>Conversar por WhatsApp</span>
                 <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>

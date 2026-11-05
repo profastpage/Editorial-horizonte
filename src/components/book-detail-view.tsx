@@ -66,6 +66,7 @@ import {
 } from 'lucide-react';
 
 import { useAppStore } from '@/lib/store';
+import { WhatsAppIcon } from '@/components/whatsapp-floating';
 
 import { useToast } from '@/hooks/use-toast';
 
@@ -783,7 +784,7 @@ export function BookDetailView({ book, relatedBooks }: BookDetailViewProps) {
 
                   >
 
-                    <MessageCircle className="size-4" />
+                    <WhatsAppIcon className="size-4 text-[#25D366]" />
 
                     <span>¿Tienes dudas? Consultar disponibilidad por WhatsApp al +51 955 637 859</span>
 
