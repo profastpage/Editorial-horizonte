@@ -4,6 +4,7 @@ import { CatalogSection } from '@/components/catalog';
 import { Footer } from '@/components/footer';
 import { CartPanel } from '@/components/cart';
 import { CheckoutDialog } from '@/components/checkout';
+import { getAllBooks } from '@/lib/books';
 
 export const metadata: Metadata = {
   title: 'Catálogo Oficial de Libros | Editorial Horizonte',
@@ -12,11 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default function CatalogoPage() {
+  const books = getAllBooks();
+
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
       <main className="flex-1 pt-20 pb-16">
-        <CatalogSection isSubpage={true} />
+        <CatalogSection isSubpage={true} initialBooks={books} />
       </main>
       <Footer />
       <CartPanel />
