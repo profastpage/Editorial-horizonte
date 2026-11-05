@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Loader2, CheckCircle, CreditCard, Banknote, QrCode } from 'lucide-react';
+import { Loader2, CheckCircle, CreditCard, Banknote, QrCode, MessageCircle } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import { toast } from 'sonner';
 import type { Warehouse } from '@/lib/types';
@@ -134,11 +134,24 @@ export function CheckoutDialog() {
             </p>
             <div className="text-xs text-muted-foreground max-w-sm leading-relaxed p-3 rounded-xl bg-muted/30">
               Coordinaremos la entrega a tu domicilio o la preparación para retiro en Jirón Sucre 470, San Miguel.
-              Te escribiremos al WhatsApp con los detalles.
             </div>
-            <Button onClick={handleClose} className="rounded-xl font-semibold">
-              Volver a la tienda
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-2 w-full pt-2">
+              <Button asChild className="flex-1 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white gap-2">
+                <a
+                  href={`https://wa.me/51955637859?text=${encodeURIComponent(
+                    `Hola Editorial Horizonte, acabo de registrar mi pedido #${orderNumber} en la página web. ¿Me confirman la recepción?`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="size-4" />
+                  <span>Confirmar por WhatsApp</span>
+                </a>
+              </Button>
+              <Button variant="outline" onClick={handleClose} className="rounded-xl font-semibold">
+                Volver a la tienda
+              </Button>
+            </div>
           </div>
         ) : (
           <>

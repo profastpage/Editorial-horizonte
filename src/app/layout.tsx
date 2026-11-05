@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
+import { WhatsAppFloating } from "@/components/whatsapp-floating";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
         <Providers>
           {children}
           <Toaster />
+          <WhatsAppFloating />
         </Providers>
       </body>
     </html>
