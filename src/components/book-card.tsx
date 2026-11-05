@@ -72,27 +72,27 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
           )}
         >
           {/* ─── 1. ÁREA DE PORTADA LIMPIA (100% VISIBLE, SIN DEGRADADO VERDE) ─── */}
-          <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.1] bg-muted/20 p-4 sm:p-5 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full aspect-[3/4] sm:aspect-[3/4.1] bg-muted/20 p-2.5 sm:p-5 flex items-center justify-center overflow-hidden">
             {/* Badges superiores oficiales */}
-            <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
-              <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider bg-background/90 backdrop-blur-sm border border-border/60 text-foreground/80 shadow-2xs">
+            <div className="absolute top-2 left-2 right-2 flex items-center justify-between z-10 pointer-events-none gap-1">
+              <span className="inline-flex items-center gap-1 rounded-full px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[9px] font-semibold uppercase tracking-wider bg-background/90 backdrop-blur-sm border border-border/60 text-foreground/80 shadow-2xs truncate max-w-[50%]">
                 {originLabel}
               </span>
               {book.isNew ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-600 text-white px-2 py-0.5 text-[9px] font-bold backdrop-blur-sm shadow-2xs uppercase tracking-wider">
-                  <Sparkles className="size-2.5" />
+                <span className="inline-flex items-center gap-0.5 sm:gap-1 rounded-full bg-emerald-600 text-white px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[9px] font-bold backdrop-blur-sm shadow-2xs uppercase tracking-wider shrink-0">
+                  <Sparkles className="size-2 sm:size-2.5" />
                   Novedad
                 </span>
               ) : book.isFeatured ? (
-                <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-400 px-2 py-0.5 text-[9px] font-bold text-amber-950 backdrop-blur-sm shadow-2xs">
-                  <Star className="size-2.5 fill-current" />
+                <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-400 px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[9px] font-bold text-amber-950 backdrop-blur-sm shadow-2xs shrink-0">
+                  <Star className="size-2 sm:size-2.5 fill-current" />
                   Destacado
                 </span>
               ) : null}
             </div>
 
             {/* Portada física 3D intacta — nunca recortada */}
-            <div className="relative max-h-full max-w-[88%] sm:max-w-[82%] flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.04]">
+            <div className="relative max-h-full max-w-[90%] sm:max-w-[82%] flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.04]">
               {imageUrl ? (
                 <div className="relative overflow-hidden rounded-r-sm rounded-l-2xs shadow-[0_8px_20px_-4px_rgba(0,0,0,0.22)] dark:shadow-[0_10px_24px_-4px_rgba(0,0,0,0.65)] border border-black/10 bg-background">
                   <img
@@ -132,37 +132,37 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
           </div>
 
           {/* ─── 2. INFORMACIÓN EDITORIAL DEBAJO DE LA PORTADA (FONDO LIMPIO) ─── */}
-          <div className="flex flex-col flex-1 justify-between p-3.5 sm:p-4 gap-2.5 bg-card">
+          <div className="flex flex-col flex-1 justify-between p-2.5 sm:p-4 gap-1.5 sm:gap-2.5 bg-card">
             <div className="space-y-1">
               {/* Colección o Serie */}
-              <p className="text-[10px] sm:text-[11px] font-semibold text-primary uppercase tracking-wider line-clamp-1">
+              <p className="text-[9px] sm:text-[11px] font-semibold text-primary uppercase tracking-wider line-clamp-1">
                 {collectionLabel}
               </p>
 
               {/* Título */}
-              <h3 className="font-serif font-bold text-sm sm:text-base text-foreground line-clamp-2 leading-snug group-hover:text-primary transition-colors">
+              <h3 className="font-serif font-bold text-xs sm:text-base text-foreground line-clamp-2 leading-snug group-hover:text-primary transition-colors min-h-[2rem] sm:min-h-[2.5rem]">
                 {book.title}
               </h3>
 
               {/* Autor */}
-              <p className="text-xs text-muted-foreground line-clamp-1 font-medium">
+              <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-1 font-medium">
                 {authors}
               </p>
             </div>
 
             {/* Fila de Precio y Compra */}
-            <div className="pt-2 border-t border-border/50 flex items-center justify-between gap-2 mt-auto">
-              <div className="flex flex-col">
-                <span className="font-serif text-base sm:text-lg font-bold text-foreground tracking-tight">
+            <div className="pt-2 border-t border-border/50 flex items-center justify-between gap-1 mt-auto">
+              <div className="flex flex-col min-w-0 shrink-0">
+                <span className="font-serif text-sm sm:text-lg font-bold text-foreground tracking-tight whitespace-nowrap">
                   S/ {book.price.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
                 {lowStock && (
-                  <span className="text-[10px] font-semibold text-amber-600 dark:text-amber-400">
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-amber-600 dark:text-amber-400 whitespace-nowrap">
                     ¡Últimas {book.totalStock}!
                   </span>
                 )}
                 {outOfStock && (
-                  <span className="text-[10px] font-semibold text-destructive">
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-destructive whitespace-nowrap">
                     Agotado
                   </span>
                 )}
@@ -175,7 +175,7 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
                 disabled={outOfStock}
                 aria-label={`Agregar ${book.title} al carrito`}
                 className={cn(
-                  'relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold',
+                  'relative flex items-center justify-center gap-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold shrink-0',
                   'transition-all duration-200 shadow-2xs select-none',
                   outOfStock
                     ? 'bg-muted text-muted-foreground cursor-not-allowed opacity-60'
@@ -186,12 +186,12 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
               >
                 {isAdded ? (
                   <>
-                    <Check className="size-3.5" />
+                    <Check className="size-3 sm:size-3.5" />
                     <span>Listo</span>
                   </>
                 ) : (
                   <>
-                    <ShoppingCart className="size-3.5" />
+                    <ShoppingCart className="size-3 sm:size-3.5" />
                     <span>Agregar</span>
                   </>
                 )}

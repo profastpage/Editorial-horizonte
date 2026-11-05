@@ -494,7 +494,7 @@ export function CatalogSection({
             )}
 
             {!isLoading && filteredBooks.length > 0 && (
-              <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {filteredBooks.map((book) => (
                   <BookCard key={book.id} book={book} />
                 ))}
@@ -556,7 +556,7 @@ export function CatalogSection({
                   </div>
 
                   {/* Fila ordenada de libros de la colección (hasta 4 u 8) */}
-                  <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {colBooks.slice(0, 4).map((book) => (
                       <BookCard key={book.id} book={book} />
                     ))}

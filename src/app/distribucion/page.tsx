@@ -250,14 +250,14 @@ export default function DistribucionPage() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <Button asChild size="lg" className="rounded-xl font-bold bg-[#25D366] hover:bg-[#20bd5a] text-white gap-2 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+              <Button asChild size="lg" className="rounded-xl font-bold bg-[#25D366] hover:bg-[#20bd5a] text-white gap-2 shadow-sm w-full sm:w-auto justify-center">
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <WhatsAppIcon className="size-4" />
                   <span>WhatsApp Distribución</span>
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-xl font-semibold gap-2 border-border/80">
+              <Button asChild variant="outline" size="lg" className="rounded-xl font-semibold gap-2 border-border/80 w-full sm:w-auto justify-center">
                 <a href="mailto:ventas@horizontelibros.com">
                   <Mail className="size-4" />
                   <span>ventas@horizontelibros.com</span>

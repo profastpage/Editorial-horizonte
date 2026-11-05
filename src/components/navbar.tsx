@@ -62,20 +62,20 @@ export function Navbar() {
           {/* Official Monogram Logo + Brand */}
           <Link
             href="/"
-            className="flex items-center gap-2 sm:gap-2.5 group transition-transform active:scale-98 shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 group transition-transform active:scale-98 shrink min-w-0"
           >
             <img
               src="/logo.png"
               alt="Horizonte Libros"
               className={cn(
-                'size-7 sm:size-8 object-contain transition-all duration-300 group-hover:scale-105',
+                'size-7 sm:size-8 shrink-0 object-contain transition-all duration-300 group-hover:scale-105',
                 isTransparent ? 'brightness-0 invert drop-shadow-sm' : 'dark:invert'
               )}
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <span
                 className={cn(
-                  'font-serif font-bold text-base sm:text-xl tracking-tight leading-none transition-colors',
+                  'font-serif font-bold text-sm sm:text-lg lg:text-xl tracking-tight leading-none truncate transition-colors',
                   isTransparent ? 'text-white drop-shadow-sm' : 'text-foreground'
                 )}
               >
@@ -83,7 +83,7 @@ export function Navbar() {
               </span>
               <span
                 className={cn(
-                  'text-[9px] sm:text-[10px] uppercase tracking-widest font-semibold transition-colors',
+                  'text-[8px] sm:text-[10px] uppercase tracking-widest font-semibold truncate transition-colors',
                   isTransparent ? 'text-white/80' : 'text-muted-foreground'
                 )}
               >
@@ -118,21 +118,21 @@ export function Navbar() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             {/* Direct Mobile "Catálogo" Button */}
             <Button
               size="sm"
               variant={isTransparent ? 'outline' : 'default'}
               asChild
               className={cn(
-                'md:hidden h-8 px-2 sm:px-2.5 rounded-lg text-xs font-bold gap-1 transition-colors shadow-2xs',
+                'md:hidden h-7.5 px-2 rounded-lg text-[11px] font-bold gap-1 transition-colors shadow-2xs shrink-0',
                 isTransparent
                   ? 'border-white/30 bg-white/15 hover:bg-white/25 text-white backdrop-blur-xs'
                   : 'bg-primary text-primary-foreground hover:bg-primary/90'
               )}
             >
               <Link href="/catalogo">
-                <Layers className="size-3.5" />
+                <Layers className="size-3" />
                 <span>Catálogo</span>
               </Link>
             </Button>
@@ -198,7 +198,7 @@ export function Navbar() {
               size="sm"
               onClick={() => setCartOpen(true)}
               className={cn(
-                'relative gap-1.5 font-semibold text-xs px-2 sm:px-3 h-8 sm:h-9 rounded-lg shadow-2xs transition-colors',
+                'relative gap-1 sm:gap-1.5 font-semibold text-xs px-2 sm:px-3 h-7.5 sm:h-9 rounded-lg shadow-2xs transition-colors shrink-0',
                 isTransparent
                   ? 'border-white/30 bg-white/15 hover:bg-white/25 text-white backdrop-blur-xs'
                   : 'border-border/80 text-foreground'
@@ -226,12 +226,12 @@ export function Navbar() {
                   variant="ghost"
                   size="icon"
                   className={cn(
-                    'md:hidden size-8 sm:size-9 rounded-lg transition-colors',
+                    'md:hidden size-7.5 sm:size-9 rounded-lg transition-colors shrink-0',
                     isTransparent ? 'text-white hover:bg-white/15' : 'text-foreground'
                   )}
                   aria-label="Abrir menú"
                 >
-                  <Menu className="size-5" />
+                  <Menu className="size-4 sm:size-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-72 p-6 flex flex-col justify-between">
