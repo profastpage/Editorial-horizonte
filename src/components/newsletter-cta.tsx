@@ -30,7 +30,7 @@ export function NewsletterCta() {
           </h2>
 
           <p className="mx-auto max-w-lg text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Lanzamientos oficiales de José María Arguedas, reediciones críticas, eventos culturales y nuevos títulos antes que nadie.
+            Suscríbete a nuestro boletín y entérate de todas las novedades (lanzamientos, eventos y más)
           </p>
 
           <div className="pt-4">
