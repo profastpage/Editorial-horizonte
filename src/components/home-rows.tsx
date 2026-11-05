@@ -74,9 +74,9 @@ export function HomeRows({ novedades }: HomeRowsProps) {
           </Link>
         </div>
 
-        {/* Novedades Grid — Portadas físicas limpias */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-3 lg:grid-cols-6">
-          {novedades.map((book) => (
+        {/* Novedades Grid — 4 productos destacados, formato amplio y visual */}
+        <div className="grid grid-cols-2 gap-3.5 sm:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {novedades.slice(0, 4).map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
         </div>
