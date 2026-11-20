@@ -19,37 +19,37 @@ const titulosDistribucion = [
     title: 'Todas las sangres',
     author: 'José María Arguedas',
     series: 'Colección José María Arguedas (CJMA)',
-    coverUrl: null,
+    coverUrl: '/covers/carátula_TODAS_LAS_SANGRES_2026_Mesa_de_trabajo_1.webp',
     synopsis:
-      'Obra cumbre de la literatura andina que analiza el conflicto de clases, la modernización de los Andes y la cosmovisión indígena en el Perú contemporáneo.',
+      'Obra cumbre de la narrativa andina que analiza el conflicto social, la modernización de los Andes y el choque cultural en el Perú contemporáneo.',
     detail: '480 páginas · Formato 17x24 cm · Tapa rústica con solapas · Edición oficial.',
   },
   {
-    title: 'Los ríos profundos',
-    author: 'José María Arguedas',
-    series: 'Colección José María Arguedas (CJMA)',
-    coverUrl: null,
-    synopsis:
-      'Novela de iniciación lírica e indigenista centrada en el internado de Abancay. Puente fundamental entre el mundo quechua y la tradición hispánica.',
-    detail: '320 páginas · Formato 14x21 cm · Plan Lector nacional y universitario.',
-  },
-  {
-    title: 'Poesía completa y cartas',
+    title: 'España aparta de mí este cáliz',
     author: 'César Vallejo',
     series: 'Colección César Vallejo (CCV)',
     coverUrl: null,
     synopsis:
-      'Edición crítica exhaustiva que reúne Los heraldos negros, Trilce, Poemas humanos y cartas inéditas del universal poeta liberteño.',
-    detail: '380 páginas · Formato académico · Referencia obligatoria en facultades de letras.',
+      'Canto poético universal de solidaridad humana y compromiso histórico ante la Guerra Civil Española, testimonio imborrable del genio lírico liberteño.',
+    detail: '120 páginas · Formato 14x21 cm · Edición oficial revisada.',
   },
   {
-    title: 'Enciclopedia Histórica de la Literatura Peruana',
+    title: 'Literatura quechua clásica (tomo 1)',
     author: 'Francisco Carrillo',
     series: 'Colección Francisco Carrillo (CFC)',
-    coverUrl: null,
+    coverUrl: '/covers/caratula_tomo_2_nueva_Mesa_de_trabajo_1.webp',
     synopsis:
-      'Monumento bibliográfico que rescata desde la literatura quechua y colonial hasta los cronistas y la República temprana.',
-    detail: 'Tomos seriados · Papel biblia de conservación · Alta consulta en bibliotecas comunales.',
+      'Estudio monumental de la Enciclopedia Histórica de la Literatura Peruana que rescata la poesía prehispánica, cantos y dramas del legado quechua.',
+    detail: 'Tomos seriados · Formato 14x21 cm · Referencia obligatoria para investigadores.',
+  },
+  {
+    title: 'Cuyes, camiones y cuentos en los Andes',
+    author: 'Ralph Bolton',
+    series: 'Colección Ralph Bolton (CRB)',
+    coverUrl: '/covers/Cuyes,_camiones_y_cuentos_en_los_andes013.webp',
+    synopsis:
+      'Investigación etnográfica fundamental sobre la cultura expresiva andina, rituales, vida cotidiana y cosmovisión en las comunidades del altiplano.',
+    detail: '360 páginas · Formato académico con láminas e ilustraciones · Edición oficial.',
   },
 ];
 
@@ -190,7 +190,7 @@ export default function DistribucionPage() {
 
               <Button asChild variant="outline" size="sm" className="rounded-xl font-bold gap-1.5 shrink-0 border-border/80">
                 <Link href="/catalogo">
-                  <span>Ver catálogo completo (90+ obras)</span>
+                  <span>Ver catálogo completo (77 obras)</span>
                   <ArrowRight className="size-3.5" />
                 </Link>
               </Button>

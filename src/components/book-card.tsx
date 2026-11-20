@@ -151,10 +151,10 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
             </div>
 
             {/* Fila de Precio y Compra */}
-            <div className="pt-2 border-t border-border/50 flex items-center justify-between gap-1 mt-auto">
+            <div className="pt-2 border-t border-border/50 flex items-center justify-between gap-1.5 mt-auto">
               <div className="flex flex-col min-w-0 shrink-0">
-                <span className="font-serif text-sm sm:text-lg font-bold text-foreground tracking-tight whitespace-nowrap">
-                  S/ {book.price.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                <span className="font-serif text-xs sm:text-base font-bold text-foreground tracking-tight whitespace-nowrap">
+                  {`S/\u00A0${book.price.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
                 </span>
                 {lowStock && (
                   <span className="text-[9px] sm:text-[10px] font-semibold text-amber-600 dark:text-amber-400 whitespace-nowrap">
@@ -175,7 +175,7 @@ export const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
                 disabled={outOfStock}
                 aria-label={`Agregar ${book.title} al carrito`}
                 className={cn(
-                  'relative flex items-center justify-center gap-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold shrink-0',
+                  'relative flex items-center justify-center gap-1 px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10.5px] sm:text-xs font-semibold shrink-0',
                   'transition-all duration-200 shadow-2xs select-none',
                   outOfStock
                     ? 'bg-muted text-muted-foreground cursor-not-allowed opacity-60'

@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section id="inicio" className="relative flex flex-col w-full overflow-hidden">
       {/* ─── 1. BANNER VISUAL CON ILUSTRACIÓN HISTÓRICA OFICIAL ─── */}
-      <div className="relative w-full aspect-[4/4.8] sm:aspect-[16/9] lg:h-[72vh] lg:max-h-[740px] flex items-end justify-center overflow-hidden pt-16 sm:pt-20">
+      <div className="relative w-full aspect-[9/15] sm:aspect-[16/9] lg:h-[72vh] lg:max-h-[740px] flex items-end justify-center overflow-hidden pt-16 sm:pt-20">
         <picture className="absolute inset-0 w-full h-full">
           <source media="(max-width: 768px)" srcSet="/hero-mobile.webp" />
           <img
@@ -23,8 +23,8 @@ export function HeroSection() {
         {/* Sutil viñeta superior para legibilidad de la barra de navegación */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none" />
 
-        {/* Degradado inferior suave hacia el fondo */}
-        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
+        {/* Degradado inferior sutil hacia el fondo (sin tapar el busto de Vallejo en móvil) */}
+        <div className="absolute inset-x-0 bottom-0 h-8 sm:h-20 bg-gradient-to-t from-background via-background/30 to-transparent pointer-events-none" />
 
         {/* CTA en Desktop: ubicado en la zona inferior libre entre Vallejo y Arguedas, sin tocar texto ni rostros */}
         <motion.div
