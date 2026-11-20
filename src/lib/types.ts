@@ -46,6 +46,7 @@ export interface BookWithDetails {
   audience?: string | null;
   relatedTitles?: string | null;
   series?: string | null;
+  collectionId?: string | null;
 }
 
 // ─── Warehouse ───

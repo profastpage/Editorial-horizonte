@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Horizonte libros – Página oficial",
   },
   description:
-    "Editorial Horizonte - Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados pensadores de las ciencias sociales y la literatura peruana.",
+    "Editorial Horizonte - Desde su fundación en 1968, ha sido la casa editorial de José María Arguedas, César Vallejo, Francisco Carrillo, Ralph Bolton y destacados pensadores de las ciencias sociales y la literatura peruana.",
   keywords: [
     "Horizonte Libros",
     "Editorial Horizonte",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Horizonte libros – Página oficial",
     description:
-      "Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados pensadores de las ciencias sociales y la literatura peruana.",
+      "Desde su fundación en 1968, ha sido la casa editorial de José María Arguedas, César Vallejo, Francisco Carrillo, Ralph Bolton y destacados pensadores de las ciencias sociales y la literatura peruana.",
     url: "https://editorial-horizonte-five.vercel.app",
     siteName: "Horizonte libros – Página oficial",
     locale: "es_PE",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Horizonte libros – Página oficial",
     description:
-      "Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados pensadores de las ciencias sociales y la literatura peruana.",
+      "Desde su fundación en 1968, ha sido la casa editorial de José María Arguedas, César Vallejo, Francisco Carrillo, Ralph Bolton y destacados pensadores de las ciencias sociales y la literatura peruana.",
   },
 };
 

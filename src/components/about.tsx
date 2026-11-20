@@ -59,19 +59,20 @@ export function AboutSection() {
             </p>
           </div>
 
-          {/* Columna Derecha: Relato Histórico */}
+          {/* Columna Derecha: Relato Histórico Oficial */}
           <div className="lg:col-span-7 space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
             <p>
-              Desde su fundación en 1968, Editorial Horizonte ha sido la casa editorial oficial de{' '}
+              Desde su fundación en 1968, ha sido la casa editorial de{' '}
               <strong className="text-foreground font-semibold">José María Arguedas</strong> y ha publicado la obra de{' '}
-              <strong className="text-foreground font-semibold">César Vallejo</strong>, junto con destacados escritores e intelectuales de las ciencias sociales, la antropología y las humanidades.
+              <strong className="text-foreground font-semibold">César Vallejo</strong>,{' '}
+              <strong className="text-foreground font-semibold">Francisco Carrillo</strong>,{' '}
+              <strong className="text-foreground font-semibold">Ralph Bolton</strong> y de destacados escritores e intelectuales de las ciencias sociales y las humanidades.
             </p>
             <p>
-              Nuestra misión es hacer llegar al lector contemporáneo ediciones rigurosas y cuidadas que preserven
-              la identidad costeña, andina y amazónica, propiciando el diálogo intercultural y la reflexión crítica con las nuevas generaciones.
+              Nuestra misión es hacer llegar al lector contemporáneo ediciones cuidadas que preserven la identidad costeña, andina y amazónica, propiciando el diálogo intercultural y la reflexión crítica con las nuevas generaciones.
             </p>
-            <p className="pt-2 text-xs sm:text-sm font-medium text-foreground">
-              Brindamos servicios integrales de edición, asesoría bibliográfica, impresión y distribución mayorista a librerías e instituciones de todo el territorio nacional.
+            <p>
+              Ofrecemos además servicios de edición, impresión y distribución de libros a nivel nacional.
             </p>
           </div>
         </div>

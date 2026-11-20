@@ -86,7 +86,7 @@ export const COLECCIONES_HORIZONTE = [
     code: 'CIJ',
     name: 'Colección Infanto-Juvenil (CIJ)',
     short: 'Infanto-Juvenil',
-    series: ['Plan Lector'],
+    series: [],
     description: 'Narraciones ilustradas y fábulas tradicionales para jóvenes lectores.',
   },
   {
@@ -102,12 +102,15 @@ export const COLECCIONES_HORIZONTE = [
     code: 'CI',
     name: 'Colección Idiomas (CI)',
     short: 'Idiomas',
-    series: ['Lingüística y Gramática'],
-    description: 'Manuales de gramática quechua, lingüística andina y preservación de lenguas originarias.',
+    series: [],
+    description: 'Cuadernos de aprendizaje, lingüística y preservación de lenguas originarias.',
   },
 ];
 
 export function bookMatchesCollection(book: BookWithDetails, colId: string): boolean {
+  if (book.collectionId) {
+    return book.collectionId.toLowerCase() === colId.toLowerCase();
+  }
   const catSlugs = book.categories.map((c) => (c.category?.slug || c.category?.id || '').toLowerCase());
   const catNames = book.categories.map((c) => (c.category?.name || '').toLowerCase());
   const series = (book.series || '').toLowerCase();
@@ -204,7 +207,8 @@ export function CatalogSection({
       }
 
       // 4. Serie filter
-      if (selectedSerie && book.series) {
+      if (selectedSerie) {
+        if (!book.series) return false;
         const cleanSerie = selectedSerie.replace('Serie ', '').toLowerCase();
         if (!book.series.toLowerCase().includes(cleanSerie)) return false;
       }

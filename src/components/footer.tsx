@@ -15,8 +15,7 @@ export function Footer() {
               <span>Horizonte Libros</span>
             </Link>
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Desde 1968, casa editorial oficial de José María Arguedas, César Vallejo y destacados
-              pensadores de las ciencias sociales y la literatura peruana.
+              Desde su fundación en 1968, ha sido la casa editorial de José María Arguedas y ha publicado la obra de César Vallejo, Francisco Carrillo, Ralph Bolton y destacados intelectuales de las ciencias sociales y las humanidades.
             </p>
           </div>
 

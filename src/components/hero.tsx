@@ -3,57 +3,40 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section
-      id="inicio"
-      className="relative flex min-h-[420px] h-[50vh] sm:h-[55vh] max-h-[580px] items-center justify-center overflow-hidden pt-16 sm:pt-20"
-    >
-      {/* Background WebP Image — Full Bleed from the top edge */}
-      <picture className="absolute inset-0 w-full h-full">
-        <source media="(max-width: 768px)" srcSet="/hero-mobile.webp" />
-        <img
-          src="/hero-desktop.webp"
-          alt="Editorial Horizonte Fondo"
-          className="w-full h-full object-cover object-center brightness-[0.78] dark:brightness-[0.60]"
-        />
-      </picture>
+    <section id="inicio" className="relative flex flex-col w-full overflow-hidden">
+      {/* ─── 1. BANNER VISUAL CON ILUSTRACIÓN HISTÓRICA OFICIAL ─── */}
+      <div className="relative w-full aspect-[4/4.8] sm:aspect-[16/9] lg:h-[72vh] lg:max-h-[740px] flex items-end justify-center overflow-hidden pt-16 sm:pt-20">
+        <picture className="absolute inset-0 w-full h-full">
+          <source media="(max-width: 768px)" srcSet="/hero-mobile.webp" />
+          <img
+            src="/hero-desktop.webp"
+            alt="Editorial Horizonte - Comprometidos con la difusión del pensamiento y el arte peruano y latinoamericano"
+            className="w-full h-full object-cover object-top sm:object-center brightness-[0.96] dark:brightness-[0.78] contrast-[1.02]"
+            loading="eager"
+          />
+        </picture>
 
-      {/* Top subtle vignette for transparent navbar readability */}
-      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/75 via-black/30 to-transparent pointer-events-none" />
+        {/* Sutil viñeta superior para legibilidad de la barra de navegación */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none" />
 
-      {/* Soft dark overlay */}
-      <div className="absolute inset-0 bg-black/20 dark:bg-black/40 pointer-events-none" />
+        {/* Degradado inferior suave hacia el fondo */}
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
 
-      {/* Sutil transición en el borde inferior (muy bajo y limpio, sin tapar los libros) */}
-      <div className="absolute inset-x-0 bottom-0 h-10 sm:h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-
-      {/* Central CTA button to subpage catalog */}
-      <div className="relative z-10 mx-auto max-w-3xl px-4 text-center space-y-4">
+        {/* CTA en Desktop: ubicado en la zona inferior libre entre Vallejo y Arguedas, sin tocar texto ni rostros */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-black/40 backdrop-blur-md border border-white/20 text-white shadow-sm"
-        >
-          <BookOpen className="size-3.5 text-primary" />
-          <span className="text-xs font-semibold uppercase tracking-widest">
-            Fondo Editorial Oficial
-          </span>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex justify-center pt-2"
+          transition={{ duration: 0.45, delay: 0.15 }}
+          className="hidden sm:block relative z-10 pb-8 sm:pb-12 text-center"
         >
           <Button
             size="lg"
             asChild
-            className="gap-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-8 py-6 rounded-2xl shadow-xl text-sm sm:text-base transition-all hover:scale-102 active:scale-98 border border-white/10"
+            className="gap-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-8 py-6 rounded-2xl shadow-[0_8px_25px_-5px_rgba(4,120,87,0.5)] text-base transition-all hover:scale-105 active:scale-95 border border-white/20 backdrop-blur-xs"
           >
             <Link href="/catalogo">
               <span>Explorar Catálogo</span>
@@ -62,6 +45,25 @@ export function HeroSection() {
           </Button>
         </motion.div>
       </div>
+
+      {/* ─── 2. CTA EN MOBILE: DEBAJO DE LA ILUSTRACIÓN (CERO SOLAPAMIENTOS DE ROSTROS) ─── */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="sm:hidden px-4 pt-3 pb-6 text-center bg-background border-b border-border/40"
+      >
+        <Button
+          size="lg"
+          asChild
+          className="w-full max-w-xs mx-auto gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-5 rounded-xl shadow-md text-sm transition-all active:scale-95"
+        >
+          <Link href="/catalogo">
+            <span>Explorar Catálogo</span>
+            <ArrowRight className="size-4" />
+          </Link>
+        </Button>
+      </motion.div>
     </section>
   );
 }
