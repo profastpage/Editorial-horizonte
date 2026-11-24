@@ -12,7 +12,9 @@ import { getAllBooks } from '@/lib/books';
 
 export default function Home() {
   const books = getAllBooks();
-  const novedades = books.filter((b) => b.isNew);
+  const novedades = books
+    .filter((b) => b.isNew)
+    .sort((a, b) => (b.coverUrl ? 1 : 0) - (a.coverUrl ? 1 : 0));
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
